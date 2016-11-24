@@ -1,0 +1,48 @@
+{
+  "name_pages":"注释：设置页面路径",
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "name_window":"注释：设置默认页面的窗口表现",
+  "window":{
+    "navigationBarBackgroundColor": "black",
+    "navigationBarTextStyle":"#fff",
+    "navigationBarTitleText": "台州速腾网络客户案例",
+    "backgroundColor":"#000",
+    "backgroundTextStyle":"light",
+    "enablePullDownRefresh":true
+  },
+  "name_tabBar":"注释：设置底部 tab 的表现",
+  "tabBar": {
+    "backgroundColor":"#000",
+    "selectedColor":"yellow",
+    "color":"#fff",
+    "borderStyle":"black",
+    "position":"bottom",
+    "list": 
+    [ 
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"/public/icon/home.png",
+        "selectedIconPath":"/public/selectedIcon/home.png"
+      }, 
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath":"/public/icon/log.png",
+        "selectedIconPath":"/public/selectedIcon/log.png"
+      }
+    ]
+  },
+  "name_networkTimeout":"注释：设置网络超时时间",
+  "networkTimeout": {
+    "request": 10000,
+    "uploadFile":"10000",
+    "downloadFile": 10000
+  },
+  "name_debug":"注释：设置是否开启 debug 模式",
+  "debug": true
+  
+}
