@@ -1,0 +1,35 @@
+<!--
+/******************************* 
+ * 名称:名片盒子
+ * 作者:rubbishrubbish.boy@163.com
+ *******************************
+*/
+-->
+<view class="container">
+  <view class="businessCard_header">
+        <image class="businessCard_userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
+        <text class="businessCard_userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="businessCard_add_box">
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/username.png"></image>
+            <input class="businessCard_item_input"  type="text" name="name" placeholder="姓名" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/mobile.png"></image>
+            <input class="businessCard_item_input" type="text"  name="mobile" placeholder="手机" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/company.png"></image>
+            <input class="businessCard_item_input" type="text"  name="company" placeholder="公司" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/address.png"></image>
+            <input class="businessCard_item_input" type="text"  name="address" placeholder="地址" />
+        </view>
+
+        <button class="button_submit" type="default" formType="submit">保存</button>
+
+        <button type="warn" formType="reset">清空</button>      
+  </view>
+</view>

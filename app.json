@@ -2,13 +2,14 @@
   "name_pages":"注释：设置页面路径",
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/businessCard/businessCard_add"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{
     "navigationBarBackgroundColor": "black",
     "navigationBarTextStyle":"#fff",
-    "navigationBarTitleText": "台州速腾网络客户案例",
+    "navigationBarTitleText": "台州速腾网络名片盒子",
     "backgroundColor":"#000",
     "backgroundTextStyle":"light",
     "enablePullDownRefresh":true
@@ -38,9 +39,10 @@
   },
   "name_networkTimeout":"注释：设置网络超时时间",
   "networkTimeout": {
-    "request": 10000,
-    "uploadFile":"10000",
-    "downloadFile": 10000
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile":"20000",
+    "downloadFile": 20000
   },
   "name_debug":"注释：设置是否开启 debug 模式",
   "debug": true

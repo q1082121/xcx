@@ -1,10 +1,10 @@
-<!--index.wxml-->
+<!--
+/******************************* 
+ * 名称:首页模版
+ * 作者:rubbishrubbish.boy@163.com
+ *******************************
+*/
+-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <include src="/pages/common/header/header.wxml"/>
 </view>

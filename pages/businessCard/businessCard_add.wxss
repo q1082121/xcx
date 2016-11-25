@@ -1,0 +1,52 @@
+/******************************* 
+ * 名称:新增名片
+ * 作者:rubbishrubbish.boy@163.com
+ *******************************
+*/
+.businessCard_header{
+    width: 100%;
+    height: 400rpx;
+    background: url(/public/image/businessCard.jpg);
+    background-size: 100% auto;
+}
+.businessCard_userinfo-avatar {
+  display: block;  
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin: 60rpx auto 20rpx;
+}
+.businessCard_userinfo-nickname {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #aaa;
+  margin: 10rpx auto;
+}
+.businessCard_add_box{
+    width: 90%;
+    min-height: 600rpx;
+    margin: 40rpx auto 0;
+    border-radius: 5%;
+}
+.businessCard_item{
+    width: 94%;
+    height: 60rpx;
+    background: #ddd;
+    padding: 20rpx;
+    margin: 20rpx auto;
+}
+.businessCard_item_icon{
+    display: block;
+    float: left;  
+    width: 60rpx;
+    height: 60rpx;
+}
+.businessCard_item_input{
+    float: left;
+    width: 480rpx;
+    height: 30px;
+    padding: 0 4%;
+    background: #fff;
+    margin: 0 0 0 40rpx;
+}
