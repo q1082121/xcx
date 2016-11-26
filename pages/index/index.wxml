@@ -1,10 +1,13 @@
 <!--
 /******************************* 
  * 名称:首页模版
- * 作者:rubbishrubbish.boy@163.com
+ * 作者:rubbish.boy@163.com
  *******************************
 */
 -->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
 <view class="container">
-  <include src="/pages/common/header/header.wxml"/>
+  <template is="header" data="{{userInfo: userInfo}}"/>
+  <template is="footer" />
 </view>

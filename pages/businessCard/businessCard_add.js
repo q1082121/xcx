@@ -1,6 +1,6 @@
 /******************************* 
  * 名称:首页
- * 作者:rubbishrubbish.boy@163.com
+ * 作者:rubbish.boy@163.com
  *******************************
 */
 
@@ -10,13 +10,15 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    motto: 'Hello World',
+    title: '新增名片',
     userInfo: {}
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
-    // Do something when page load.
-    console.log('onLoad')
+    //设置当前页面标题
+    wx.setNavigationBarTitle({
+      title: this.data.title
+    })
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){

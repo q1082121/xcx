@@ -1,8 +1,10 @@
 /******************************* 
  * 名称:入口
- * 作者:rubbishrubbish.boy@163.com
+ * 作者:rubbish.boy@163.com
  *******************************
 */
+var http = require('/utils/service/http.js') 
+var showToast = require('/utils/service/showToast.js') 
 
 var config={
   //生命周期函数--监听小程序初始化
@@ -60,7 +62,12 @@ var config={
     domainName:"http://127.0.0.1",
     rootdir:"/pages"
     
-  }
+  },
+  func:{  
+    req:http.request_action,
+    showToast_success:showToast.showToast_success,
+    showToast_default:showToast.showToast_default
+  }  
 }
 
 App(config)

@@ -1,6 +1,6 @@
 /******************************* 
  * 名称:全局样式
- * 作者:rubbishrubbish.boy@163.com
+ * 作者:rubbish.boy@163.com
  *******************************
 */
 .container {
@@ -45,4 +45,11 @@
 .userinfo-button{
     float: right;
     margin: 10rpx 0 0 0;
+}
+/** 公共脚部样式 **/
+.page-footer {
+  text-align: center;
+  color: #1aad19;
+  font-size: 24rpx;
+  margin: 20rpx 0;
 }
