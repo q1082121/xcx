@@ -32,21 +32,46 @@ var config={
     if(this.globalData.userInfo){
       console.log(1)
       typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    }
+    else
+    {
       console.log(2)
       //调用登录接口
       wx.login({
-        success: function () {
-          //获取用户资料
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+        success: function (result) {
+            //获取用户资料
+            wx.getUserInfo({
+              success: function (res) {
+                that.globalData.userInfo = res.userInfo
+                wx.setStorageSync('encryptedData', res.encryptedData)
+                wx.setStorageSync('iv', res.iv)
+                typeof cb == "function" && cb(that.globalData.userInfo)
+              }
+            })
+            if (result.code) 
+            {
+              var result_data={code:result.code,encryptedData:wx.getStorageSync('encryptedData'),iv:wx.getStorageSync('iv')}
+              //发起网络请求
+              http.http_request_action(that.globalData.domainName+'/api/xcx/login',result_data,function(info)
+              {
+                if(info.status==1)
+                {
+                  wx.setStorageSync('session_id', info.resource)
+                }
+                else
+                {
+                  console.log('获取用户登录态失败！' + info.info)
+                }
+                console.log(info)
+              })
+              
             }
-          })
+            else 
+            {
+              console.log('获取用户登录态失败！' + res.errMsg)
+            }
         }
       })
-      
     }
   },
   bindNavigateTo:function(action)
@@ -64,7 +89,7 @@ var config={
   },
   globalData:{
     userInfo:null,
-    domainName:"http://127.0.0.1",
+    domainName:"https://api.tzsuteng.com",
     basePath:"/pages"
     
   },

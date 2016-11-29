@@ -5,7 +5,7 @@
 */
 function http_request_action(url,data,cb){  
     wx.request({  
-      url: this.globalData.domainName + url,  
+      url: url,  
       data: data,  
       method: 'post',  
       header: {'Content-Type': 'application/json'},  
