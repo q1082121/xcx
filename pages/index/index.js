@@ -20,16 +20,18 @@ var config={
     wx.setNavigationBarTitle({
       title: this.data.title
     })
-    var that = this
     //调用应用实例的方法获取全局数据
+    /**/
+    var that = this
     app.getUserInfo(function(userInfo){
       //更新数据
       that.setData({
         userInfo:userInfo
       })
     })
-    this.data.datas.msg="ok";
-    app.func.showToast_default(this.data.datas)
+    
+    //this.data.datas.msg="ok";
+    //app.func.showToast_default(this.data.datas)
     //app.func.showToast_success(this.data.datas)
   },
   //生命周期函数--监听页面初次渲染完成
