@@ -49,7 +49,47 @@ var config={
               }
               else
               {
-                console.log(info.info)
+                //登录过期
+                //调用登录接口 start  //
+                wx.login({
+                  success: function (result) {
+                      //获取用户资料
+                      wx.getUserInfo({
+                        success: function (res) {
+                          that.globalData.userInfo = res.userInfo
+
+                          wx.setStorage({key:"encryptedData",data:res.encryptedData})
+
+                          wx.setStorage({key:"iv",data:res.iv})
+
+                          if (result.code) 
+                          {
+                            var post_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
+                            //发起网络请求
+                            http.http_request_action(that.globalData.domainName+'/api/xcx/login',post_data,function(info)
+                            {
+                              if(info.status==1)
+                              {
+                                wx.setStorage({key:"session_id",data:info.resource})
+                                return 1;
+                              }
+                              else
+                              {
+                                console.log('获取用户登录态失败！' + info.info)
+                              }
+                            })
+                            
+                          }
+                          else 
+                          {
+                            console.log('获取用户登录态失败！' + res.errMsg)
+                          }
+                        }
+                      })
+                  }
+
+                })
+                //调用登录接口 end  //
               }
             })
             
