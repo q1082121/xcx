@@ -29,49 +29,103 @@ var config={
   //获取用户信息
   getUserInfo:function(cb){
     var that = this
-    if(this.globalData.userInfo){
-      console.log(1)
+    if(this.globalData.userInfo)
+    {
       typeof cb == "function" && cb(this.globalData.userInfo)
     }
     else
     {
-      console.log(2)
-      //调用登录接口
-      wx.login({
-        success: function (result) {
-            //获取用户资料
-            wx.getUserInfo({
-              success: function (res) {
-                that.globalData.userInfo = res.userInfo
-                wx.setStorageSync('encryptedData', res.encryptedData)
-                wx.setStorageSync('iv', res.iv)
-                typeof cb == "function" && cb(that.globalData.userInfo)
-              }
-            })
-            if (result.code) 
-            {
-              var result_data={code:result.code,encryptedData:wx.getStorageSync('encryptedData'),iv:wx.getStorageSync('iv')}
-              //发起网络请求
-              http.http_request_action(that.globalData.domainName+'/api/xcx/login',result_data,function(info)
-              {
-                if(info.status==1)
-                {
-                  wx.setStorageSync('session_id', info.resource)
-                }
-                else
-                {
-                  console.log('获取用户登录态失败！' + info.info)
-                }
-                console.log(info)
-              })
-              
+      var local_encryptedData = wx.getStorageSync('encryptedData')
+      var local_iv = wx.getStorageSync('iv')
+      if(local_encryptedData && local_iv)
+      {
+        //调用登录接口 start  //
+          wx.login({
+            success: function (result) {
+                //获取用户资料
+                wx.getUserInfo({
+                  success: function (res) {
+                    that.globalData.userInfo = res.userInfo
+
+                    wx.setStorage({key:"encryptedData",data:res.encryptedData})
+
+                    wx.setStorage({key:"iv",data:res.iv})
+
+                    if (result.code) 
+                    {
+                      var result_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
+                      //发起网络请求
+                      http.http_request_action(that.globalData.domainName+'/api/xcx/login',result_data,function(info)
+                      {
+                        if(info.status==1)
+                        {
+                          wx.setStorageSync('session_id', info.resource)
+                        }
+                        else
+                        {
+                          console.log('获取用户登录态失败！' + info.info)
+                        }
+                        console.log(info)
+                      })
+                      
+                    }
+                    else 
+                    {
+                      console.log('获取用户登录态失败！' + res.errMsg)
+                    }
+
+                    typeof cb == "function" && cb(that.globalData.userInfo)
+                  }
+                })
             }
-            else 
-            {
-              console.log('获取用户登录态失败！' + res.errMsg)
+          })
+          //调用登录接口 end  //
+      }
+      else
+      {
+          //调用登录接口 start  //
+          wx.login({
+            success: function (result) {
+                //获取用户资料
+                wx.getUserInfo({
+                  success: function (res) {
+                    that.globalData.userInfo = res.userInfo
+
+                    wx.setStorage({key:"encryptedData",data:res.encryptedData})
+
+                    wx.setStorage({key:"iv",data:res.iv})
+
+                    if (result.code) 
+                    {
+                      var result_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
+                      //发起网络请求
+                      http.http_request_action(that.globalData.domainName+'/api/xcx/login',result_data,function(info)
+                      {
+                        if(info.status==1)
+                        {
+                          wx.setStorageSync('session_id', info.resource)
+                        }
+                        else
+                        {
+                          console.log('获取用户登录态失败！' + info.info)
+                        }
+                        console.log(info)
+                      })
+                      
+                    }
+                    else 
+                    {
+                      console.log('获取用户登录态失败！' + res.errMsg)
+                    }
+
+                    typeof cb == "function" && cb(that.globalData.userInfo)
+                  }
+                })
             }
-        }
-      })
+          })
+          //调用登录接口 end  //
+      }
+
     }
   },
   bindNavigateTo:function(action)
