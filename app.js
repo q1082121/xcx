@@ -40,7 +40,7 @@ var config={
         success: function(res) {
             //调用用户信息接口 start  //
             var post_data={session_id:res.data}
-            http.http_request_action(that.globalData.domainName+'/api/xcx/userinfo',post_data,function(info)
+            http.http_request_action(that.globalData.domainName+that.globalData.api.api_userinfo,post_data,function(info)
             {
               if(info.status==1)
               {
@@ -50,96 +50,79 @@ var config={
               else
               {
                 //登录过期
-                //调用登录接口 start  //
-                wx.login({
-                  success: function (result) {
-                      //获取用户资料
-                      wx.getUserInfo({
-                        success: function (res) {
-                          that.globalData.userInfo = res.userInfo
-
-                          wx.setStorage({key:"encryptedData",data:res.encryptedData})
-
-                          wx.setStorage({key:"iv",data:res.iv})
-
-                          if (result.code) 
-                          {
-                            var post_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
-                            //发起网络请求
-                            http.http_request_action(that.globalData.domainName+'/api/xcx/login',post_data,function(info)
-                            {
-                              if(info.status==1)
-                              {
-                                wx.setStorage({key:"session_id",data:info.resource})
-                                typeof cb == "function" && cb(that.globalData.userInfo)
-                              }
-                              else
-                              {
-                                console.log('获取用户登录态失败！' + info.info)
-                              }
-                            })
-                            
-                          }
-                          else 
-                          {
-                            console.log('获取用户登录态失败！' + res.errMsg)
-                          }
-                        }
-                      })
+                //调用用户登录接口 start  //
+                that.wxlogin_action(
+                  function(userInfo)
+                  {
+                    that.globalData.userInfo = userInfo
+                    typeof cb == "function" && cb(that.globalData.userInfo)
                   }
-
-                })
-                //调用登录接口 end  //
+                )
+                //调用用户登录接口 end  //
               }
             })
             
             //调用用户信息接口 end  //
         },
         fail:function(res){
-            //调用登录接口 start  //
-            wx.login({
-              success: function (result) {
-                  //获取用户资料
-                  wx.getUserInfo({
-                    success: function (res) {
-                      that.globalData.userInfo = res.userInfo
-
-                      wx.setStorage({key:"encryptedData",data:res.encryptedData})
-
-                      wx.setStorage({key:"iv",data:res.iv})
-
-                      if (result.code) 
-                      {
-                        var post_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
-                        //发起网络请求
-                        http.http_request_action(that.globalData.domainName+'/api/xcx/login',post_data,function(info)
-                        {
-                          if(info.status==1)
-                          {
-                            wx.setStorage({key:"session_id",data:info.resource})
-                            typeof cb == "function" && cb(that.globalData.userInfo)
-                          }
-                          else
-                          {
-                            console.log('获取用户登录态失败！' + info.info)
-                          }
-                        })
-                        
-                      }
-                      else 
-                      {
-                        console.log('获取用户登录态失败！' + res.errMsg)
-                      }
-                    }
-                  })
+            //调用用户登录接口 start  //
+            that.wxlogin_action(
+              function(userInfo)
+              {
+                that.globalData.userInfo = userInfo
+                typeof cb == "function" && cb(that.globalData.userInfo)
               }
-
-            })
-            //调用登录接口 end  //
+            )
+            //调用用户登录接口 end  //
         } 
       })
 
     }
+  },
+  //用户登录接口
+  wxlogin_action:function(cb)
+  {
+    var that=this
+      //调用登录接口 start  //
+      wx.login({
+        success: function (result) {
+            //获取用户资料
+            wx.getUserInfo({
+              success: function (res) {
+                that.globalData.userInfo = res.userInfo
+
+                wx.setStorage({key:"encryptedData",data:res.encryptedData})
+
+                wx.setStorage({key:"iv",data:res.iv})
+
+                if (result.code) 
+                {
+                  var post_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
+                  //发起网络请求
+                  http.http_request_action(that.globalData.domainName+that.globalData.api.api_login,post_data,function(info)
+                  {
+                    if(info.status==1)
+                    {
+                      wx.setStorage({key:"session_id",data:info.resource})
+                      typeof cb == "function" && cb(that.globalData.userInfo)
+                    }
+                    else
+                    {
+                      console.log('获取用户登录态失败！' + info.info)
+                    }
+                  })
+                  
+                }
+                else 
+                {
+                  console.log('获取用户登录态失败！' + res.errMsg)
+                }
+              }
+            })
+        }
+
+      })
+      //调用登录接口 end  //
   },
   bindNavigateTo:function(action)
   {
@@ -147,7 +130,7 @@ var config={
     switch(action)
     {
       case 'business_card':
-      linkurl=this.globalData.basePath+'/businessCard/businessCard_add'
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add
       break
     }
     wx.navigateTo({
@@ -157,15 +140,22 @@ var config={
   globalData:{
     userInfo:null,
     domainName:"https://api.tzsuteng.com",
-    basePath:"/pages"
+    api:{
+      api_login:"/api/xcx/login",
+      api_userinfo:"/api/xcx/userinfo"
+    },
+    routePath:{
+      business_card_add:"/businessCard/businessCard_add"
+    },
+    basePath:"/pages",
     
   },
   func:{  
     http_request_action:http.http_request_action,
     showToast_success:showToast.showToast_success,
     showToast_default:showToast.showToast_default
+  }
 
-  }  
 }
 
 App(config)
