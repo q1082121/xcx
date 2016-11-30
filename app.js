@@ -71,7 +71,7 @@ var config={
                               if(info.status==1)
                               {
                                 wx.setStorage({key:"session_id",data:info.resource})
-                                return 1;
+                                typeof cb == "function" && cb(that.globalData.userInfo)
                               }
                               else
                               {
@@ -117,7 +117,7 @@ var config={
                           if(info.status==1)
                           {
                             wx.setStorage({key:"session_id",data:info.resource})
-                            return 1;
+                            typeof cb == "function" && cb(that.globalData.userInfo)
                           }
                           else
                           {
