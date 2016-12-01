@@ -39,12 +39,12 @@ var config={
         key: 'session_id',
         success: function(res) {
             //调用用户信息接口 start  //
-            var post_data={session_id:res.data}
-            http.http_request_action(that.globalData.domainName+that.globalData.api.api_userinfo,post_data,function(info)
+            var post_data={token:that.globalData.token,session_id:res.data}
+            http.http_request_action(that.globalData.domainName+that.globalData.api.api_userinfo,post_data,function(resback)
             {
-              if(info.status==1)
+              if(resback.status==1)
               {
-                that.globalData.userInfo = info.resource
+                that.globalData.userInfo = resback.resource
                 typeof cb == "function" && cb(that.globalData.userInfo)
               }
               else
@@ -97,18 +97,18 @@ var config={
 
                 if (result.code) 
                 {
-                  var post_data={code:result.code,encryptedData:res.encryptedData,iv:res.iv}
+                  var post_data={token:that.globalData.token,code:result.code,encryptedData:res.encryptedData,iv:res.iv}
                   //发起网络请求
-                  http.http_request_action(that.globalData.domainName+that.globalData.api.api_login,post_data,function(info)
+                  http.http_request_action(that.globalData.domainName+that.globalData.api.api_login,post_data,function(resback)
                   {
-                    if(info.status==1)
+                    if(resback.status==1)
                     {
-                      wx.setStorage({key:"session_id",data:info.resource})
+                      wx.setStorage({key:"session_id",data:resback.resource})
                       typeof cb == "function" && cb(that.globalData.userInfo)
                     }
                     else
                     {
-                      console.log('获取用户登录态失败！' + info.info)
+                      console.log('获取用户登录态失败！' + resback.info)
                     }
                   })
                   
@@ -124,6 +124,7 @@ var config={
       })
       //调用登录接口 end  //
   },
+  //页面导航跳转
   bindNavigateTo:function(action)
   {
     var linkurl
@@ -137,15 +138,33 @@ var config={
       url: linkurl
     })
   },
+  //加载处理等待函数
+  action_loading:function()
+  {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+  },
+  //隐藏消息提示框
+  action_loading_hidden:function()
+  {
+      wx.hideToast()
+  },
+  //全局数据配置
   globalData:{
     userInfo:null,
+    token:"MbYwyExrMd5G42Da",
     domainName:"https://api.tzsuteng.com",
     api:{
       api_login:"/api/xcx/login",
-      api_userinfo:"/api/xcx/userinfo"
+      api_userinfo:"/api/xcx/userinfo",
+      api_businesscard_add:"/api/xcx/businesscard/add"
     },
     routePath:{
-      business_card_add:"/businessCard/businessCard_add"
+      business_card_add:"/businessCard/add/add",
+      business_card:"/businessCard/index/index"
     },
     basePath:"/pages",
     

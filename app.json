@@ -3,7 +3,8 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/businessCard/businessCard_add"
+    "pages/businessCard/add/add",
+    "pages/businessCard/index/index"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{

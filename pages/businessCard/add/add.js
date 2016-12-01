@@ -11,7 +11,8 @@ var config={
   //页面的初始数据
   data: {
     title: '新增名片',
-    userInfo: {}
+    userInfo: {},
+    session_id:''
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -27,6 +28,16 @@ var config={
         userInfo:userInfo
       })
     })
+    //异步获取缓存session_id
+    wx.getStorage({
+      key: 'session_id',
+      success: function(res) {
+          that.setData({
+            session_id:res.data
+          })
+      } 
+    })
+
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
@@ -56,7 +67,29 @@ var config={
   bindNavigateTo: function(action) 
   {
     app.bindNavigateTo(action.target.dataset.action)
+  },
+  formSubmit: function(e) {
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,fromdata:e.detail.value}
+    app.action_loading();
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_add,post_data,function(resback){
+      if(resback.status==1)
+      {
+        app.action_loading_hidden();
+        var msgdata=new Object
+            msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
+            msgdata.msg=resback.info
+            app.func.showToast_success(msgdata);
+      }
+      else
+      {
+        app.action_loading_hidden();
+        console.log('获取用户登录态失败！' + resback.info);
+      }
+    })
+
   }
+  
 }
 
 Page(config)
