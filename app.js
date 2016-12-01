@@ -124,17 +124,37 @@ var config={
       })
       //调用登录接口 end  //
   },
-  //页面导航跳转
+  //页面内部导航跳转
   bindNavigateTo:function(action)
   {
     var linkurl
     switch(action)
     {
       case 'business_card':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card
+      break
+      case 'business_card_add':
       linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add
       break
     }
     wx.navigateTo({
+      url: linkurl
+    })
+  },
+  //页面开打导航跳转
+  bindRedirectTo:function(action)
+  {
+    var linkurl
+    switch(action)
+    {
+      case 'business_card':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card
+      break
+      case 'business_card_add':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add
+      break
+    }
+    wx.redirectTo({
       url: linkurl
     })
   },
@@ -160,7 +180,8 @@ var config={
     api:{
       api_login:"/api/xcx/login",
       api_userinfo:"/api/xcx/userinfo",
-      api_businesscard_add:"/api/xcx/businesscard/add"
+      api_businesscard_add:"/api/xcx/businesscard/add",
+      api_businesscard:"/api/xcx/businesscard"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",

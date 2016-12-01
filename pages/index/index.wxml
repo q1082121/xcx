@@ -8,6 +8,6 @@
 <import src="/pages/common/header/header.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
-  <template is="header" data="{{userInfo: userInfo}}"/>
+  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden}}"/>
   <template is="footer" />
 </view>

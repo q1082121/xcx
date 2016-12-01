@@ -1,2 +1,19 @@
-<!--pages/businessCard/index/index.wxml-->
-<text>pages/businessCard/index/index.wxml</text>
+<!--
+/******************************* 
+ * 名称:名片盒
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo,listbuttonishidden:listbuttonishidden}}"/>
+  <view wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" class="businessCard_initials"  >
+    <view class="businessCard_line">{{key}}</view>
+    <view wx:for="{{itemval}}" wx:for-index="subkey" wx:for-item="subitem" class="businessCard_item" >
+      {{subitem.name}}
+    </view>
+  </view>
+  <template is="footer" />
+</view>

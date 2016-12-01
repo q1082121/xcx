@@ -10,16 +10,13 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '我的名片盒子',
+    title: '台州速腾网络小程序',
     userInfo: {},
-    datas:{}
+    session_id:'',
+    addbuttonishidden:"hidden"
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
-    //设置当前页面标题
-    wx.setNavigationBarTitle({
-      title: this.data.title
-    })
     //调用应用实例的方法获取全局数据
     /**/
     var that = this
@@ -29,14 +26,23 @@ var config={
         userInfo:userInfo
       })
     })
-    
-    //this.data.datas.msg="ok";
-    //app.func.showToast_default(this.data.datas)
-    //app.func.showToast_success(this.data.datas)
+    //异步获取缓存session_id
+    wx.getStorage({
+      key: 'session_id',
+      success: function(res) {
+          that.setData({
+            session_id:res.data
+          })
+      } 
+    })
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
+    //设置当前页面标题
+    wx.setNavigationBarTitle({
+      title: this.data.title
+    })
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -58,10 +64,15 @@ var config={
   onReachBottom: function() {
     // Do something when page reach bottom.
   },
-  //导航处理函数
+  //页面内部导航处理函数
   bindNavigateTo: function(action) 
   {
     app.bindNavigateTo(action.target.dataset.action)
+  },
+  //页面打开导航处理函数
+  bindRedirectTo: function(action) 
+  {
+    app.bindRedirectTo(action.target.dataset.action)
   }
 }
 

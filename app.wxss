@@ -11,6 +11,9 @@
   justify-content: space-between;
   box-sizing: border-box;
 }
+#hidden{
+  display: none;
+}
 .button_submit{
   margin: 20rpx auto;
 }
@@ -44,7 +47,7 @@
 }
 .userinfo-button{
     float: right;
-    margin: 10rpx 0 0 0;
+    margin: 10rpx 10rpx 0 ;
 }
 /** 公共脚部样式 **/
 .page-footer {
