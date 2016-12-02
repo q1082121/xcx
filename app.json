@@ -4,7 +4,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/businessCard/add/add",
-    "pages/businessCard/index/index"
+    "pages/businessCard/index/index",
+    "pages/businessCard/view/view"
+
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{
@@ -18,7 +20,7 @@
   "name_tabBar":"注释：设置底部 tab 的表现",
   "tabBar": {
     "backgroundColor":"#000",
-    "selectedColor":"yellow",
+    "selectedColor":"#F4EA2A",
     "color":"#fff",
     "borderStyle":"black",
     "position":"bottom",
@@ -27,14 +29,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"/public/icon/home.png",
-        "selectedIconPath":"/public/selectedIcon/home.png"
+        "iconPath":"public/icon/home.png",
+        "selectedIconPath":"public/selectedIcon/home.png"
       }, 
       {
         "pagePath": "pages/logs/logs",
         "text": "日志",
-        "iconPath":"/public/icon/log.png",
-        "selectedIconPath":"/public/selectedIcon/log.png"
+        "iconPath":"public/icon/log.png",
+        "selectedIconPath":"public/selectedIcon/log.png"
       }
     ]
   },

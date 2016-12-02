@@ -1,6 +1,6 @@
 <!--
 /******************************* 
- * 名称:名片盒
+ * 名称:名片盒子-列表
  * 作者:rubbish.boy@163.com
  *******************************
 */
@@ -11,8 +11,8 @@
   <template is="header" data="{{userInfo: userInfo,listbuttonishidden:listbuttonishidden}}"/>
   <view wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" class="businessCard_initials"  >
     <view class="businessCard_line">{{key}}</view>
-    <view wx:for="{{itemval}}" wx:for-index="subkey" wx:for-item="subitem" class="businessCard_item" >
-      {{subitem.name}}
+    <view wx:for="{{itemval}}" wx:for-index="subkey" wx:for-item="subitem" class="businessCard_item" bindtap="bindRedirectTo" data-action="business_card_view" data-params="?id={{subitem.id}}" >
+      <image src="/public/icon/business_card.png" class="business_card_icon"></image>{{subitem.name}}
     </view>
   </view>
   <template is="footer" />

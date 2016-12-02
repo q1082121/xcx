@@ -1,0 +1,41 @@
+<!--
+/******************************* 
+ * 名称:名片盒子-详情
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden}}"/>
+  <view class="flex-item-section position-r">
+        <image src="/public/image/businesscard/1.jpg" id="business_card_img"></image>
+        <text class="business_card_name position-a">{{infodata.name}}</text>
+        <text class="business_card_mobile position-a">{{infodata.mobile}} </text>
+        <text class="business_card_company position-a">{{infodata.company?infodata.company:''}}</text>
+        <text class="business_card_qq position-a">QQ号：{{infodata.qq?infodata.qq:''}}</text>
+        <text class="business_card_email position-a">邮箱：{{infodata.email?infodata.email:''}}</text>
+        <text class="business_card_address position-a">地址：{{infodata.address?infodata.address:''}}</text>
+  </view>
+  <view class="line"></view>
+  <view class="flex-item-section">
+        <view class="flex-item-4">
+            <image src="/public/icon/dial.png" class="flex-item-icon" bindtap="makePhoneCall" data-phoneNumber="{{infodata.mobile}}"></image>
+        </view>
+        <view class="flex-item-4">
+            <image src="/public/icon/email.png" class="flex-item-icon"></image>
+        </view>
+        <view class="flex-item-4">
+            <image src="/public/icon/fax.png" class="flex-item-icon"></image>
+        </view>
+        <view class="flex-item-4">
+            <image src="/public/icon/qq.png" class="flex-item-icon"></image>
+        </view>
+  </view>
+  <view class="line"></view>
+  <view class="flex-item-section">
+        <button class="button_submit" type="warn" bindtap="del_action" data-id="{{infodata.id}}" data-model="businesscard" >删除名片</button>
+  </view>
+  <template is="footer" />
+</view>

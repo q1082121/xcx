@@ -1,10 +1,12 @@
 <!--
 /******************************* 
- * 名称:名片盒子
+ * 名称:名片盒子-新增
  * 作者:rubbish.boy@163.com
  *******************************
 */
 -->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <view class="businessCard_header">
         <image class="businessCard_userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
@@ -15,11 +17,23 @@
         <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="businessCard_item">
             <image class="businessCard_item_icon" src="/public/icon/username.png"></image>
-            <input class="businessCard_item_input"  type="text" name="name" placeholder="姓名" />
+            <input class="businessCard_item_input"  type="text" name="name" placeholder="姓名,必填" />
         </view>
         <view class="businessCard_item">
             <image class="businessCard_item_icon" src="/public/icon/mobile.png"></image>
-            <input class="businessCard_item_input" type="text"  name="mobile" placeholder="手机" />
+            <input class="businessCard_item_input" type="number"  name="mobile" maxlength="11" placeholder="手机,必填" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/qq.png"></image>
+            <input class="businessCard_item_input" type="number"  name="qq" maxlength="11" placeholder="QQ" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/email.png"></image>
+            <input class="businessCard_item_input" type="text"  name="email" placeholder="邮箱" />
+        </view>
+        <view class="businessCard_item">
+            <image class="businessCard_item_icon" src="/public/icon/fax.png"></image>
+            <input class="businessCard_item_input" type="text"  name="fax" placeholder="传真" />
         </view>
         <view class="businessCard_item">
             <image class="businessCard_item_icon" src="/public/icon/company.png"></image>
@@ -34,5 +48,5 @@
         <button type="warn" formType="reset">清空</button>
         </form>      
   </view>
-  
+  <template is="footer" />
 </view>

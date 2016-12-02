@@ -66,32 +66,51 @@ var config={
   //导航处理函数
   bindNavigateTo: function(action) 
   {
-    app.bindNavigateTo(action.target.dataset.action)
+    app.bindNavigateTo(action.target.dataset.action,action.target.dataset.params)
   },
   //页面打开导航处理函数
   bindRedirectTo: function(action) 
   {
-    app.bindRedirectTo(action.target.dataset.action)
+    app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
-  formSubmit: function(e) {
-    var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,fromdata:e.detail.value}
-    app.action_loading();
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_add,post_data,function(resback){
-      if(resback.status==1)
-      {
-        app.action_loading_hidden();
-        var msgdata=new Object
-            msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
-            msgdata.msg=resback.info
-            app.func.showToast_success(msgdata);
-      }
-      else
-      {
-        app.action_loading_hidden();
-        console.log('获取用户登录态失败！' + resback.info);
-      }
-    })
+  formSubmit: function(e) 
+  {
+    if(e.detail.value.name=="")
+    {
+      var msgdata=new Object
+          msgdata.url=""
+          msgdata.msg="姓名必填"
+      app.func.showToast_default(msgdata);
+    }
+    else if(e.detail.value.mobile=="")
+    {
+      var msgdata=new Object
+          msgdata.url=""
+          msgdata.msg="手机必填"
+          app.func.showToast_default(msgdata);
+    }
+    else
+    {
+      var that = this
+      var post_data={token:app.globalData.token,session_id:that.data.session_id,fromdata:e.detail.value}
+      app.action_loading();
+      app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_add,post_data,function(resback){
+        if(resback.status==1)
+        {
+          app.action_loading_hidden();
+          var msgdata=new Object
+              msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
+              msgdata.totype=2
+              msgdata.msg=resback.info
+              app.func.showToast_success(msgdata);
+        }
+        else
+        {
+          app.action_loading_hidden();
+          console.log('获取用户登录态失败！' + resback.info);
+        }
+      })
+    }
 
   }
   

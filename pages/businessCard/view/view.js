@@ -1,5 +1,5 @@
 /******************************* 
- * 名称:首页
+ * 名称:详情
  * 作者:rubbish.boy@163.com
  *******************************
 */
@@ -10,14 +10,14 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '名片列表',
+    title: '名片介绍',
     userInfo: {},
     session_id:'',
-    listbuttonishidden:"hidden",
-    listdata:{}
+    addbuttonishidden:"hidden",
+    infodata:{}
   },
   //生命周期函数--监听页面加载
-  onLoad: function () {
+  onLoad: function (options) {
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -33,7 +33,7 @@ var config={
           that.setData({
             session_id:res.data
           })
-          that.get_list()
+          that.get_info(options.id);
       } 
     })
   },
@@ -42,7 +42,7 @@ var config={
     // Do something when page ready.
     //设置当前页面标题
     wx.setNavigationBarTitle({
-      title: this.data.title
+      title: this.data.infodata.name+' - '+this.data.title
     })
   },
   //生命周期函数--监听页面显示
@@ -75,16 +75,18 @@ var config={
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
-  get_list: function() 
+  //获取详情数据
+  get_info: function(id) 
   {
     var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id}
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,id:id}
     app.action_loading();
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard,post_data,function(resback){
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_info,post_data,function(resback){
       if(resback.status==1)
       {
         app.action_loading_hidden();
-        that.data.listdata=resback.resource;
+        that.data.infodata=resback.resource;
+        console.log(that.data.infodata);
       }
       else
       {
@@ -92,8 +94,49 @@ var config={
         console.log('获取用户登录态失败！' + resback.info);
       }
     })
-  }
+  },
+  //删除请求
+  del_action:function(action)
+  {
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,actiondata:action.target.dataset}
+    app.func.showModal("确定要执行删除？",function(resback){
+      if(resback.confirm)
+      {     
+            app.action_loading();
+            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_del,post_data,function(resback){
+              if(resback.status==1)
+              {
+                app.action_loading_hidden();
+                var msgdata=new Object
+                msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
+                msgdata.totype=2
+                msgdata.msg=resback.info
+                app.func.showToast_success(msgdata);
+              }
+              else
+              {
+                app.action_loading_hidden();
+                console.log('获取用户登录态失败！' + resback.info);
+              }
+            })
+      }
+      else
+      {
+            var msgdata=new Object
+            msgdata.url=""
+            msgdata.msg="取消"
+            app.func.showToast_default(msgdata);
+      }
+    })
 
+  },
+  //拨号请求
+  makePhoneCall:function(action)
+  {
+    app.func.makePhoneCall(action.target.dataset.phoneNumber)
+  },
+  
   
 }
 

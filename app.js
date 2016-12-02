@@ -4,7 +4,8 @@
  *******************************
 */
 var http = require('/utils/service/http.js') 
-var showToast = require('/utils/service/showToast.js') 
+var show = require('/utils/service/show.js') 
+var common = require('/utils/service/common.js') 
 
 var config={
   //生命周期函数--监听小程序初始化
@@ -125,16 +126,19 @@ var config={
       //调用登录接口 end  //
   },
   //页面内部导航跳转
-  bindNavigateTo:function(action)
+  bindNavigateTo:function(action,params="")
   {
     var linkurl
     switch(action)
     {
       case 'business_card':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card+params
       break
       case 'business_card_add':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add+params
+      break
+      case 'business_card_view':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_view+params
       break
     }
     wx.navigateTo({
@@ -142,21 +146,23 @@ var config={
     })
   },
   //页面开打导航跳转
-  bindRedirectTo:function(action)
+  bindRedirectTo:function(action,params="")
   {
+    
     var linkurl
     switch(action)
     {
-      case 'business_card':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card
-      break
       case 'business_card_add':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add+params
+      break
+      case 'business_card_view':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_view+params
       break
     }
     wx.redirectTo({
       url: linkurl
     })
+
   },
   //加载处理等待函数
   action_loading:function()
@@ -180,11 +186,14 @@ var config={
     api:{
       api_login:"/api/xcx/login",
       api_userinfo:"/api/xcx/userinfo",
+      api_del:"/api/xcx/deleteapi",
       api_businesscard_add:"/api/xcx/businesscard/add",
+      api_businesscard_info:"/api/xcx/businesscard/info",
       api_businesscard:"/api/xcx/businesscard"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
+      business_card_view:"/businessCard/view/view",
       business_card:"/businessCard/index/index"
     },
     basePath:"/pages",
@@ -192,8 +201,10 @@ var config={
   },
   func:{  
     http_request_action:http.http_request_action,
-    showToast_success:showToast.showToast_success,
-    showToast_default:showToast.showToast_default
+    showToast_success:show.showToast_success,
+    showToast_default:show.showToast_default,
+    showModal:show.showModal,
+    makePhoneCall:common.makePhoneCall
   }
 
 }

@@ -64,16 +64,16 @@ var config={
   onReachBottom: function() {
     // Do something when page reach bottom.
   },
-  //页面内部导航处理函数
+  //导航处理函数
   bindNavigateTo: function(action) 
   {
-    app.bindNavigateTo(action.target.dataset.action)
+    app.bindNavigateTo(action.target.dataset.action,action.target.dataset.params)
   },
   //页面打开导航处理函数
   bindRedirectTo: function(action) 
   {
-    app.bindRedirectTo(action.target.dataset.action)
-  }
+    app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
+  },
 }
 
 Page(config)

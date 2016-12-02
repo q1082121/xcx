@@ -21,3 +21,10 @@
     line-height: 60rpx;
     margin: 5rpx auto;
 }
+.business_card_icon{
+    display: block;
+    float: left;
+    width: 50rpx;
+    height: 50rpx;
+    margin: 0 20rpx 0 0;
+}
