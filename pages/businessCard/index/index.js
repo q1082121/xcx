@@ -33,9 +33,9 @@ var config={
           that.setData({
             session_id:res.data
           })
-          that.get_list()
       } 
     })
+    
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
@@ -44,6 +44,7 @@ var config={
     wx.setNavigationBarTitle({
       title: this.data.title
     })
+    this.get_list()
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -60,6 +61,8 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
+    this.get_list('onPullDownRefresh')
+    
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -75,7 +78,7 @@ var config={
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
-  get_list: function() 
+  get_list: function(actionway="") 
   {
     var that = this
     var post_data={token:app.globalData.token,session_id:that.data.session_id}
@@ -84,7 +87,16 @@ var config={
       if(resback.status==1)
       {
         app.action_loading_hidden();
-        that.data.listdata=resback.resource;
+        that.setData({
+            listdata:resback.resource
+        })
+        if(actionway=="onPullDownRefresh")
+        {
+          setTimeout(function(){
+          wx.stopPullDownRefresh()
+          },800)
+                            
+        }
       }
       else
       {

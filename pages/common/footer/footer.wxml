@@ -6,7 +6,7 @@
 */
 -->
 <template name="footer">
-  <view class="page-footer">
+  <view id="page-footer">
     技术支持：台州速腾网络
   </view>
 </template>

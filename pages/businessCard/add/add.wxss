@@ -24,6 +24,7 @@
   margin: 10rpx auto;
 }
 .businessCard_add_box{
+    display: block;
     width: 90%;
     min-height: 600rpx;
     margin: 40rpx auto;

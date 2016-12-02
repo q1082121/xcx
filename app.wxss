@@ -4,7 +4,7 @@
  *******************************
 */
 .container {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,14 +50,15 @@
     margin: 10rpx 10rpx 0 ;
 }
 /** 公共脚部样式 **/
-.page-footer {
+#page-footer {
+  display: block;
   width: 100%;
   min-height: 150rpx;
   line-height: 150rpx;
   text-align: center;
   color: #1e1e1e;
   font-size: 30rpx;
-  margin: 20rpx 0;
+  margin: 20rpx auto 0;
   background: #edf0f5;
   font-weight: 700;
 }

@@ -14,6 +14,7 @@ var config={
     userInfo: {},
     session_id:'',
     addbuttonishidden:"hidden",
+    dataid:"",
     infodata:{}
   },
   //生命周期函数--监听页面加载
@@ -33,17 +34,21 @@ var config={
           that.setData({
             session_id:res.data
           })
-          that.get_info(options.id);
       } 
+    })
+    that.setData({
+      dataid:options.id
     })
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
+    this.get_info(this.data.dataid);
     //设置当前页面标题
     wx.setNavigationBarTitle({
       title: this.data.infodata.name+' - '+this.data.title
     })
+    console.log(this.data.infodata)
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -60,6 +65,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
+    this.get_info(this.data.dataid,"onPullDownRefresh");
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -76,7 +82,7 @@ var config={
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
   //获取详情数据
-  get_info: function(id) 
+  get_info: function(id,actionway="") 
   {
     var that = this
     var post_data={token:app.globalData.token,session_id:that.data.session_id,id:id}
@@ -85,8 +91,15 @@ var config={
       if(resback.status==1)
       {
         app.action_loading_hidden();
-        that.data.infodata=resback.resource;
-        console.log(that.data.infodata);
+        that.setData({
+            infodata:resback.resource
+        })
+        if(actionway=="onPullDownRefresh")
+        {
+          setTimeout(function(){
+          wx.stopPullDownRefresh()
+          },800)                 
+        }
       }
       else
       {
