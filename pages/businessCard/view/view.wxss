@@ -23,7 +23,7 @@
 }
 .business_card_company{
     display: block;
-    width: 400rpx;
+    width: 420rpx;
     min-height: 50rpx;
     bottom:170rpx;
     left: 280rpx;
@@ -31,17 +31,17 @@
 }
 .business_card_qq{
     display: block;
-    width: 400rpx;
+    width: 420rpx;
     height: 50rpx;
-    bottom:110rpx;
+    bottom:120rpx;
     left: 280rpx;
     font-size: 24rpx;
 }
 .business_card_email{
     display: block;
-    width: 400rpx;
+    width: 420rpx;
     height: 50rpx;
-    bottom:76rpx;
+    bottom:85rpx;
     left: 280rpx;
     font-size: 24rpx;
 }
@@ -52,4 +52,5 @@
     bottom:34rpx;
     left: 280rpx;
     font-size: 24rpx;
+    line-height: 30rpx;
 }
