@@ -8,45 +8,95 @@
 <import src="/pages/common/header/header.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
+  <template name="businessCard_form">  
   <view class="businessCard_header">
         <image class="businessCard_userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
         <text class="businessCard_userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
-  
-  <view class="businessCard_add_box">
-        <form bindsubmit="formSubmit" bindreset="formReset">
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/username.png"></image>
-            <input class="businessCard_item_input"  type="text" name="name" placeholder="姓名,必填" />
+  <form class="formbox" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="weui-cells__title">{{curname}}</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/username.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="name" value="{{infodata?infodata.name:''}}" placeholder="姓名,必填" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/mobile.png"></image>
-            <input class="businessCard_item_input" type="number"  name="mobile" maxlength="11" placeholder="手机,必填" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/mobile.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number"  name="mobile" value="{{infodata?infodata.mobile:''}}" maxlength="11" placeholder="手机,必填" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/qq.png"></image>
-            <input class="businessCard_item_input" type="number"  name="qq" maxlength="11" placeholder="QQ" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/qq.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="qq" value="{{infodata?infodata.qq:''}}" maxlength="11" placeholder="QQ" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/email.png"></image>
-            <input class="businessCard_item_input" type="text"  name="email" placeholder="邮箱" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/email.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="email" value="{{infodata?infodata.email:''}}"  placeholder="邮箱" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/fax.png"></image>
-            <input class="businessCard_item_input" type="text"  name="fax" placeholder="传真" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/fax.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="fax" value="{{infodata?infodata.fax:''}}"  placeholder="传真" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/company.png"></image>
-            <input class="businessCard_item_input" type="text"  name="company" placeholder="公司" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/company.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="company" value="{{infodata?infodata.company:''}}"  placeholder="公司" />
+            </view>
         </view>
-        <view class="businessCard_item">
-            <image class="businessCard_item_icon" src="/public/icon/address.png"></image>
-            <input class="businessCard_item_input" type="text"  name="address" placeholder="地址" />
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label weui-labelrpx">
+                    <image class="businessCard_item_icon" src="/public/icon/address.png"></image>
+                </view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="address" value="{{infodata?infodata.address:''}}"  placeholder="地址" />
+            </view>
         </view>
-
-        <button class="button_submit" type="default" formType="submit">保存</button>
-        <button type="warn" formType="reset">清空</button>
-        </form>      
-  </view>
+    </view>
+    <view class="weui-cells__tips">姓名，手机号码必填</view>
+    <button class="weui-btn button_submit" type="primary" formType="submit">保存</button>
+    <block wx:if="{{infodata}}">
+        <button class="weui-btn button_submit" type="warn" bindtap="bindGoBack" data-type="1" >返回</button>
+    </block>
+    <block wx:else>
+        <button class="weui-btn button_submit" type="warn" formType="reset">清空</button>
+    </block>
+  </form>
+  </template>
+  <template is="businessCard_form" data="{{curname:'填写名片信息',userInfo:userInfo,infodata:null}}" />
   <template is="footer" />
 </view>

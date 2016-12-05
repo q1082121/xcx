@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/businessCard/add/add",
     "pages/businessCard/index/index",
-    "pages/businessCard/view/view"
+    "pages/businessCard/view/view",
+    "pages/businessCard/edit/edit"
 
   ],
   "name_window":"注释：设置默认页面的窗口表现",

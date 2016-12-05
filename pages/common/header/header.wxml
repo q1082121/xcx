@@ -10,7 +10,7 @@
   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   <button id="{{listbuttonishidden}}" data-action="business_card" data-params="" bindtap="bindNavigateTo"  class="userinfo-button " type="warn" size="mini"  >我的名片盒</button>
-  <button id="{{addbuttonishidden}}"  data-action="business_card_add" data-params="" bindtap="bindRedirectTo"  class="userinfo-button" type="warn" size="mini"  >新增名片</button>
+  <button id="{{addbuttonishidden}}"  data-action="business_card_add" data-params="" bindtap="bindNavigateTo"  class="userinfo-button" type="warn" size="mini"  >新增名片</button>
 </view>
 </template>
 

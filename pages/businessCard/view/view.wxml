@@ -18,24 +18,21 @@
         <text class="business_card_email position-a">邮箱：{{infodata.email?infodata.email:''}}</text>
         <text class="business_card_address position-a">地址：{{infodata.address?infodata.address:''}}</text>
   </view>
-  <view class="line"></view>
-  <view class="flex-item-section">
-        <view class="flex-item-4">
-            <image src="/public/icon/dial.png" class="flex-item-icon" bindtap="makePhoneCall" data-phoneNumber="{{infodata.mobile}}"></image>
+  <view class="weui-flex weui-flexrpx">
+        <view class="weui-flex__item weui-flex__itemrpx">
+            <image src="/public/icon/dial.png" class="weui-flex_icon" bindtap="makePhoneCall" data-phoneNumber="{{infodata.mobile}}"></image>
         </view>
-        <view class="flex-item-4">
-            <image src="/public/icon/email.png" class="flex-item-icon"></image>
+        <view class="weui-flex__item weui-flex__itemrpx">
+            <image src="/public/icon/email.png" class="weui-flex_icon"></image>
         </view>
-        <view class="flex-item-4">
-            <image src="/public/icon/fax.png" class="flex-item-icon"></image>
+        <view class="weui-flex__item weui-flex__itemrpx">
+            <image src="/public/icon/fax.png" class="weui-flex_icon"></image>
         </view>
-        <view class="flex-item-4">
-            <image src="/public/icon/qq.png" class="flex-item-icon"></image>
+        <view class="weui-flex__item weui-flex__itemrpx">
+            <image src="/public/icon/qq.png" class="weui-flex_icon"></image>
         </view>
   </view>
-  <view class="line"></view>
-  <view class="flex-item-section">
-        <button class="button_submit" type="warn" bindtap="del_action" data-id="{{infodata.id}}" data-model="businesscard" >删除名片</button>
-  </view>
+  <button class="button_submit" type="primary" bindtap="bindNavigateTo" data-action="business_card_edit" data-params="?id={{infodata.id}}" >编辑名片</button>
+  <button class="button_submit" type="warn" bindtap="del_action" data-id="{{infodata.id}}" data-model="businesscard" >删除名片</button>
   <template is="footer" />
 </view>

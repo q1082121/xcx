@@ -92,7 +92,7 @@ var config={
     else
     {
       var that = this
-      var post_data={token:app.globalData.token,session_id:that.data.session_id,fromdata:e.detail.value}
+      var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:e.detail.value}
       app.action_loading();
       app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_add,post_data,function(resback){
         if(resback.status==1)
@@ -100,7 +100,7 @@ var config={
           app.action_loading_hidden();
           var msgdata=new Object
               msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
-              msgdata.totype=2
+              msgdata.totype=3
               msgdata.msg=resback.info
               app.func.showToast_success(msgdata);
         }

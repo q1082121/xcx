@@ -46,13 +46,13 @@ var config={
     this.get_info(this.data.dataid);
     //设置当前页面标题
     wx.setNavigationBarTitle({
-      title: this.data.infodata.name+' - '+this.data.title
+      title: this.data.title
     })
-    console.log(this.data.infodata)
   },
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
+    this.get_info(this.data.dataid);
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {
@@ -123,7 +123,7 @@ var config={
                 app.action_loading_hidden();
                 var msgdata=new Object
                 msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
-                msgdata.totype=2
+                msgdata.totype=3
                 msgdata.msg=resback.info
                 app.func.showToast_success(msgdata);
               }

@@ -6,8 +6,8 @@
 */
 -->
 <template name="footer">
-  <view id="page-footer">
-    技术支持：台州速腾网络
+  <view class="weui-footer page-footer">
+      <view class="weui-footer__text">Copyright © 2008-2016 台州速腾网络</view>
   </view>
 </template>
 

@@ -10,9 +10,16 @@
 <view class="container">
   <template is="header" data="{{userInfo: userInfo,listbuttonishidden:listbuttonishidden}}"/>
   <view wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" class="businessCard_initials"  >
-    <view class="businessCard_line">{{key}}</view>
-    <view wx:for="{{itemval}}" wx:for-index="subkey" wx:for-item="subitem" class="businessCard_item" bindtap="bindRedirectTo" data-action="business_card_view" data-params="?id={{subitem.id}}" >
-      <image src="/public/icon/business_card.png" class="business_card_icon"></image>{{subitem.name}}
+    <view class="weui-cells__title business_card_title">{{key}}</view>
+    <view class="weui-cells weui-cells_after-title businessCard_item">
+        <view class="weui-cell position-r" wx:for="{{itemval}}" wx:for-index="subkey" wx:for-item="subitem"   >
+            <view class="weui-cell__hd">
+                <image src="/public/icon/business_card.png" style="margin-right: 20rpx;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd">{{subitem.name}}</view>
+            <view class="weui-cell__ft">{{subitem.updated_at}}</view>
+            <view class="position-a navigatorbox" bindtap="bindNavigateTo" data-action="business_card_view" data-params="?id={{subitem.id}}" ></view>
+        </view>
     </view>
   </view>
   <template is="footer" />

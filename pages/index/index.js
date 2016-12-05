@@ -13,7 +13,8 @@ var config={
     title: '台州速腾网络小程序',
     userInfo: {},
     session_id:'',
-    addbuttonishidden:"hidden"
+    addbuttonishidden:"hidden",
+    listbuttonishidden:"hidden"
   },
   //生命周期函数--监听页面加载
   onLoad: function () {

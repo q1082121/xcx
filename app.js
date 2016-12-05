@@ -140,6 +140,9 @@ var config={
       case 'business_card_view':
       linkurl=this.globalData.basePath+this.globalData.routePath.business_card_view+params
       break
+      case 'business_card_edit':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_edit+params
+      break
     }
     wx.navigateTo({
       url: linkurl
@@ -148,8 +151,9 @@ var config={
   //页面开打导航跳转
   bindRedirectTo:function(action,params="")
   {
-    
+    /*
     var linkurl
+    
     switch(action)
     {
       case 'business_card_add':
@@ -158,11 +162,27 @@ var config={
       case 'business_card_view':
       linkurl=this.globalData.basePath+this.globalData.routePath.business_card_view+params
       break
+      case 'business_card_edit':
+      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_edit+params
+      break
     }
+    
     wx.redirectTo({
       url: linkurl
     })
-
+    */
+  },
+  //返回上一页
+  bindGoBack:function(type)
+  {
+    if(type)
+    {
+      wx.navigateBack(type)  
+    }
+    else
+    {
+      wx.navigateBack(1)
+    }
   },
   //加载处理等待函数
   action_loading:function()
@@ -189,12 +209,15 @@ var config={
       api_del:"/api/xcx/deleteapi",
       api_businesscard_add:"/api/xcx/businesscard/add",
       api_businesscard_info:"/api/xcx/businesscard/info",
+      api_businesscard_edit:"/api/xcx/businesscard/edit",
       api_businesscard:"/api/xcx/businesscard"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
       business_card_view:"/businessCard/view/view",
+      business_card_edit:"/businessCard/edit/edit",
       business_card:"/businessCard/index/index"
+      
     },
     basePath:"/pages",
     
@@ -204,7 +227,8 @@ var config={
     showToast_success:show.showToast_success,
     showToast_default:show.showToast_default,
     showModal:show.showModal,
-    makePhoneCall:common.makePhoneCall
+    makePhoneCall:common.makePhoneCall,
+	  getDateDiff:common.getDateDiff
   }
 
 }

@@ -49,6 +49,7 @@ var config={
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
+    this.get_list()
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {

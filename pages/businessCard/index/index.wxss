@@ -1,30 +1,14 @@
 /* pages/businessCard/index/index.wxss */
 .businessCard_initials{    
     width: 100%;
-    line-height: 40rpx;
-    text-align: left;
-    color: #1e1e1e;
-    font-weight: 700;
-}
-.businessCard_line{
-    height: 50rpx;
-    line-height: 50rpx;
-    margin-bottom:20rpx;
-    background: #edf0f5;
-    padding: 0 5%;
 }
 .businessCard_item{
     display: block;
     width: 90%;
-    height: 60rpx;
-    border-bottom: 2rpx dashed #edf0f5;
-    line-height: 60rpx;
-    margin: 5rpx auto;
+    margin: 0 auto;
 }
-.business_card_icon{
-    display: block;
-    float: left;
-    width: 50rpx;
-    height: 50rpx;
-    margin: 0 20rpx 0 0;
+.business_card_title{
+    color: #1e1e1e;
+    font-weight: 700;
+    font-size: 40rpx;
 }
