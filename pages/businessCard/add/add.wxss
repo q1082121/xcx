@@ -3,29 +3,8 @@
  * 作者:rubbish.boy@163.com
  *******************************
 */
-.businessCard_header{
-    width: 100%;
-    height: 300rpx;
-    background: url("/public/image/topbg.jpg");
-    background-size: 100% auto;
-}
-.businessCard_userinfo-avatar {
-  display: block;  
-  width: 128rpx;
-  height: 128rpx;
-  border-radius: 50%;
-  margin: 60rpx auto 20rpx;
-}
-.businessCard_userinfo-nickname {
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: #aaa;
-  margin: 10rpx auto;
-}
-.businessCard_item_icon{
-    display: block;
-    float: left;  
-    width: 60rpx;
-    height: 60rpx;
-}
+.businessCard_header{width: 100%;height: 234rpx;}
+.businessCard_userinfo_bg{display: block;width: 100%;height: 234rpx;z-index: 1;}
+.businessCard_userinfo-avatar {display: block;  width: 128rpx;height: 128rpx;border-radius: 50%;z-index: 2;margin: auto;left:0;right: 0;top:20rpx;}
+.businessCard_userinfo-nickname {display: block;width: 100%;text-align: center;color: #aaa;z-index: 2;margin: auto;left:0;right: 0;bottom:40rpx;}
+.businessCard_item_icon{display: block;float: left;  width: 60rpx;height: 60rpx;}

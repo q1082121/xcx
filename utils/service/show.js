@@ -5,12 +5,26 @@
 */
 function showToast_success(data)
 {
-    if(data.url)
+    if(data.totype==3)
     {
         wx.showToast({
             title: data.msg,
             icon: 'success',
-            duration: 2000,
+            duration: 1500,
+            success:function()
+            {
+                setTimeout(function(){
+                    wx.navigateBack();
+                },2000)
+            }
+        })
+    }
+    else if(data.url)
+    {
+        wx.showToast({
+            title: data.msg,
+            icon: 'success',
+            duration: 1500,
             success:function()
             {
                 switch(data.totype)
@@ -29,16 +43,9 @@ function showToast_success(data)
                                 })
                             },2000)
                     break
-                    case 3:
-                            setTimeout(function(){
-                                wx.navigateBack(1);
-                            },2000)
-                    break
                     default:
                             setTimeout(function(){
-                            wx.navigateTo({
-                                    url: data.url
-                                })
+                                wx.navigateBack();
                             },2000)
                     break
                 }
@@ -50,7 +57,7 @@ function showToast_success(data)
         wx.showToast({
             title: data.msg,
             icon: 'success',
-            duration: 2000
+            duration: 1500
         })
     }
 }
@@ -61,11 +68,17 @@ function showToast_success(data)
 */
 function showToast_default(data)
 {
-    if(data.url)
+    if(data.totype==3)
+    {
+        setTimeout(function(){
+            wx.navigateBack();
+        },2000)
+    }
+    else if(data.url)
     {
         wx.showToast({
             title: data.msg,
-            duration: 2000,
+            duration: 1500,
             success:function()
             {
                 switch(data.totype)
@@ -84,16 +97,9 @@ function showToast_default(data)
                                 })
                             },2000)
                     break
-                    case 3:
-                            setTimeout(function(){
-                                wx.navigateBack(1);
-                            },2000)
-                    break
                     default:
                             setTimeout(function(){
-                            wx.navigateTo({
-                                    url: data.url
-                                })
+                                wx.navigateBack();
                             },2000)
                     break
                 }
@@ -106,7 +112,7 @@ function showToast_default(data)
         wx.showToast({
             title: data.msg,
             icon:'info',
-            duration: 2000
+            duration: 1500
         })
     }
 }

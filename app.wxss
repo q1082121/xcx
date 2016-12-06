@@ -11,8 +11,8 @@
 .position-r{position: relative;}
 .position-a{position: absolute;}
 .position-f{position: fixed;}
-.navigatorbox{display: block;width: 100%;height: 100%;z-index: 999;}
 .formbox{width: 100%;}
+.text-align_center{text-align: center}
 /** Weui 兼容 **/
 .weui-labelrpx{width: 105rpx;}
 .weui-flex_icon{width: 80rpx;height: 80rpx;}

@@ -14,6 +14,7 @@ var config={
     userInfo: {},
     session_id:'',
     addbuttonishidden:"hidden",
+    listbuttonishidden:"hidden",
     dataid:"",
     infodata:{}
   },
@@ -44,10 +45,7 @@ var config={
   onReady: function() {
     // Do something when page ready.
     this.get_info(this.data.dataid);
-    //设置当前页面标题
-    wx.setNavigationBarTitle({
-      title: this.data.title
-    })
+    
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -104,7 +102,11 @@ var config={
       else
       {
         app.action_loading_hidden();
-        console.log('获取用户登录态失败！' + resback.info);
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata);
+        //console.log('获取用户登录态失败！' + resback.info);
       }
     })
   },
@@ -116,21 +118,21 @@ var config={
     app.func.showModal("确定要执行删除？",function(resback){
       if(resback.confirm)
       {     
-            app.action_loading();
             app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_del,post_data,function(resback){
               if(resback.status==1)
               {
-                app.action_loading_hidden();
                 var msgdata=new Object
-                msgdata.url=app.globalData.basePath+app.globalData.routePath.business_card
                 msgdata.totype=3
                 msgdata.msg=resback.info
                 app.func.showToast_success(msgdata);
               }
               else
               {
-                app.action_loading_hidden();
-                console.log('获取用户登录态失败！' + resback.info);
+                var msgdata=new Object
+                msgdata.totype=3
+                msgdata.msg=resback.info
+                app.func.showToast_default(msgdata);
+                //console.log('获取用户登录态失败！' + resback.info);
               }
             })
       }

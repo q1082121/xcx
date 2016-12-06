@@ -9,12 +9,13 @@
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template name="businessCard_form">  
-  <view class="businessCard_header">
-        <image class="businessCard_userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
-        <text class="businessCard_userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="businessCard_header position-r">
+        <image class="businessCard_userinfo_bg position-a" src="/public/image/topbg.jpg" ></image>
+        <image class="businessCard_userinfo-avatar position-a" src="{{userInfo.avatarUrl}}" ></image>
+        <text class="businessCard_userinfo-nickname position-a">{{userInfo.nickName}}</text>
   </view>
   <form class="formbox" bindsubmit="formSubmit" bindreset="formReset">
-    <view class="weui-cells__title">{{curname}}</view>
+    <view class="weui-cells__title text-align_center">{{curname}}</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
@@ -87,10 +88,9 @@
             </view>
         </view>
     </view>
-    <view class="weui-cells__tips">姓名，手机号码必填</view>
     <button class="weui-btn button_submit" type="primary" formType="submit">保存</button>
     <block wx:if="{{infodata}}">
-        <button class="weui-btn button_submit" type="warn" bindtap="bindGoBack" data-type="1" >返回</button>
+        <button class="weui-btn button_submit" type="warn" bindtap="bindGoBack" data-type="0" >返回</button>
     </block>
     <block wx:else>
         <button class="weui-btn button_submit" type="warn" formType="reset">清空</button>

@@ -175,13 +175,15 @@ var config={
   //返回上一页
   bindGoBack:function(type)
   {
-    if(type)
+    if(type==0)
     {
-      wx.navigateBack(type)  
+      wx.navigateBack()
     }
     else
     {
-      wx.navigateBack(1)
+      wx.navigateBack({
+        delta: type
+      })  
     }
   },
   //加载处理等待函数
