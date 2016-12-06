@@ -14,6 +14,7 @@ var config={
     userInfo: {},
     session_id:'',
     addbuttonishidden:"hidden",
+    requestlock:true,
     dataid:"",
     infodata:{}
   },
@@ -48,6 +49,16 @@ var config={
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
+    if(this.data.requestlock==false)
+    {
+      this.get_info(this.data.dataid);
+    }
+    else
+    {
+      this.setData({
+          requestlock:false
+      })
+    }
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {

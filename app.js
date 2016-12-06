@@ -3,9 +3,9 @@
  * 作者:rubbish.boy@163.com
  *******************************
 */
-var http = require('/utils/service/http.js') 
-var show = require('/utils/service/show.js') 
-var common = require('/utils/service/common.js') 
+var http = require('/lib/service-plugin/http.js') 
+var show = require('/lib/service-plugin/show.js') 
+var common = require('/lib/service-plugin/common.js') 
 
 var config={
   //生命周期函数--监听小程序初始化
@@ -109,14 +109,22 @@ var config={
                     }
                     else
                     {
-                      console.log('获取用户登录态失败！' + resback.info)
+                      var msgdata=new Object
+                          msgdata.totype=3
+                          msgdata.msg=resback.info
+                          app.func.showToast_default(msgdata);
+                      //console.log('获取用户登录态失败！' + resback.info)
                     }
                   })
                   
                 }
                 else 
                 {
-                  console.log('获取用户登录态失败！' + res.errMsg)
+                  var msgdata=new Object
+                      msgdata.totype=3
+                      msgdata.msg=resback.info
+                      app.func.showToast_default(msgdata);
+                  //console.log('获取用户登录态失败！' + res.errMsg)
                 }
               }
             })
@@ -153,20 +161,7 @@ var config={
   {
     /*
     var linkurl
-    
-    switch(action)
-    {
-      case 'business_card_add':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_add+params
-      break
-      case 'business_card_view':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_view+params
-      break
-      case 'business_card_edit':
-      linkurl=this.globalData.basePath+this.globalData.routePath.business_card_edit+params
-      break
-    }
-    
+
     wx.redirectTo({
       url: linkurl
     })
@@ -225,12 +220,12 @@ var config={
     
   },
   func:{  
-    http_request_action:http.http_request_action,
-    showToast_success:show.showToast_success,
-    showToast_default:show.showToast_default,
-    showModal:show.showModal,
-    makePhoneCall:common.makePhoneCall,
-	  getDateDiff:common.getDateDiff
+    http_request_action   :http.http_request_action,
+    showToast_success     :show.showToast_success,
+    showToast_default     :show.showToast_default,
+    showModal             :show.showModal,
+    makePhoneCall         :common.makePhoneCall,
+	  getDateDiff           :common.getDateDiff
   }
 
 }

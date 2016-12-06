@@ -2,7 +2,6 @@
   "name_pages":"注释：设置页面路径",
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
     "pages/businessCard/add/add",
     "pages/businessCard/index/index",
     "pages/businessCard/view/view",

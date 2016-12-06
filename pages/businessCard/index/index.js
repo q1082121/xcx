@@ -14,6 +14,7 @@ var config={
     userInfo: {},
     session_id:'',
     listbuttonishidden:"hidden",
+    requestlock:true,
     listdata:{}
   },
   //生命周期函数--监听页面加载
@@ -45,7 +46,16 @@ var config={
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
-    this.get_list()
+    if(this.data.requestlock==false)
+    {
+      this.get_list()
+    }
+    else
+    {
+      this.setData({
+          requestlock:false
+      })
+    }
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {
@@ -79,11 +89,11 @@ var config={
   {
     var that = this
     var post_data={token:app.globalData.token,session_id:that.data.session_id}
-    app.action_loading();
+    app.action_loading()
     app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard,post_data,function(resback){
       if(resback.status==1)
       {
-        app.action_loading_hidden();
+        app.action_loading_hidden()
         that.setData({
             listdata:resback.resource
         })
@@ -91,17 +101,17 @@ var config={
         {
           setTimeout(function(){
           wx.stopPullDownRefresh()
-          },800)
-                            
+          },800)                 
         }
       }
       else
       {
-        app.action_loading_hidden();
+        
+        app.action_loading_hidden()
           var msgdata=new Object
               msgdata.totype=3
               msgdata.msg=resback.info
-              app.func.showToast_default(msgdata);
+              app.func.showToast_default(msgdata)    
         //console.log('获取用户登录态失败！' + resback.info);
       }
     })

@@ -80,14 +80,14 @@ var config={
       var msgdata=new Object
           msgdata.url=""
           msgdata.msg="姓名必填"
-      app.func.showToast_default(msgdata);
+      app.func.showToast_default(msgdata)
     }
     else if(e.detail.value.mobile=="")
     {
       var msgdata=new Object
           msgdata.url=""
           msgdata.msg="手机必填"
-          app.func.showToast_default(msgdata);
+          app.func.showToast_default(msgdata)
     }
     else
     {
@@ -99,14 +99,14 @@ var config={
           var msgdata=new Object
               msgdata.totype=3
               msgdata.msg=resback.info
-              app.func.showToast_success(msgdata);
+              app.func.showToast_success(msgdata)
         }
         else
         {
           var msgdata=new Object
               msgdata.totype=3
               msgdata.msg=resback.info
-              app.func.showToast_default(msgdata);
+              app.func.showToast_default(msgdata)
           //console.log('获取用户登录态失败！' + resback.info);
         }
       })
