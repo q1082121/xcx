@@ -33,10 +33,22 @@
         "selectedIconPath":"public/selectedIcon/home.png"
       }, 
       {
+        "pagePath": "pages/life/index/index",
+        "text": "生活",
+        "iconPath":"public/icon/life.png",
+        "selectedIconPath":"public/selectedIcon/life.png"
+      },
+      {
         "pagePath": "pages/businessCard/index/index",
         "text": "名片盒",
-        "iconPath":"public/icon/log.png",
-        "selectedIconPath":"public/selectedIcon/log.png"
+        "iconPath":"public/icon/businesscard.png",
+        "selectedIconPath":"public/selectedIcon/businesscard.png"
+      },
+      {
+        "pagePath": "pages/user/index/index",
+        "text": "我",
+        "iconPath":"public/icon/user.png",
+        "selectedIconPath":"public/selectedIcon/user.png"
       }
     ]
   },

@@ -225,7 +225,7 @@ var config={
     showToast_default     :show.showToast_default,
     showModal             :show.showModal,
     makePhoneCall         :common.makePhoneCall,
-	  getDateDiff           :common.getDateDiff
+	  systemSort           :common.systemSort
   }
 
 }

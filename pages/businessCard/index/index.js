@@ -15,6 +15,8 @@ var config={
     session_id:'',
     listbuttonishidden:"hidden",
     requestlock:true,
+    inputShowed: false,
+    inputVal: "",
     listdata:{}
   },
   //生命周期函数--监听页面加载
@@ -88,7 +90,7 @@ var config={
   get_list: function(actionway="") 
   {
     var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id}
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
     app.action_loading()
     app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard,post_data,function(resback){
       if(resback.status==1)
@@ -97,6 +99,7 @@ var config={
         that.setData({
             listdata:resback.resource
         })
+        console.log(resback.resource);
         if(actionway=="onPullDownRefresh")
         {
           setTimeout(function(){
@@ -106,7 +109,6 @@ var config={
       }
       else
       {
-        
         app.action_loading_hidden()
           var msgdata=new Object
               msgdata.totype=3
@@ -115,6 +117,30 @@ var config={
         //console.log('获取用户登录态失败！' + resback.info);
       }
     })
+  },
+  //搜索条相关动作函数
+  showInput: function () {
+      this.setData({
+          inputShowed: true
+      });
+  },
+  hideInput: function () {
+      this.setData({
+          inputVal: "",
+          inputShowed: false
+      });
+      this.get_list();
+  },
+  clearInput: function () {
+      this.setData({
+          inputVal: ""
+      });
+      this.get_list();
+  },
+  inputTyping: function (e) {
+      this.setData({
+          inputVal: e.detail.value
+      });
   }
 
   

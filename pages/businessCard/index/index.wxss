@@ -1,14 +1,16 @@
 /* pages/businessCard/index/index.wxss */
 .businessCard_initials{    
     width: 100%;
+    min-height: 70rpx;
 }
 .businessCard_item{
     display: block;
-    width: 90%;
+    width: 100%;
+    min-height: 70rpx;
     margin: 0 auto;
 }
 .business_card_title{
     color: #1e1e1e;
     font-weight: 700;
-    font-size: 40rpx;
+    margin: 5rpx 0;
 }
