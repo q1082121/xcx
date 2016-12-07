@@ -10,10 +10,11 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '名片列表',
+    title: '生活服务',
     userInfo: {},
     session_id:'',
     listbuttonishidden:"hidden",
+    addbuttonishidden:"hidden",
     requestlock:true,
     inputShowed: false,
     inputVal: "",
@@ -43,14 +44,14 @@ var config={
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-    this.get_list()
+   
   },
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
     if(this.data.requestlock==false)
     {
-      this.get_list()
+      
     }
     else
     {
@@ -70,7 +71,6 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    this.get_list('onPullDownRefresh')
     
   },
   //页面上拉触底事件的处理函数
@@ -86,36 +86,6 @@ var config={
   bindRedirectTo: function(action) 
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
-  },
-  get_list: function(actionway="") 
-  {
-    var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
-    app.action_loading()
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard,post_data,function(resback){
-      if(resback.status==1)
-      {
-        app.action_loading_hidden()
-        that.setData({
-            listdata:resback.resource
-        })
-        if(actionway=="onPullDownRefresh")
-        {
-          setTimeout(function(){
-          wx.stopPullDownRefresh()
-          },800)                 
-        }
-      }
-      else
-      {
-        app.action_loading_hidden()
-          var msgdata=new Object
-              msgdata.totype=3
-              msgdata.msg=resback.info
-              app.func.showToast_default(msgdata)    
-        //console.log('获取用户登录态失败！' + resback.info);
-      }
-    })
   },
   //搜索条相关动作函数
   showInput: function () {
@@ -146,4 +116,3 @@ var config={
 }
 
 Page(config)
-

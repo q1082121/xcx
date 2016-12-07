@@ -5,8 +5,9 @@
     "pages/businessCard/add/add",
     "pages/businessCard/index/index",
     "pages/businessCard/view/view",
-    "pages/businessCard/edit/edit"
-
+    "pages/businessCard/edit/edit",
+    "pages/life/index/index",
+    "pages/user/index/index"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{
@@ -28,13 +29,13 @@
     [ 
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "首 页",
         "iconPath":"public/icon/home.png",
         "selectedIconPath":"public/selectedIcon/home.png"
       }, 
       {
         "pagePath": "pages/life/index/index",
-        "text": "生活",
+        "text": "生 活",
         "iconPath":"public/icon/life.png",
         "selectedIconPath":"public/selectedIcon/life.png"
       },
@@ -46,7 +47,7 @@
       },
       {
         "pagePath": "pages/user/index/index",
-        "text": "我",
+        "text": "我 的",
         "iconPath":"public/icon/user.png",
         "selectedIconPath":"public/selectedIcon/user.png"
       }

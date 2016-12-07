@@ -1,0 +1,28 @@
+<!--
+/******************************* 
+ * 名称:公共搜索栏
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<template name="searchbar">
+<view class="weui-search-bar weui-search-barrpx">
+  <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box weui-search-bar__boxrpx">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+              <icon type="clear" size="14"></icon>
+          </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+      </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn weui_search_btn weui_cancel-btn_bgcolor"  hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  <view class="weui-search-bar__cancel-btn weui_search_btn "   hidden="{{!inputShowed}}" bindtap="get_list">搜索</view>
+</view>
+</template>
+
+

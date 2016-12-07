@@ -5,7 +5,7 @@
  *******************************
 */
 .container {width: 100%;min-height: 100%;align-items: center;justify-content: space-between;box-sizing: border-box;background: #F8F8F8;}
-.page-footer{margin: 50rpx auto;}
+.page-footer{margin: 50rpx auto;min-height:100rpx;}
 #hidden{display: none;}
 .button_submit{width: 96%;margin: 20rpx auto;}
 .position-r{position: relative;}
@@ -23,6 +23,7 @@
 .weui_search_btn{font-size: 30rpx;background: #1AAD19;padding: 2rpx 17rpx;color: #fff;border-radius: 15%;font-weight: 700;}
 .weui_cancel-btn_bgcolor{background: #E64340;}
 .weui-search-bar__formrpx{flex:none;}
+
 
 /** 公共头部样式 **/
 .header_box{width: 100%;height: 80rpx;line-height: 80rpx;padding: 10rpx;background: #353535;} 

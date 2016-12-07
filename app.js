@@ -207,7 +207,8 @@ var config={
       api_businesscard_add:"/api/xcx/businesscard/add",
       api_businesscard_info:"/api/xcx/businesscard/info",
       api_businesscard_edit:"/api/xcx/businesscard/edit",
-      api_businesscard:"/api/xcx/businesscard"
+      api_businesscard:"/api/xcx/businesscard",
+      api_proxy:"/api/xcx/proxy"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
@@ -225,7 +226,7 @@ var config={
     showToast_default     :show.showToast_default,
     showModal             :show.showModal,
     makePhoneCall         :common.makePhoneCall,
-	  systemSort           :common.systemSort
+	  systemSort            :common.systemSort
   }
 
 }
