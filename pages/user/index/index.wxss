@@ -1,1 +1,2 @@
 /* pages/user/index/index.wxss */
+.weui-btn_check_in{width: 80%;height: 60rpx;font-size: 25rpx;margin: 10rpx auto;}

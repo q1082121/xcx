@@ -13,17 +13,25 @@
 .position-f{position: fixed;}
 .formbox{width: 100%;}
 .text-align_center{text-align: center}
+.whitebg{background: #fff;}
+.borderbox{border: 1rpx solid #ddd;}
+.borderboxr{border-right: 1rpx solid #ddd;}
+.borderboxl{border-left: 1rpx solid #ddd;}
 /** Weui 兼容 **/
 .weui-labelrpx{width: 105rpx;}
 .weui-flex_icon{width: 80rpx;height: 80rpx;}
-.weui-flexrpx{width: 100%;flex-direction:space-between}
 .weui-flex__itemrpx{text-align: center;padding: 30rpx 0;}
 .weui-search-barrpx{width: 100%;margin: 0;top:0}
 .weui-search-bar__box{width: 500rpx;}
 .weui_search_btn{font-size: 30rpx;background: #1AAD19;padding: 2rpx 17rpx;color: #fff;border-radius: 15%;font-weight: 700;}
 .weui_cancel-btn_bgcolor{background: #E64340;}
 .weui-search-bar__formrpx{flex:none;}
-
+.weui-flex_stylerpx{width: 96%;margin: 15rpx auto;}
+.weui-flex__itemstylerpx{padding: 10rpx 0 0;text-align: center;}
+.weui-flex__itemtextrpx{width: 100%;font-size: 28rpx;font-weight: 700;color: #1296db;}
+.weui-flex__itemiconrpx{display: block;width: 50rpx;height: 50rpx;margin: 0 auto;}
+.weui-cellsrpx{width: 96%;margin: 0 auto;}
+.weui-cell__bdrpx{color: #777;font-weight: 700;font-size: 26rpx;margin-left: 15rpx;margin-top: 10rpx;}
 
 /** 公共头部样式 **/
 .header_box{width: 100%;height: 80rpx;line-height: 80rpx;padding: 10rpx;background: #353535;} 
