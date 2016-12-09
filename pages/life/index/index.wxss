@@ -1,1 +1,2 @@
 /* pages/life/index/index.wxss */
+.weui-flex__itemliferpx{padding: 30rpx 0 15rpx;text-align: center;}

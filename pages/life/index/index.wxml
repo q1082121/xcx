@@ -10,6 +10,41 @@
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
-  
+  <view class="weui-flex whitebg ">
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/top.png"></image>
+    <text class="weui-flex__itemtextrpx">新闻头条</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/wechat.png"></image>
+    <text class="weui-flex__itemtextrpx">微信精选</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <text class="weui-flex__itemtextrpx">万年历</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <text class="weui-flex__itemtextrpx">电影票房</text>
+    </view>
+  </view>
+  <view class="weui-flex whitebg ">
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/money.png"></image>
+    <text class="weui-flex__itemtextrpx">星座运势</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/score.png"></image>
+    <text class="weui-flex__itemtextrpx">周公解梦</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <text class="weui-flex__itemtextrpx">天气预报</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemliferpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <text class="weui-flex__itemtextrpx">笑话大全</text>
+    </view>
+  </view>
   <template is="footer" />
 </view>

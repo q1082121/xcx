@@ -28,8 +28,8 @@
 .weui-search-bar__formrpx{flex:none;}
 .weui-flex_stylerpx{width: 96%;margin: 15rpx auto;}
 .weui-flex__itemstylerpx{padding: 10rpx 0 0;text-align: center;}
-.weui-flex__itemtextrpx{width: 100%;font-size: 28rpx;font-weight: 700;color: #1296db;}
-.weui-flex__itemiconrpx{display: block;width: 50rpx;height: 50rpx;margin: 0 auto;}
+.weui-flex__itemtextrpx{width: 100%;font-size: 24rpx;font-weight: 700;color: #777;}
+.weui-flex__itemiconrpx{display: block;width: 40rpx;height: 40rpx;margin: 0 auto;}
 .weui-cellsrpx{width: 96%;margin: 0 auto;}
 .weui-cell__bdrpx{color: #777;font-weight: 700;font-size: 26rpx;margin-left: 15rpx;margin-top: 10rpx;}
 
