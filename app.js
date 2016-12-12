@@ -208,14 +208,15 @@ var config={
       api_businesscard_info:"/api/xcx/businesscard/info",
       api_businesscard_edit:"/api/xcx/businesscard/edit",
       api_businesscard:"/api/xcx/businesscard",
-      api_proxy:"/api/xcx/proxy"
+      api_proxy:"/api/xcx/proxy",
+      api_is_check_in:"/api/xcx/is_check_in",
+      api_check_in:"/api/xcx/check_in"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
       business_card_view:"/businessCard/view/view",
       business_card_edit:"/businessCard/edit/edit",
       business_card:"/businessCard/index/index"
-      
     },
     basePath:"/pages",
     
