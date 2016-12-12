@@ -14,7 +14,11 @@ var config={
     userInfo: {},
     session_id:'',
     addbuttonishidden:"hidden",
-    listbuttonishidden:"hidden"
+    listbuttonishidden:"hidden",
+    requestlock:true,
+    inputShowed: false,
+    inputVal: "",
+    listdata:{}
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -40,14 +44,21 @@ var config={
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-    //设置当前页面标题
-    wx.setNavigationBarTitle({
-      title: this.data.title
-    })
+    this.get_list()
   },
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
+    if(this.data.requestlock==false)
+    {
+      this.get_list()
+    }
+    else
+    {
+      this.setData({
+          requestlock:false
+      })
+    }
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {
@@ -60,6 +71,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
+    this.get_list('onPullDownRefresh')
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -75,6 +87,60 @@ var config={
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
+  get_list: function(actionway="") 
+  {
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
+    app.action_loading()
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_product,post_data,function(resback){
+      if(resback.status==1)
+      {
+        app.action_loading_hidden()
+        that.setData({
+            listdata:resback.resource
+        })
+        if(actionway=="onPullDownRefresh")
+        {
+          setTimeout(function(){
+          wx.stopPullDownRefresh()
+          },800)                 
+        }
+      }
+      else
+      {
+        app.action_loading_hidden()
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata)    
+        //console.log('获取用户登录态失败！' + resback.info);
+      }
+    })
+  },
+  //搜索条相关动作函数
+  showInput: function () {
+      this.setData({
+          inputShowed: true
+      });
+  },
+  hideInput: function () {
+      this.setData({
+          inputVal: "",
+          inputShowed: false
+      });
+      this.get_list();
+  },
+  clearInput: function () {
+      this.setData({
+          inputVal: ""
+      });
+      this.get_list();
+  },
+  inputTyping: function (e) {
+      this.setData({
+          inputVal: e.detail.value
+      });
+  }
 }
 
 Page(config)

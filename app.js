@@ -210,7 +210,8 @@ var config={
       api_businesscard:"/api/xcx/businesscard",
       api_proxy:"/api/xcx/proxy",
       api_is_check_in:"/api/xcx/is_check_in",
-      api_check_in:"/api/xcx/check_in"
+      api_check_in:"/api/xcx/check_in",
+      api_product:"/api/xcx/product"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
