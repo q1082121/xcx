@@ -20,29 +20,29 @@
     <text class="weui-flex__itemtextrpx">微信精选</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/calendar.png"></image>
     <text class="weui-flex__itemtextrpx">万年历</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/movie.png"></image>
     <text class="weui-flex__itemtextrpx">电影票房</text>
     </view>
   </view>
   <view class="weui-flex whitebg ">
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/money.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/constellation.png"></image>
     <text class="weui-flex__itemtextrpx">星座运势</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/score.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/meng.png"></image>
     <text class="weui-flex__itemtextrpx">周公解梦</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/wether.png"></image>
     <text class="weui-flex__itemtextrpx">天气预报</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <image class="weui-flex__itemiconrpx" src="/public/icon/xiaohua.png"></image>
     <text class="weui-flex__itemtextrpx">笑话大全</text>
     </view>
   </view>
