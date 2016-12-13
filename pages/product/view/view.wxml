@@ -39,7 +39,7 @@
     <view class="weui-flex__item weui-flex__itemrpx" > 月销量 </view>
   </view>
   <view class="product_info_nav">
-    <view class="product_info_nav_item">【图片详情】</view>
+    <view class="product_info_nav_item">【图文详情】</view>
     <view class="product_info_view">
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
     </view>
