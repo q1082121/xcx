@@ -24,7 +24,8 @@ var config={
     vertical: false,
     autoplay: false,
     interval: 3000,
-    duration: 1000
+    duration: 1000,
+    content:""
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
@@ -110,7 +111,7 @@ var config={
         that.setData({
             infodata:resback.resource
         })
-        app.func.WxParse.wxParse('infodata.content', 'html', resback.resource.content, that,5);
+        app.func.WxParse.wxParse('content', 'html', resback.resource.content, that,5);
 
         if(actionway=="onPullDownRefresh")
         {

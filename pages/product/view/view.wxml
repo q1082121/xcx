@@ -41,7 +41,7 @@
   <view class="product_info_nav">
     <view class="product_info_nav_item">【图片详情】</view>
     <view class="product_info_view">
-        <template is="wxParse" data="{{wxParseData:infodata.content.nodes}}"/>
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
     </view>
   </view>
   <template is="footer" />
