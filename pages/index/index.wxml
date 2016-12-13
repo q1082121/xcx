@@ -11,12 +11,12 @@
 <view class="container">
   <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
   <template is="searchbar" data="{{inputShowed: inputShowed,inputVal:inputVal}}"/>
-  <block wx:for="{{listdata}}" wx:for-index="itemkey" wx:for-item="itemval" class="product"  >
-        <view class="product_itemrpx">
-            <image class="product_item_image" src="{{domainName}}{{imagePath.path_product}}{{itemval.attachment}}"></image>
-            <text class="product_item_title">{{itemval.title}}</text>
-            <text class="product_item_introduction">{{itemval.introduction}}</text>
-            <image class="product_item_icon" src="/public/icon/price.png" ></image>>
+  <block wx:for="{{listdata}}" wx:for-index="itemkey" wx:for-item="itemval" >
+        <view class="product_itemrpx" >
+            <image bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}"  class="product_item_image" src="{{domainName}}{{imagePath.path_product}}{{itemval.attachment}}"></image>
+            <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_title">{{itemval.title}}</text>
+            <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_introduction">{{itemval.introduction}}</text>
+            <image class="product_item_icon" src="/public/icon/price.png" ></image>
             <text class="product_item_price">{{itemval.price}}</text>
             <button class="weui-btn weui-btn_buy" type="warn" plain  >购买</button>
             <button class="weui-btn weui-btn_buy" type="warn" plain  >添加</button>

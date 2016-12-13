@@ -1,56 +1,8 @@
 /* pages/businessCard/view/view.wxss */
-#business_card_img{
-    display: block;
-    width: 750rpx;
-    height: 417rpx;
-}
-.business_card_name{
-    display: block;
-    text-align: center;
-    font-size: 60rpx;
-    margin: 0 auto 20rpx;
-    top: 50rpx;
-    left: 50rpx;
-    font-weight: 700;
-}
-.business_card_mobile{
-    display: block;
-    width: 400rpx;
-    height: 50rpx;
-    top:140rpx;
-    left: 30rpx;
-    font-size: 30rpx;
-}
-.business_card_company{
-    display: block;
-    width: 420rpx;
-    min-height: 50rpx;
-    bottom:170rpx;
-    left: 280rpx;
-    font-weight: 700;
-}
-.business_card_qq{
-    display: block;
-    width: 420rpx;
-    height: 50rpx;
-    bottom:120rpx;
-    left: 280rpx;
-    font-size: 24rpx;
-}
-.business_card_email{
-    display: block;
-    width: 420rpx;
-    height: 50rpx;
-    bottom:85rpx;
-    left: 280rpx;
-    font-size: 24rpx;
-}
-.business_card_address{
-    display: block;
-    width: 400rpx;
-    min-height: 50rpx;
-    bottom:34rpx;
-    left: 280rpx;
-    font-size: 24rpx;
-    line-height: 30rpx;
-}
+#business_card_img{display: block;width: 750rpx;height: 417rpx;}
+.business_card_name{display: block;text-align: center;font-size: 60rpx;margin: 0 auto 20rpx;top: 50rpx;left: 50rpx;font-weight: 700;}
+.business_card_mobile{display: block;width: 400rpx;height: 50rpx;top:140rpx;left: 30rpx;font-size: 30rpx;}
+.business_card_company{display: block;width: 420rpx;min-height: 50rpx;bottom:170rpx;left: 280rpx;font-weight: 700;}
+.business_card_qq{display: block;width: 420rpx;height: 50rpx;bottom:120rpx;left: 280rpx;font-size: 24rpx;}
+.business_card_email{display: block;width: 420rpx;height: 50rpx;bottom:85rpx;left: 280rpx;font-size: 24rpx;}
+.business_card_address{display: block;width: 400rpx;min-height: 50rpx;bottom:34rpx;left: 280rpx;font-size: 24rpx;line-height: 30rpx;}

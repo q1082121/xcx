@@ -6,6 +6,7 @@
 var http = require('/lib/service-plugin/http.js') 
 var show = require('/lib/service-plugin/show.js') 
 var common = require('/lib/service-plugin/common.js') 
+var WxParse = require('/lib/wxParse/wxParse.js');
 
 var config={
   //生命周期函数--监听小程序初始化
@@ -91,11 +92,8 @@ var config={
             wx.getUserInfo({
               success: function (res) {
                 that.globalData.userInfo = res.userInfo
-
                 wx.setStorage({key:"encryptedData",data:res.encryptedData})
-
                 wx.setStorage({key:"iv",data:res.iv})
-
                 if (result.code) 
                 {
                   var post_data={token:that.globalData.token,code:result.code,encryptedData:res.encryptedData,iv:res.iv}
@@ -113,7 +111,7 @@ var config={
                           msgdata.totype=3
                           msgdata.msg=resback.info
                           app.func.showToast_default(msgdata);
-                      //console.log('获取用户登录态失败！' + resback.info)
+                          //console.log('获取用户登录态失败！' + resback.info)
                     }
                   })
                   
@@ -124,7 +122,7 @@ var config={
                       msgdata.totype=3
                       msgdata.msg=resback.info
                       app.func.showToast_default(msgdata);
-                  //console.log('获取用户登录态失败！' + res.errMsg)
+                      //console.log('获取用户登录态失败！' + res.errMsg)
                 }
               }
             })
@@ -150,6 +148,9 @@ var config={
       break
       case 'business_card_edit':
       linkurl=this.globalData.basePath+this.globalData.routePath.business_card_edit+params
+      break
+      case 'product_view':
+      linkurl=this.globalData.basePath+this.globalData.routePath.product_view+params
       break
     }
     wx.navigateTo({
@@ -211,13 +212,15 @@ var config={
       api_proxy:"/api/xcx/proxy",
       api_is_check_in:"/api/xcx/is_check_in",
       api_check_in:"/api/xcx/check_in",
-      api_product:"/api/xcx/product"
+      api_product:"/api/xcx/product",
+      api_product_info:"/api/xcx/product/info"
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
       business_card_view:"/businessCard/view/view",
       business_card_edit:"/businessCard/edit/edit",
-      business_card:"/businessCard/index/index"
+      business_card:"/businessCard/index/index",
+      product_view:"/product/view/view"
     },
     imagePath:{
       path_product:'/uploads/Product/',
@@ -232,7 +235,7 @@ var config={
     showToast_default     :show.showToast_default,
     showModal             :show.showModal,
     makePhoneCall         :common.makePhoneCall,
-	  systemSort            :common.systemSort
+    WxParse               :WxParse
   }
 
 }

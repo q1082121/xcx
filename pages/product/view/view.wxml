@@ -1,0 +1,48 @@
+<!--
+/******************************* 
+ * 名称:名片盒子-详情
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/lib/wxParse/wxParse.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
+  <view >
+   <swiper class="scroll-view-box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="3000" duration="1000">
+        <swiper-item >
+           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
+        </swiper-item>
+        <swiper-item >
+           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
+        </swiper-item>
+        <swiper-item >
+           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
+        </swiper-item>
+    </swiper>
+  </view>
+  <view class="product_info_title_box">
+    <text class="product_info_title">【名称】{{infodata.title}}</text>
+    <view class="product_info_share"></view>
+    <text class="product_info_introduction">{{infodata.introduction}}</text>
+  </view>
+  <view class="product_info_price_box">
+        <image class="product_info_price_icon" src="/public/icon/price.png" ></image>
+        <text class="product_info_price">{{infodata.price}}</text>
+        <button class="weui-btn weui-btn_new" type="warn" plain  >产品上新</button>
+  </view>
+  <view class="weui-flex weui-flex_productinforpx">
+    <view class="weui-flex__item weui-flex__itemrpx" > 重量 </view>
+    <view class="weui-flex__item weui-flex__itemrpx" > 包邮 </view>
+    <view class="weui-flex__item weui-flex__itemrpx" > 月销量 </view>
+  </view>
+  <view class="product_info_nav">
+    <view class="product_info_nav_item">【图片详情】</view>
+    <view class="product_info_view">
+        <template is="wxParse" data="{{wxParseData:infodata.content.nodes}}"/>
+    </view>
+  </view>
+  <template is="footer" />
+</view>

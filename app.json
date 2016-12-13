@@ -7,7 +7,8 @@
     "pages/businessCard/view/view",
     "pages/businessCard/edit/edit",
     "pages/life/index/index",
-    "pages/user/index/index"
+    "pages/user/index/index",
+    "pages/product/view/view"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{
