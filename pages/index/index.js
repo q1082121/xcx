@@ -18,7 +18,17 @@ var config={
     requestlock:true,
     inputShowed: false,
     inputVal: "",
-    listdata:{}
+    domainName:app.globalData.domainName,
+    imagePath:app.globalData.imagePath,
+    totals               : 0,
+    totals_title         :"总数",  
+    first_page           :1,//首页
+    prev_page            :1,//上一页
+    current_page         :1,//当前页
+    next_page            :1,//下一页
+    last_page            :1,//尾页
+    listdata             :{},//列表数据 
+    page                 :1,         
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -26,7 +36,6 @@ var config={
     /**/
     var that = this
     app.getUserInfo(function(userInfo){
-      //更新数据
       that.setData({
         userInfo:userInfo
       })
@@ -90,15 +99,59 @@ var config={
   get_list: function(actionway="") 
   {
     var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal,page:that.data.page}
     app.action_loading()
     app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_product,post_data,function(resback){
       if(resback.status==1)
       {
         app.action_loading_hidden()
+        var totals=Math.ceil(resback.resource.total/resback.resource.per_page)
         that.setData({
-            listdata:resback.resource
+            listdata:resback.resource.data,
+            current_page:resback.resource.current_page,
+            totals_title:resback.resource.total+'条',
+            last_page:resback.resource.last_page
         })
+        //分页限制3组
+        if(totals<=3)
+        {
+          that.setData({
+            totals:totals
+          })
+        }
+        else
+        {
+          that.setData({
+            totals:[resback.resource.current_page+1,resback.resource.current_page,resback.resource.current_page+1]
+          })
+        }
+         //下一页数据
+        if(resback.resource.current_page==totals)
+        {
+          that.setData({
+            next_page:totals
+          })
+        }
+        else
+        {
+          that.setData({
+            next_page:resback.resource.current_page+1
+          })
+        }
+        //上一页数据
+        if(resback.resource.current_page==1)
+        {
+          that.setData({
+            prev_page:1
+          })
+        }
+        else
+        {
+          that.setData({
+            prev_page:resback.resource.current_page-1
+          })
+        }
+
         if(actionway=="onPullDownRefresh")
         {
           setTimeout(function(){
@@ -116,6 +169,18 @@ var config={
         //console.log('获取用户登录态失败！' + resback.info);
       }
     })
+  },
+  //点击页码获取列表数据
+  btnClick: function(action)
+  {   
+      if(action.target.dataset.page != this.current_page)
+      {
+          this.setData({
+            page:action.target.dataset.page
+          })
+          this.get_list();
+      }
+      console.log(action.target.dataset.page);
   },
   //搜索条相关动作函数
   showInput: function () {
@@ -138,7 +203,8 @@ var config={
   },
   inputTyping: function (e) {
       this.setData({
-          inputVal: e.detail.value
+          inputVal: e.detail.value,
+          page:1
       });
   }
 }

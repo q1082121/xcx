@@ -32,7 +32,8 @@
 .weui-flex__itemiconrpx{display: block;width: 40rpx;height: 40rpx;margin: 0 auto;}
 .weui-cellsrpx{width: 96%;margin: 0 auto;}
 .weui-cell__bdrpx{color: #777;font-weight: 700;font-size: 26rpx;margin-left: 15rpx;margin-top: 10rpx;}
-
+.weui-flex__item_pagerpx{background: #fff;text-align: center;font-size: 30rpx;line-height:60rpx;margin: 0 5rpx; }
+.weui-flex__item_curpagerpx{background: #353535;color: #fff;}
 /** 公共头部样式 **/
 .header_box{width: 100%;height: 80rpx;line-height: 80rpx;padding: 10rpx;background: #353535;} 
 .userinfo-avatar {float: left;margin: 0 0 0 20rpx;width: 80rpx;height: 80rpx;border-radius: 50%;}

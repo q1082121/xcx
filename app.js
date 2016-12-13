@@ -219,6 +219,10 @@ var config={
       business_card_edit:"/businessCard/edit/edit",
       business_card:"/businessCard/index/index"
     },
+    imagePath:{
+      path_product:'/uploads/Product/',
+      path_article:'/uploads/Article/'
+    },
     basePath:"/pages",
     
   },
