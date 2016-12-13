@@ -105,12 +105,15 @@ var config={
       if(resback.status==1)
       {
         app.action_loading_hidden()
-        var totals=Math.ceil(resback.resource.total/resback.resource.per_page)
+        let totals=Math.ceil(resback.resource.total/resback.resource.per_page)
+        let current_page=resback.resource.current_page
+        let totals_title=resback.resource.total+'条'
+        let last_page=resback.resource.last_page
         that.setData({
             listdata:resback.resource.data,
-            current_page:resback.resource.current_page,
-            totals_title:resback.resource.total+'条',
-            last_page:resback.resource.last_page
+            current_page:current_page,
+            totals_title:totals_title,
+            last_page:last_page
         })
         //分页限制3组
         if(totals<=3)
@@ -122,11 +125,11 @@ var config={
         else
         {
           that.setData({
-            totals:[resback.resource.current_page+1,resback.resource.current_page,resback.resource.current_page+1]
+            totals:[current_page+1,current_page,current_page+1]
           })
         }
          //下一页数据
-        if(resback.resource.current_page==totals)
+        if(current_page==totals)
         {
           that.setData({
             next_page:totals
@@ -139,7 +142,7 @@ var config={
           })
         }
         //上一页数据
-        if(resback.resource.current_page==1)
+        if(current_page==1)
         {
           that.setData({
             prev_page:1
@@ -148,7 +151,7 @@ var config={
         else
         {
           that.setData({
-            prev_page:resback.resource.current_page-1
+            prev_page:current_page-1
           })
         }
 
@@ -166,7 +169,7 @@ var config={
               msgdata.totype=3
               msgdata.msg=resback.info
               app.func.showToast_default(msgdata)    
-        //console.log('获取用户登录态失败！' + resback.info);
+              //console.log('获取用户登录态失败！' + resback.info);
       }
     })
   },
