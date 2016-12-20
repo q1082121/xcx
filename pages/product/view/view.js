@@ -111,7 +111,14 @@ var config={
         that.setData({
             infodata:resback.resource
         })
-        app.func.WxParse.wxParse('content', 'html', resback.resource.content, that,5);
+        if(resback.resource.syseditor=="Ueditor")
+        {
+          app.func.WxParse.wxParse('content', 'html', resback.resource.content, that,5);
+        }
+        if(resback.resource.syseditor=="Markdown")
+        {
+          app.func.WxParse.wxParse('content', 'markdown', resback.resource.content, that,5);
+        }
 
         if(actionway=="onPullDownRefresh")
         {

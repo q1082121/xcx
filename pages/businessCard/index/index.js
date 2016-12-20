@@ -28,22 +28,24 @@ var config={
       that.setData({
         userInfo:userInfo
       })
+      //异步获取缓存session_id
+      wx.getStorage({
+        key: 'session_id',
+        success: function(res) {
+            that.setData({
+              session_id:res.data
+            })
+            that.get_list()
+        } 
+      })
     })
-    //异步获取缓存session_id
-    wx.getStorage({
-      key: 'session_id',
-      success: function(res) {
-          that.setData({
-            session_id:res.data
-          })
-      } 
-    })
+    
     
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-    this.get_list()
+    
   },
   //生命周期函数--监听页面显示
   onShow: function() {

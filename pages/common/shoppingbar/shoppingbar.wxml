@@ -1,0 +1,14 @@
+<!--
+/******************************* 
+ * 名称:公共头部模版
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<template name="shoppingbar">
+<view class="shoppingbar_box">
+
+</view>
+</template>
+
+
