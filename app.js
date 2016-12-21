@@ -205,26 +205,29 @@ var config={
       api_login:"/api/xcx/login",
       api_userinfo:"/api/xcx/userinfo",
       api_del:"/api/xcx/deleteapi",
+      api_proxy:"/api/xcx/proxy",
+      api_is_check_in:"/api/xcx/is_check_in",
+      api_check_in:"/api/xcx/check_in",
       api_businesscard_add:"/api/xcx/businesscard/add",
       api_businesscard_info:"/api/xcx/businesscard/info",
       api_businesscard_edit:"/api/xcx/businesscard/edit",
       api_businesscard:"/api/xcx/businesscard",
-      api_proxy:"/api/xcx/proxy",
-      api_is_check_in:"/api/xcx/is_check_in",
-      api_check_in:"/api/xcx/check_in",
       api_product:"/api/xcx/product",
-      api_product_info:"/api/xcx/product/info"
+      api_product_info:"/api/xcx/product/info",
+      api_shoppingcart_add:"/api/xcx/shoppingcart/add",
+      api_shoppingcart:"/api/xcx/shoppingcart",
     },
     routePath:{
       business_card_add:"/businessCard/add/add",
       business_card_view:"/businessCard/view/view",
       business_card_edit:"/businessCard/edit/edit",
       business_card:"/businessCard/index/index",
-      product_view:"/product/view/view"
+      product_view:"/product/view/view",
+      shopping_cart:"/shoppingcart/index/index",
     },
     imagePath:{
       path_product:'/uploads/Product/',
-      path_article:'/uploads/Article/'
+      path_article:'/uploads/Article/',
     },
     basePath:"/pages",
     

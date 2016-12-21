@@ -19,7 +19,7 @@
             <image class="product_item_icon" src="/public/icon/price.png" ></image>
             <text class="product_item_price">{{itemval.price}}</text>
             <button class="weui-btn weui-btn_buy" type="warn" plain  >购买</button>
-            <button class="weui-btn weui-btn_buy" type="warn" plain  >添加</button>
+            <button class="weui-btn weui-btn_buy" type="warn" plain bindtap="shopping_cart_add"  data-item_id="{{itemval.id}}" data-item_table="products" data-qty="1"  >添加</button>
         </view>
   </block>
   <view class="weui-flex">

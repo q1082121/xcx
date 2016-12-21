@@ -210,6 +210,29 @@ var config={
           inputVal: e.detail.value,
           page:1
       });
+  },
+  //单个添加购物车
+  shopping_cart_add:function(arr)
+  {
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:arr.target.dataset}
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_add,post_data,function(resback){
+      if(resback.status==1)
+      {
+        var msgdata=new Object
+            msgdata.totype=3
+            msgdata.msg=resback.info
+            app.func.showToast_success(msgdata)
+      }
+      else
+      {
+        var msgdata=new Object
+            msgdata.totype=3
+            msgdata.msg=resback.info
+            app.func.showToast_default(msgdata)
+      }
+    })
+
   }
 }
 

@@ -8,7 +8,8 @@
     "pages/businessCard/edit/edit",
     "pages/life/index/index",
     "pages/user/index/index",
-    "pages/product/view/view"
+    "pages/product/view/view",
+    "pages/shoppingcart/index/index"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{
@@ -45,6 +46,12 @@
         "text": "名片盒",
         "iconPath":"public/icon/businesscard.png",
         "selectedIconPath":"public/selectedIcon/businesscard.png"
+      },
+      {
+        "pagePath": "pages/shoppingcart/index/index",
+        "text": "购物车",
+        "iconPath":"public/icon/shoppingcarts.png",
+        "selectedIconPath":"public/selectedIcon/shoppingcarts.png"
       },
       {
         "pagePath": "pages/user/index/index",
