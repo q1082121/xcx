@@ -10,13 +10,16 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '名片列表',
+    title: '我的购物车',
     userInfo: {},
     session_id:'',
     listbuttonishidden:"hidden",
+    addbuttonishidden:"hidden",
     requestlock:true,
     inputShowed: false,
     inputVal: "",
+    domainName:app.globalData.domainName,
+    imagePath:app.globalData.imagePath,
     listdata:{}
   },
   //生命周期函数--监听页面加载
@@ -94,7 +97,7 @@ var config={
     var that = this
     var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
     app.action_loading()
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard,post_data,function(resback){
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart,post_data,function(resback){
       if(resback.status==1)
       {
         app.action_loading_hidden()
@@ -110,7 +113,7 @@ var config={
       }
       else
       {
-        app.action_loading_hidden()
+          app.action_loading_hidden()
           var msgdata=new Object
               msgdata.totype=3
               msgdata.msg=resback.info
@@ -142,9 +145,8 @@ var config={
       this.setData({
           inputVal: e.detail.value
       });
-  }
+  },
 
-  
 }
 
 Page(config)
