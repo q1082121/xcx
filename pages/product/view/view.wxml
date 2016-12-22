@@ -13,15 +13,11 @@
   <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
   <view >
    <swiper class="scroll-view-box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="3000" duration="1000">
+        <block wx:if="{{infodata.attachment}}">
         <swiper-item >
            <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
         </swiper-item>
-        <swiper-item >
-           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
-        </swiper-item>
-        <swiper-item >
-           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
-        </swiper-item>
+        </block>
     </swiper>
   </view>
   <view class="product_info_title_box">
@@ -47,4 +43,20 @@
   </view>
   <template is="footer" />
   <template is="shoppingbar"/>
+  <action-sheet hidden="{{shopping_actionSheetHidden}}" bindchange="shopping_actionSheetChange">
+  <view class="actionSheetbox_top">
+    <view class="actionSheetbox_top_imgbox">
+      <block wx:if="{{infodata.attachment}}">
+      <image class="actionSheetbox_top_img" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}"></image>
+      </block>
+    </view>
+    <view class="actionSheetbox_top_info">
+        <view class="actionSheetbox_top_price">¥ {{infodata.price}}</view>
+        <view class="weui-media-box__title actionSheetbox_top_title">{{infodata.title}}</view>
+        <view class="weui-media-box__desc">{{infodata.introduction}}</view>
+    </view>
+    <image src="/public/icon/cancel.png" class="actionSheetbox_top_cancel" bindtap="shopping_actionSheetChange" ></image>
+  </view>
+  <view class="line-border"></view>
+  </action-sheet>
 </view>

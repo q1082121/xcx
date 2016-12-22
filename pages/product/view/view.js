@@ -25,6 +25,7 @@ var config={
     autoplay: false,
     interval: 3000,
     duration: 1000,
+    shopping_actionSheetHidden: true,
     content:""
   },
   //生命周期函数--监听页面加载
@@ -138,6 +139,19 @@ var config={
       }
     })
   },
+  //展开加入购物车弹出界面
+  shopping_actionSheetTap:function()
+  {
+    this.setData({
+      shopping_actionSheetHidden: !this.data.shopping_actionSheetHidden
+    })
+  },
+  //取消加入购物车弹出界面
+  shopping_actionSheetChange: function(e) {
+    this.setData({
+      shopping_actionSheetHidden: !this.data.shopping_actionSheetHidden
+    })
+  }
 }
 
 Page(config)

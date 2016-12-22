@@ -12,7 +12,7 @@
             <image src="/public/icon/shoppingcart.png" class="shoppingbar_box_icon"></image>
             <text class="shoppingbar_box_icontext">购物车</text>
         </view>
-        <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_add">
+        <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_add" bindtap="shopping_actionSheetTap" >
             加入购物车
         </view>
         <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_buy">
