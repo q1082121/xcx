@@ -15,7 +15,7 @@
   <block wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" >
     <view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">
-        <checkbox  value="{{itemval.id}}" bindtap="checkbox_action" checked="{{itemval.ischoose}}" data-key="{{key}}"  data-id="{{itemval.id}}" /> {{itemval.updated_at}}
+        <checkbox  value="{{itemval.id}}" color="#ff3b30" bindtap="checkbox_action" checked="{{itemval.ischoose}}" data-key="{{key}}"  data-id="{{itemval.id}}" /> {{itemval.updated_at}}
         <button class="weui-btn weui-btn_clear" type="warn" bindtap="editshow" data-key="{{key}}" data-id="{{itemval.id}}" plain="{{itemval.buttonplain}}" >{{itemval.editname}}</button>
         </view>
         <view class="weui-panel__bd">
@@ -62,8 +62,9 @@
   <template is="footer" />
     <view class="shoppingbar_statistics_box">
         <view class="weui-flex">
-            <view class="weui-flex__item shoppingbar_box_itemrpx">
-                
+            <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_allcheck">
+                <checkbox class="allcheck" color="#ff3b30"  value="{{checkitems}}" bindtap="allcheckbox_action" checked="{{allcheckitem}}"  /> 
+                <text class="shoppingbar_box_allcheck_text">全选</text>
             </view>
             <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_count">
                 <view class="shoppingbar_box_count_price">

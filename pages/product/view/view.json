@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "black",
   "navigationBarTextStyle": "#fff",
-  "navigationBarTitleText": "名片介绍",
+  "navigationBarTitleText": "详情介绍",
   "backgroundColor": "#000",
   "backgroundTextStyle": "light"
 }

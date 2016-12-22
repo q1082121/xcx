@@ -21,7 +21,8 @@ var config={
     domainName:app.globalData.domainName,
     imagePath:app.globalData.imagePath,
     listdata:{},
-    checkitems:0
+    checkitems:0,
+    allcheckitem:false
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -272,7 +273,7 @@ var config={
                 msgdata.totype=1
                 msgdata.msg=resback.info
                 app.func.showToast_default(msgdata);
-                //console.log('获取用户登录态失败！' + resback.info);
+                
               }
             })
       }
@@ -286,27 +287,66 @@ var config={
     })
 
   },
+  //单选
   checkbox_action: function(e) 
   {
     let status=e.target.dataset.key
     var listitems=this.data.listdata
+    let count=listitems.length
     var checkitems=this.data.checkitems
+    var allcheckitem=false
     if(listitems[status]['ischoose']==false)
+    {
+      listitems[status]['ischoose']=true
+      checkitems=parseInt(checkitems)+1
+      if(checkitems==count)
       {
-        listitems[status]['ischoose']=true
-        checkitems=parseInt(checkitems)+1
+        allcheckitem=true
+      }
+    }
+    else
+    {
+      listitems[status]['ischoose']=false
+      checkitems=parseInt(checkitems)-1
+    }
+    this.setData({
+        listdata: listitems,
+        checkitems:checkitems,
+        allcheckitem:allcheckitem
+    });
+  },
+  //全选
+  allcheckbox_action:function()
+  {
+    
+    var listitems=this.data.listdata
+    let count=listitems.length
+    var allcheckitem=this.data.allcheckitem
+    var checkitems=this.data.checkitems
+    if(count>0)
+    { 
+      if(allcheckitem==false)
+      {
+          checkitems=count
+          allcheckitem=true
       }
       else
       {
-        listitems[status]['ischoose']=false
-        checkitems=parseInt(checkitems)-1
+          allcheckitem=false
+          checkitems=0
       }
-    this.setData({
-        listdata: listitems,
-        checkitems:checkitems
-    });
-    console.log(this.data.listdata)
-  },
+      for (var i = 0; i < count; ++i) 
+      {
+          listitems[i]['ischoose'] = allcheckitem;
+      } 
+      this.setData({
+          listdata: listitems,
+          allcheckitem:allcheckitem,
+          checkitems:checkitems
+      });
+    }
+    
+  }
 }
 
 Page(config)
