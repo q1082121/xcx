@@ -20,7 +20,8 @@ var config={
     inputVal: "",
     domainName:app.globalData.domainName,
     imagePath:app.globalData.imagePath,
-    listdata:{}
+    listdata:{},
+    checkitems:0
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -146,7 +147,166 @@ var config={
           inputVal: e.detail.value
       });
   },
+  //切换编辑状态
+  editshow:function(e)
+  {
+      let status=e.target.dataset.key
+      var listitems=this.data.listdata
+      if(listitems[status]['isedit']==false)
+      {
+        listitems[status]['isedit']=true
+        listitems[status]['buttonplain']=false
+        listitems[status]['editname']="完成"
 
+        this.setData({
+            listdata: listitems
+        });
+      }
+      else
+      {
+        this.edit_action(e)
+      }
+      
+  },
+  //减号动作
+  less_action:function(e)
+  {
+    let status=e.target.dataset.key
+    var listitems=this.data.listdata
+    if(listitems[status]['qty']==1)
+    {
+      this.del_action(e)
+    }
+    else
+    {
+      listitems[status]['qty']=parseInt(listitems[status]['qty'])-1
+      this.setData({
+          listdata: listitems
+      });
+    }
+  },
+  //加号动作
+  plus_action:function(e)
+  {
+    let status=e.target.dataset.key
+    var listitems=this.data.listdata
+    listitems[status]['qty']=parseInt(listitems[status]['qty'])+1
+    this.setData({
+        listdata: listitems
+    });
+  },
+  change_qty_action:function(e)
+  {
+    console.log(e)
+    let status=e.target.dataset.key
+    var listitems=this.data.listdata
+    let qty=e.detail.value
+    listitems[status]['qty']=qty>=1?qty:1
+    this.setData({
+        listdata: listitems
+    });
+
+  },
+  //完成编辑动作
+  edit_action:function(e)
+  {
+    var that = this
+    let status=e.target.dataset.key
+    var listitems=that.data.listdata
+
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{qty:listitems[status]['qty']},formdataid:e.target.dataset.id}
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_edit,post_data,function(resback){
+      if(resback.status==1)
+      {
+        var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_success(msgdata);
+
+            listitems[status]['isedit']=false
+            listitems[status]['buttonplain']=true
+            listitems[status]['editname']="编辑"
+
+            that.setData({
+                listdata: listitems
+            });
+      }
+      else
+      {
+        var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_default(msgdata);
+
+            this.get_list()
+      }
+    })
+  },
+  //删除请求
+  del_action:function(action)
+  {
+    let status=action.target.dataset.key
+    var listitems=this.data.listdata
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,actiondata:action.target.dataset}
+    app.func.showModal("确定要执行删除？",function(resback){
+      if(resback.confirm)
+      {     
+            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_del,post_data,function(resback){
+              if(resback.status==1)
+              {
+                var msgdata=new Object
+                msgdata.totype=1
+                msgdata.msg=resback.info
+                app.func.showToast_success(msgdata);
+
+                listitems.splice(status,1)
+                that.setData({
+                    listdata: listitems
+                })
+
+              }
+              else
+              {
+                var msgdata=new Object
+                msgdata.totype=1
+                msgdata.msg=resback.info
+                app.func.showToast_default(msgdata);
+                //console.log('获取用户登录态失败！' + resback.info);
+              }
+            })
+      }
+      else
+      {
+            var msgdata=new Object
+            msgdata.url=""
+            msgdata.msg="取消"
+            app.func.showToast_default(msgdata);
+      }
+    })
+
+  },
+  checkbox_action: function(e) 
+  {
+    let status=e.target.dataset.key
+    var listitems=this.data.listdata
+    var checkitems=this.data.checkitems
+    if(listitems[status]['ischoose']==false)
+      {
+        listitems[status]['ischoose']=true
+        checkitems=parseInt(checkitems)+1
+      }
+      else
+      {
+        listitems[status]['ischoose']=false
+        checkitems=parseInt(checkitems)-1
+      }
+    this.setData({
+        listdata: listitems,
+        checkitems:checkitems
+    });
+    console.log(this.data.listdata)
+  },
 }
 
 Page(config)

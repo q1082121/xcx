@@ -220,14 +220,14 @@ var config={
       if(resback.status==1)
       {
         var msgdata=new Object
-            msgdata.totype=3
+            msgdata.totype=1
             msgdata.msg=resback.info
             app.func.showToast_success(msgdata)
       }
       else
       {
         var msgdata=new Object
-            msgdata.totype=3
+            msgdata.totype=1
             msgdata.msg=resback.info
             app.func.showToast_default(msgdata)
       }

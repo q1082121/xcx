@@ -215,6 +215,7 @@ var config={
       api_product:"/api/xcx/product",
       api_product_info:"/api/xcx/product/info",
       api_shoppingcart_add:"/api/xcx/shoppingcart/add",
+      api_shoppingcart_edit:"/api/xcx/shoppingcart/edit",
       api_shoppingcart:"/api/xcx/shoppingcart",
     },
     routePath:{

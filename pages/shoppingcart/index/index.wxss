@@ -1,10 +1,18 @@
 /* pages/businessCard/index/index.wxss */
 .shoppingcart_clear_icon{float: right;width: 40rpx;height: 40rpx;}
-.weui-btn_clear{float: right;width: 124rpx;height: 40rpx;font-size: 26rpx;font-weight: 400;margin-right: 20rpx;line-height: 40rpx;margin-top: 0rpx;margin-bottom: 5rpx;}
+.weui-btn_clear{float: right;width: 124rpx;height: 46rpx;font-size: 26rpx;font-weight: 400;line-height: 46rpx;margin-top: 0rpx;margin-bottom: 5rpx;}
 .shoppingcart_items{width: 150rpx;padding-left: 5rpx;}
 .shoppingcart_items_price{text-align: right;font-size: 30rpx;color: #CE2C2C;}
-.shoppingcart_items_price_tip{font-size: 22rpx;}
+.shoppingcart_items_price_tip{font-size: 26rpx;margin-right: 5rpx;}
 .shoppingcart_items_qty{text-align: right;color: #333;font-size: 36rpx;}
 .shoppingcart_items_qty_tip{font-size: 24rpx;margin-right: 5rpx;color: #111;}
 .shoppingcart_footer{padding-top: 0;padding-bottom: 0;}
 .shoppingcart_footer_choose{height: 30px;}
+.shoppingcart_items_del{width: 120rpx;height: 60px;background: #CC3333;color: #fff;font-weight: 400;font-size: 28rpx;text-align: center;line-height: 60px;margin-left: 10rpx;}
+.shoppingcart_items_price_eidt{text-align: left;font-size: 30rpx;color: #CE2C2C;padding-left: 5rpx;}
+.shopping_qty_box{width: 350rpx;height: 70rpx;padding-top: 5rpx;}
+.shopping_qty_less{float: left;width: 66rpx;height: 66rpx;line-height: 66rpx;border: 1rpx solid #DDDDDD;text-align: center;padding: 0;}
+.shopping_qty_plus{float: left;width: 66rpx;height: 66rpx;line-height: 66rpx;border: 1rpx solid #DDDDDD;text-align: center;padding: 0;}
+.shopping_qty_input_box{float: left;width: 210rpx;height: 66rpx;border-top: 1rpx solid #DDDDDD;border-bottom: 1rpx solid #DDDDDD;}
+.shopping_qty_input{width: 100%;height: 66rpx;line-height: 66rpx;text-align: center;font-size: 34rpx;color: #1e1e1e;padding: 0 10rpx;}
+

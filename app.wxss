@@ -40,9 +40,15 @@
 .userinfo-nickname {float: left;margin: 0 0 0 20rpx;color: #aaa;}
 .userinfo-button{float: right;margin: 10rpx 10rpx 0 ;}
 /** 购物条样式 **/
-.shoppingbar_box{width: 100%;height: 120rpx;background: #fff;position: fixed;bottom: 0;}
-.shoppingbar_box_itemrpx{text-align: center;line-height: 120rpx;color: #fff;font-weight: 700;font-size: 34rpx; }
+.shoppingbar_box{width: 100%;min-height: 100rpx;background: #fff;position: fixed;bottom: 0;}
+.shoppingbar_box_itemrpx{text-align: center;line-height: 100rpx;height:100rpx;color: #fff;font-weight: 700;font-size: 34rpx; }
 .shoppingbar_box_add{background: #ff9500;}
 .shoppingbar_box_buy{background: #ff3b30;}
-.shoppingbar_box_icon{width: 70rpx;height: 70rpx;margin: 20rpx 0 0 0;}
-.shoppingbar_box_icontext{line-height: 50rpx;font-size: 26rpx;color: #515151;}
+.shoppingbar_box_icon{width: 68rpx;height: 68rpx;}
+.shoppingbar_box_icontext{line-height: 20rpx;height:20rpx;font-size: 26rpx;color: #515151;}
+.shoppingbar_statistics_box{width: 100%;height: 100rpx;background: #fff;position: fixed;bottom: 0;}
+.shoppingbar_box_count{background: #fff;color: #666;text-align: right;padding-right: 25rpx;font-weight: 400;}
+.shoppingbar_box_count_price{width: 100%;height: 56rpx;line-height: 56rpx;color: #CE2C2C;font-size: 38rpx;}
+.shoppingbar_box_count_name{width: 100%;height: 40rpx;line-height: 40rpx;color: #CE2C2C;font-size: 30rpx;font-weight: 700}
+.shoppingbar_box_number{background: #ccc;}
+.shoppingbar_box_number_cur{background: #ff3b30;}
