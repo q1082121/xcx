@@ -89,6 +89,11 @@ var config={
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
+  //跳转到 tabBar 页面
+  bindSwitchTo: function(action) 
+  {
+    app.bindSwitchTo(action.target.dataset.action)
+  },
   get_list: function(actionway="") 
   {
     var that = this

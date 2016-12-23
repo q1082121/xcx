@@ -1,5 +1,5 @@
 /******************************* 
- * 名称:详情
+ * 名称:首页
  * 作者:rubbish.boy@163.com
  *******************************
 */
@@ -10,17 +10,16 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '名片介绍',
+    title: '收货地址',
     userInfo: {},
     session_id:'',
-    addbuttonishidden:"hidden",
     listbuttonishidden:"hidden",
+    addbuttonishidden:"hidden",
     requestlock:true,
-    dataid:"",
-    infodata:{}
+    checkin:0
   },
   //生命周期函数--监听页面加载
-  onLoad: function (options) {
+  onLoad: function () {
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -36,12 +35,10 @@ var config={
           that.setData({
             session_id:res.data
           })
-          that.get_info(options.id);
+          that.is_check_in()
       } 
     })
-    that.setData({
-      dataid:options.id
-    })
+    
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
@@ -53,7 +50,7 @@ var config={
     // Do something when page show.
     if(this.data.requestlock==false)
     {
-      this.get_info(this.data.dataid);
+      this.is_check_in()
     }
     else
     {
@@ -61,7 +58,6 @@ var config={
           requestlock:false
       })
     }
-    
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {
@@ -74,7 +70,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    this.get_info(this.data.dataid,"onPullDownRefresh");
+    this.is_check_in('onPullDownRefresh')
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -95,18 +91,16 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
-  //获取详情数据
-  get_info: function(id,actionway="") 
+  //今日签到状态
+  is_check_in:function(actionway="")
   {
     var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,id:id}
-    app.action_loading();
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_info,post_data,function(resback){
+    var post_data={token:app.globalData.token,session_id:that.data.session_id}
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_is_check_in,post_data,function(resback){
       if(resback.status==1)
       {
-        app.action_loading_hidden();
         that.setData({
-            infodata:resback.resource
+              checkin:resback.resource
         })
         if(actionway=="onPullDownRefresh")
         {
@@ -117,38 +111,41 @@ var config={
       }
       else
       {
-        app.action_loading_hidden();
           var msgdata=new Object
               msgdata.totype=3
               msgdata.msg=resback.info
-              app.func.showToast_default(msgdata);
-        //console.log('获取用户登录态失败！' + resback.info);
+              app.func.showToast_default(msgdata)
       }
     })
   },
-  //删除请求
-  del_action:function(action)
+  //签到动作
+  check_in_action:function(action)
   {
     var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,actiondata:action.target.dataset}
-    app.func.showModal("确定要执行删除？",function(resback){
+    var post_data={token:app.globalData.token,session_id:that.data.session_id}
+    app.func.showModal("确定要签到？",function(resback){
       if(resback.confirm)
       {     
-            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_del,post_data,function(resback){
+            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_check_in,post_data,function(resback){
               if(resback.status==1)
               {
+                that.setData({
+                      checkin:1,
+                      userInfo:resback.resource
+                })
+                that.globalData.userInfo = resback.resource
+                
                 var msgdata=new Object
-                msgdata.totype=3
+                msgdata.totype=2
                 msgdata.msg=resback.info
                 app.func.showToast_success(msgdata);
               }
               else
               {
                 var msgdata=new Object
-                msgdata.totype=3
+                msgdata.totype=2
                 msgdata.msg=resback.info
                 app.func.showToast_default(msgdata);
-                //console.log('获取用户登录态失败！' + resback.info);
               }
             })
       }
@@ -161,15 +158,10 @@ var config={
       }
     })
 
-  },
-  //拨号请求
-  makePhoneCall:function(action)
-  {
-    app.func.makePhoneCall(action.target.dataset.phoneNumber)
-  },
-  
+  }
+
+
   
 }
 
 Page(config)
-

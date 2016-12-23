@@ -1,0 +1,69 @@
+<!--
+/******************************* 
+ * 名称:生活服务
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/searchbar/searchbar.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
+  <view class="weui-flex weui-flex_stylerpx whitebg ">
+    <view class="weui-flex__item weui-flex__itemstylerpx borderboxr">
+        <block>
+            <button wx:if="{{checkin==1}}" class="weui-btn weui-btn_check_in" type="warn" plain disabled>今日已签</button>
+            <button wx:else class="weui-btn weui-btn_check_in" type="warn" plain bindtap="check_in_action" >积分签到</button>
+        </block>    
+    </view>
+    <view class="weui-flex__item weui-flex__itemstylerpx">
+      <button class="weui-btn weui-btn_check_in" type="warn" >余额充值</button>
+    </view>
+  </view>
+  <view class="weui-flex weui-flex_stylerpx whitebg ">
+    <view class="weui-flex__item weui-flex__itemstylerpx borderboxr">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/money.png"></image>
+    <text class="weui-flex__itemtextrpx">{{userInfo.money}}</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemstylerpx borderboxr">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/score.png"></image>
+    <text class="weui-flex__itemtextrpx">{{userInfo.score}}</text>
+    </view>
+    <view class="weui-flex__item weui-flex__itemstylerpx ">
+    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <text class="weui-flex__itemtextrpx">0</text>
+    </view>
+  </view>
+  <view class="user_address_box">
+    <view class="weui-flex">
+        <view class="weui-flex__item user_address_contact">
+            <text class="user_address_but_text">李志</text>
+        </view>
+        <view class="weui-flex__item user_address_contact">
+            <text class="user_address_but_text">15067636212</text>
+        </view>
+    </view>
+    <view class="line-border-dashed"></view>
+    <view class="user_address_info">
+    浙江省温岭市城北街道麻车村51号
+    浙江省温岭市城北街道麻车村51号
+    浙江省温岭市城北街道麻车村51号
+    </view>
+    <view class="weui-flex">
+        <view class="weui-flex__item user_address_but borderboxr borderboxt ">
+            <image src="/public/icon/set.png" class="user_address_but_icon"  ></image>
+            <text class="user_address_but_text">设置默认</text>
+        </view>
+        <view class="weui-flex__item user_address_but borderboxr borderboxt">
+            <image src="/public/icon/edit.png" class="user_address_but_icon"  ></image>
+            <text class="user_address_but_text">编辑</text>
+        </view>
+        <view class="weui-flex__item user_address_but borderboxt">
+            <image src="/public/icon/clear.png" class="user_address_but_icon" ></image>
+            <text class="user_address_but_text">删除</text>
+        </view>
+    </view>
+  </view>
+  <template is="footer" />
+</view>

@@ -35,6 +35,7 @@ var config={
           that.setData({
             session_id:res.data
           })
+          that.is_check_in()
       } 
     })
     
@@ -42,7 +43,7 @@ var config={
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-    this.is_check_in()
+
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -84,6 +85,11 @@ var config={
   bindRedirectTo: function(action) 
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
+  },
+  //跳转到 tabBar 页面
+  bindSwitchTo: function(action) 
+  {
+    app.bindSwitchTo(action.target.dataset.action)
   },
   //今日签到状态
   is_check_in:function(actionway="")

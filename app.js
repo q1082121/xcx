@@ -152,7 +152,11 @@ var config={
       case 'product_view':
       linkurl=this.globalData.basePath+this.globalData.routePath.product_view+params
       break
+      case 'user_address':
+      linkurl=this.globalData.basePath+this.globalData.routePath.user_address+params
+      break
     }
+    console.log(linkurl)
     wx.navigateTo({
       url: linkurl
     })
@@ -241,6 +245,7 @@ var config={
       business_card:"/businessCard/index/index",
       product_view:"/product/view/view",
       shopping_cart:"/shoppingcart/index/index",
+      user_address:"/user/address/index/index",
     },
     imagePath:{
       path_product:'/uploads/Product/',

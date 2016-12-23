@@ -9,7 +9,8 @@
     "pages/life/index/index",
     "pages/user/index/index",
     "pages/product/view/view",
-    "pages/shoppingcart/index/index"
+    "pages/shoppingcart/index/index",
+    "pages/user/address/index/index"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{

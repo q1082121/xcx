@@ -35,6 +35,7 @@ var config={
           that.setData({
             session_id:res.data
           })
+          that.get_info(options.id);
       } 
     })
     that.setData({
@@ -44,7 +45,6 @@ var config={
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-    this.get_info(this.data.dataid);
   },
   //生命周期函数--监听页面显示
   onShow: function() {
@@ -86,6 +86,11 @@ var config={
   bindRedirectTo: function(action) 
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
+  },
+  //跳转到 tabBar 页面
+  bindSwitchTo: function(action) 
+  {
+    app.bindSwitchTo(action.target.dataset.action)
   },
   //获取详情数据
   get_info: function(id,actionway="") 
