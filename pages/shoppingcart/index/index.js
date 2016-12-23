@@ -22,6 +22,7 @@ var config={
     imagePath:app.globalData.imagePath,
     listdata:{},
     checkitems:0,
+    total:0,
     allcheckitem:false
   },
   //生命周期函数--监听页面加载
@@ -311,6 +312,8 @@ var config={
     let count=listitems.length
     var checkitems=this.data.checkitems
     var allcheckitem=false
+    var total=this.data.total
+    let price=app.func.Operation_mul(listitems[status]['info']['price'],listitems[status]['qty'])
     if(listitems[status]['ischoose']==false)
     {
       listitems[status]['ischoose']=true
@@ -319,16 +322,19 @@ var config={
       {
         allcheckitem=true
       }
+      total=app.func.Operation_add(total,price)
     }
     else
     {
       listitems[status]['ischoose']=false
       checkitems=parseInt(checkitems)-1
+      total=app.func.Operation_sub(total,price)
     }
     this.setData({
         listdata: listitems,
         checkitems:checkitems,
-        allcheckitem:allcheckitem
+        allcheckitem:allcheckitem,
+        total:total
     });
   },
   //全选
@@ -339,6 +345,7 @@ var config={
     let count=listitems.length
     var allcheckitem=this.data.allcheckitem
     var checkitems=this.data.checkitems
+    var price,sum=0
     if(count>0)
     { 
       if(allcheckitem==false)
@@ -354,11 +361,14 @@ var config={
       for (var i = 0; i < count; ++i) 
       {
           listitems[i]['ischoose'] = allcheckitem;
+          price=app.func.Operation_mul(listitems[i]['info']['price'],listitems[i]['qty'])
+          sum=app.func.Operation_add(sum,price)
       } 
       this.setData({
           listdata: listitems,
           allcheckitem:allcheckitem,
-          checkitems:checkitems
+          checkitems:checkitems,
+          total:allcheckitem?sum:0
       });
     }
     

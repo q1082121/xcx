@@ -68,7 +68,7 @@
             </view>
             <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_count">
                 <view class="shoppingbar_box_count_price">
-                    ¥ 1000000
+                    ¥ {{total}}
                 </view>
                 <view class="shoppingbar_box_count_name">
                     合计

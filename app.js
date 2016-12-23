@@ -255,7 +255,11 @@ var config={
     showToast_default     :show.showToast_default,
     showModal             :show.showModal,
     makePhoneCall         :common.makePhoneCall,
-    WxParse               :WxParse
+    WxParse               :WxParse,
+    Operation_add         :common.Operation_add,
+    Operation_sub         :common.Operation_sub,
+    Operation_mul         :common.Operation_mul,
+    Operation_div         :common.Operation_div,
   }
 
 }
