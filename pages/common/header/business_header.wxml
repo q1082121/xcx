@@ -9,6 +9,7 @@
 <view class="header_box">
   <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
   <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <button id="{{addbuttonishidden}}"  data-action="business_card_add" data-params="" bindtap="bindNavigateTo"  class="userinfo-button" type="warn" size="mini"  >新增名片</button>
 </view>
 </template>
 

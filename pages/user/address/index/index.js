@@ -13,10 +13,7 @@ var config={
     title: '收货地址',
     userInfo: {},
     session_id:'',
-    listbuttonishidden:"hidden",
-    addbuttonishidden:"hidden",
     requestlock:true,
-    checkin:0
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -35,7 +32,6 @@ var config={
           that.setData({
             session_id:res.data
           })
-          that.is_check_in()
       } 
     })
     
@@ -50,7 +46,7 @@ var config={
     // Do something when page show.
     if(this.data.requestlock==false)
     {
-      this.is_check_in()
+
     }
     else
     {
@@ -70,7 +66,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    this.is_check_in('onPullDownRefresh')
+
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -91,75 +87,6 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
-  //今日签到状态
-  is_check_in:function(actionway="")
-  {
-    var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id}
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_is_check_in,post_data,function(resback){
-      if(resback.status==1)
-      {
-        that.setData({
-              checkin:resback.resource
-        })
-        if(actionway=="onPullDownRefresh")
-        {
-          setTimeout(function(){
-          wx.stopPullDownRefresh()
-          },800)                 
-        }
-      }
-      else
-      {
-          var msgdata=new Object
-              msgdata.totype=3
-              msgdata.msg=resback.info
-              app.func.showToast_default(msgdata)
-      }
-    })
-  },
-  //签到动作
-  check_in_action:function(action)
-  {
-    var that = this
-    var post_data={token:app.globalData.token,session_id:that.data.session_id}
-    app.func.showModal("确定要签到？",function(resback){
-      if(resback.confirm)
-      {     
-            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_check_in,post_data,function(resback){
-              if(resback.status==1)
-              {
-                that.setData({
-                      checkin:1,
-                      userInfo:resback.resource
-                })
-                that.globalData.userInfo = resback.resource
-                
-                var msgdata=new Object
-                msgdata.totype=2
-                msgdata.msg=resback.info
-                app.func.showToast_success(msgdata);
-              }
-              else
-              {
-                var msgdata=new Object
-                msgdata.totype=2
-                msgdata.msg=resback.info
-                app.func.showToast_default(msgdata);
-              }
-            })
-      }
-      else
-      {
-            var msgdata=new Object
-            msgdata.url=""
-            msgdata.msg="取消"
-            app.func.showToast_default(msgdata);
-      }
-    })
-
-  }
-
 
   
 }

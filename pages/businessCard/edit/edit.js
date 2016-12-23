@@ -13,7 +13,6 @@ var config={
     title: '编辑名片信息',
     userInfo: {},
     session_id:'',
-    addbuttonishidden:"hidden",
     requestlock:true,
     dataid:"",
     infodata:{}

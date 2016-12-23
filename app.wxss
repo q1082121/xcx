@@ -23,6 +23,7 @@
 .line-border{width: 90%;height: 2rpx;background:#c2ccd0;margin: 0 auto }
 .line-border-dashed{width: 90%;border-bottom: 2rpx dashed #c2ccd0;margin: 0 auto }
 /** Weui 兼容 **/
+.weui-inputrpx{display: inline;height: 40rpx;min-height: 40rpx;line-height: 40rpx;}
 .weui-labelrpx{width: 105rpx;}
 .weui-flex_icon{width: 80rpx;height: 80rpx;}
 .weui-flex__itemrpx{text-align: center;padding: 30rpx 0;}
@@ -40,12 +41,13 @@
 .weui-flex__item_pagerpx{background: #fff;text-align: center;font-size: 30rpx;line-height:60rpx;margin: 0 5rpx; }
 .weui-flex__item_curpagerpx{background: #353535;color: #fff;}
 .weui-btn_check_in{width: 80%;height: 60rpx;font-size: 25rpx;margin: 10rpx auto;}
+.weui-cell_last_border{border-top:none;}
 /** 公共头部样式 **/
 .header_box{width: 100%;height: 80rpx;line-height: 80rpx;padding: 10rpx 0;background: #353535;} 
 .userinfo-avatar {float: left;margin: 0 0 0 20rpx;width: 80rpx;height: 80rpx;border-radius: 50%;}
 .userinfo-nickname {float: left;margin: 0 0 0 20rpx;color: #aaa;}
 .userinfo-button{float: right;margin: 10rpx 10rpx 0 ;}
-
+.select_button_style{font-size: 30rpx;}
 /** 购物条样式 **/
 .shoppingbar_box{width: 100%;min-height: 100rpx;background: #fff;position: fixed;bottom: 0;}
 .shoppingbar_box_itemrpx{text-align: center;line-height: 100rpx;height:100rpx;color: #fff;font-weight: 700;font-size: 34rpx; }

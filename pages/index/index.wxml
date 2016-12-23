@@ -9,7 +9,7 @@
 <import src="/pages/common/searchbar/searchbar.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
-  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
+  <template is="header" data="{{userInfo: userInfo}}"/>
   <template is="searchbar" data="{{inputShowed: inputShowed,inputVal:inputVal}}"/>
   <block wx:for="{{listdata}}" wx:for-index="itemkey" wx:for-item="itemval" >
         <view class="product_itemrpx" >

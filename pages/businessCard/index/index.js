@@ -13,7 +13,6 @@ var config={
     title: '名片列表',
     userInfo: {},
     session_id:'',
-    listbuttonishidden:"hidden",
     requestlock:true,
     inputShowed: false,
     inputVal: "",

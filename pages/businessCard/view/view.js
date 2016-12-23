@@ -13,8 +13,6 @@ var config={
     title: '名片介绍',
     userInfo: {},
     session_id:'',
-    addbuttonishidden:"hidden",
-    listbuttonishidden:"hidden",
     requestlock:true,
     dataid:"",
     infodata:{}

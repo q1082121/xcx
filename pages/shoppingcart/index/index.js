@@ -13,8 +13,6 @@ var config={
     title: '我的购物车',
     userInfo: {},
     session_id:'',
-    listbuttonishidden:"hidden",
-    addbuttonishidden:"hidden",
     requestlock:true,
     inputShowed: false,
     inputVal: "",

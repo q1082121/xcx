@@ -8,7 +8,7 @@
 <import src="/pages/common/header/header.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
-  <template is="header" data="{{userInfo: userInfo,addbuttonishidden:addbuttonishidden,listbuttonishidden:listbuttonishidden}}"/>
+  <template is="header" data="{{userInfo: userInfo}}"/>
   <view class="flex-item-section position-r">
         <image src="/public/image/businesscard/1.jpg" id="business_card_img"></image>
         <text class="business_card_name position-a">{{infodata.name}}</text>

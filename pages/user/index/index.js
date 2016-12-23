@@ -13,8 +13,6 @@ var config={
     title: '我的信息',
     userInfo: {},
     session_id:'',
-    listbuttonishidden:"hidden",
-    addbuttonishidden:"hidden",
     requestlock:true,
     checkin:0
   },

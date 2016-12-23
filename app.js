@@ -155,6 +155,9 @@ var config={
       case 'user_address':
       linkurl=this.globalData.basePath+this.globalData.routePath.user_address+params
       break
+      case 'user_address_add':
+      linkurl=this.globalData.basePath+this.globalData.routePath.user_address_add+params
+      break
     }
     console.log(linkurl)
     wx.navigateTo({
@@ -222,36 +225,40 @@ var config={
     token:"MbYwyExrMd5G42Da",
     domainName:"https://api.tzsuteng.com",
     api:{
-      api_login:"/api/xcx/login",
-      api_userinfo:"/api/xcx/userinfo",
-      api_del:"/api/xcx/deleteapi",
-      api_proxy:"/api/xcx/proxy",
-      api_is_check_in:"/api/xcx/is_check_in",
-      api_check_in:"/api/xcx/check_in",
-      api_businesscard_add:"/api/xcx/businesscard/add",
-      api_businesscard_info:"/api/xcx/businesscard/info",
-      api_businesscard_edit:"/api/xcx/businesscard/edit",
-      api_businesscard:"/api/xcx/businesscard",
-      api_product:"/api/xcx/product",
-      api_product_info:"/api/xcx/product/info",
-      api_shoppingcart_add:"/api/xcx/shoppingcart/add",
-      api_shoppingcart_edit:"/api/xcx/shoppingcart/edit",
-      api_shoppingcart:"/api/xcx/shoppingcart",
+      api_login                   :"/api/xcx/login",
+      api_userinfo                :"/api/xcx/userinfo",
+      api_del                     :"/api/xcx/deleteapi",
+      api_proxy                   :"/api/xcx/proxy",
+      api_is_check_in             :"/api/xcx/is_check_in",
+      api_check_in                :"/api/xcx/check_in",
+      api_businesscard_add        :"/api/xcx/businesscard/add",
+      api_businesscard_info       :"/api/xcx/businesscard/info",
+      api_businesscard_edit       :"/api/xcx/businesscard/edit",
+      api_businesscard            :"/api/xcx/businesscard",
+      api_product                 :"/api/xcx/product",
+      api_product_info            :"/api/xcx/product/info",
+      api_shoppingcart_add        :"/api/xcx/shoppingcart/add",
+      api_shoppingcart_edit       :"/api/xcx/shoppingcart/edit",
+      api_shoppingcart            :"/api/xcx/shoppingcart",
+      api_address_add             :"/api/xcx/address/add",
+      api_address_edit            :"/api/xcx/address/edit",
+      api_address                 :"/api/xcx/address",
     },
     routePath:{
-      business_card_add:"/businessCard/add/add",
-      business_card_view:"/businessCard/view/view",
-      business_card_edit:"/businessCard/edit/edit",
-      business_card:"/businessCard/index/index",
-      product_view:"/product/view/view",
-      shopping_cart:"/shoppingcart/index/index",
-      user_address:"/user/address/index/index",
+      business_card_add           :"/businessCard/add/add",
+      business_card_view          :"/businessCard/view/view",
+      business_card_edit          :"/businessCard/edit/edit",
+      business_card               :"/businessCard/index/index",
+      product_view                :"/product/view/view",
+      shopping_cart               :"/shoppingcart/index/index",
+      user_address                :"/user/address/index/index",
+      user_address_add            :"/user/address/add/add",
     },
     imagePath:{
-      path_product:'/uploads/Product/',
-      path_article:'/uploads/Article/',
+      path_product                :'/uploads/Product/',
+      path_article                :'/uploads/Article/',
     },
-    basePath:"/pages",
+    basePath                      :"/pages",
     
   },
   func:{  

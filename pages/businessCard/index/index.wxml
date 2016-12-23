@@ -5,11 +5,11 @@
  *******************************
 */
 -->
-<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/header/business_header.wxml" />
 <import src="/pages/common/searchbar/searchbar.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
-  <template is="header" data="{{userInfo: userInfo,listbuttonishidden:listbuttonishidden}}"/>
+  <template is="header" data="{{userInfo: userInfo}}"/>
   <template is="searchbar" data="{{inputShowed: inputShowed,inputVal:inputVal}}"/>
   <view wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" class="businessCard_initials"  >
     <view class="weui-cells__title weui-cells__titleprx business_card_title">{{itemval.key}}</view>

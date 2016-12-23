@@ -1,5 +1,5 @@
 /******************************* 
- * 名称:首页
+ * 名称:添加
  * 作者:rubbish.boy@163.com
  *******************************
 */
@@ -10,13 +10,9 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '生活服务',
+    title: '新增名片',
     userInfo: {},
-    session_id:'',
-    requestlock:true,
-    inputShowed: false,
-    inputVal: "",
-    listdata:{}
+    session_id:''
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -37,26 +33,16 @@ var config={
           })
       } 
     })
-    
+
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
     // Do something when page ready.
-   
+
   },
   //生命周期函数--监听页面显示
   onShow: function() {
     // Do something when page show.
-    if(this.data.requestlock==false)
-    {
-      
-    }
-    else
-    {
-      this.setData({
-          requestlock:false
-      })
-    }
   },
   //生命周期函数--监听页面隐藏
   onHide: function() {
@@ -69,7 +55,9 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    
+    setTimeout(function(){
+    wx.stopPullDownRefresh()
+    },800)  
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -90,32 +78,48 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
-  //搜索条相关动作函数
-  showInput: function () {
-      this.setData({
-          inputShowed: true
-      });
-  },
-  hideInput: function () {
-      this.setData({
-          inputVal: "",
-          inputShowed: false
-      });
-      this.get_list();
-  },
-  clearInput: function () {
-      this.setData({
-          inputVal: ""
-      });
-      this.get_list();
-  },
-  inputTyping: function (e) {
-      this.setData({
-          inputVal: e.detail.value
-      });
-  }
+  formSubmit: function(e) 
+  {
+    if(e.detail.value.name=="")
+    {
+      var msgdata=new Object
+          msgdata.url=""
+          msgdata.msg="姓名必填"
+      app.func.showToast_default(msgdata)
+    }
+    else if(e.detail.value.mobile=="")
+    {
+      var msgdata=new Object
+          msgdata.url=""
+          msgdata.msg="手机必填"
+          app.func.showToast_default(msgdata)
+    }
+    else
+    {
+      var that = this
+      var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:e.detail.value}
+      app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_businesscard_add,post_data,function(resback){
+        if(resback.status==1)
+        {
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_success(msgdata)
+        }
+        else
+        {
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata)
+          //console.log('获取用户登录态失败！' + resback.info);
+        }
+      })
+    }
 
+  }
   
 }
 
 Page(config)
+

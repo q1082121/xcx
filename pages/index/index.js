@@ -13,8 +13,6 @@ var config={
     title: '台州速腾网络小程序',
     userInfo: {},
     session_id:'',
-    addbuttonishidden:"hidden",
-    listbuttonishidden:"hidden",
     requestlock:true,
     inputShowed: false,
     inputVal: "",
