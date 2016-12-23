@@ -21,12 +21,12 @@
         <view class="weui-panel__bd">
             <view class="weui-media-box weui-media-box_appmsg" >
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_product}}{{itemval.info.attachment}}" />
+                    <image bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.item_id}}" class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_product}}{{itemval.info.attachment}}" />
                 </view>
                 <block wx:if="{{itemval.isedit== false}}">
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">{{itemval.info.title}}</view>
-                        <view class="weui-media-box__desc">{{itemval.info.introduction}}</view>
+                        <view bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.item_id}}" class="weui-media-box__title">{{itemval.info.title}}</view>
+                        <view bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.item_id}}" class="weui-media-box__desc">{{itemval.info.introduction}}</view>
                     </view>
                     <view class="shoppingcart_items">
                         <view class="weui-media-box__title shoppingcart_items_price"><text class="shoppingcart_items_price_tip">¥</text>{{itemval.info.price}}</view>
@@ -38,11 +38,11 @@
                         <view class="weui-media-box__title shoppingcart_items_price_eidt"><text class="shoppingcart_items_price_tip">¥</text>{{itemval.info.price}}</view>
                         <view class="weui-media-box__desc">
                             <view class="shopping_qty_box">
-                                <view class="shopping_qty_less" bindtap="less_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="shoppingcart" >
+                                <view class="shopping_qty_less" bindtap="less_action" data-key="{{key}}" >
                                 -
                                 </view>
                                 <view class="shopping_qty_input_box">
-                                    <input class="shopping_qty_input" type="number" value="{{itemval.qty}}" bindblur="change_qty_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="shoppingcart" />
+                                    <input class="shopping_qty_input" type="number" value="{{itemval.qty}}" bindblur="change_qty_action" data-key="{{key}}" />
                                 </view>
                                 <view class="shopping_qty_plus" bindtap="plus_action" data-key="{{key}}">
                                 +

@@ -11,13 +11,16 @@
 .position-r{position: relative;}
 .position-a{position: absolute;}
 .position-f{position: fixed;}
+.f_l{float: left;}
+.f_r{float: right;}
 .formbox{width: 100%;}
 .text-align_center{text-align: center}
 .whitebg{background: #fff;}
 .borderbox{border: 1rpx solid #ddd;}
 .borderboxr{border-right: 1rpx solid #ddd;}
 .borderboxl{border-left: 1rpx solid #ddd;}
-.line-border{width: 90%;height: 2rpx;background:#F3F2F3;margin: 0 auto }
+.line-border{width: 90%;height: 2rpx;background:#c2ccd0;margin: 0 auto }
+
 /** Weui 兼容 **/
 .weui-labelrpx{width: 105rpx;}
 .weui-flex_icon{width: 80rpx;height: 80rpx;}
@@ -35,11 +38,13 @@
 .weui-cell__bdrpx{color: #777;font-weight: 700;font-size: 26rpx;margin-left: 15rpx;margin-top: 10rpx;}
 .weui-flex__item_pagerpx{background: #fff;text-align: center;font-size: 30rpx;line-height:60rpx;margin: 0 5rpx; }
 .weui-flex__item_curpagerpx{background: #353535;color: #fff;}
+
 /** 公共头部样式 **/
 .header_box{width: 100%;height: 80rpx;line-height: 80rpx;padding: 10rpx 0;background: #353535;} 
 .userinfo-avatar {float: left;margin: 0 0 0 20rpx;width: 80rpx;height: 80rpx;border-radius: 50%;}
 .userinfo-nickname {float: left;margin: 0 0 0 20rpx;color: #aaa;}
 .userinfo-button{float: right;margin: 10rpx 10rpx 0 ;}
+
 /** 购物条样式 **/
 .shoppingbar_box{width: 100%;min-height: 100rpx;background: #fff;position: fixed;bottom: 0;}
 .shoppingbar_box_itemrpx{text-align: center;line-height: 100rpx;height:100rpx;color: #fff;font-weight: 700;font-size: 34rpx; }
@@ -56,11 +61,23 @@
 .shoppingbar_box_allcheck{color: #666;text-align: left;line-height: 100rpx;}
 .shoppingbar_box_allcheck_text{float: left;margin-top: 5rpx;margin-left: 5rpx;}
 .allcheck{float: left;margin: 0 0 0 30rpx;}
+
+/** 加减数量样式 **/
+.shopping_qty_box{width: 350rpx;height: 70rpx;padding-top: 5rpx;}
+.shopping_qty_less{float: left;width: 66rpx;height: 66rpx;line-height: 66rpx;border: 1rpx solid #DDDDDD;text-align: center;padding: 0;}
+.shopping_qty_plus{float: left;width: 66rpx;height: 66rpx;line-height: 66rpx;border: 1rpx solid #DDDDDD;text-align: center;padding: 0;}
+.shopping_qty_input_box{float: left;width: 210rpx;height: 66rpx;border-top: 1rpx solid #DDDDDD;border-bottom: 1rpx solid #DDDDDD;}
+.shopping_qty_input{width:190rpx;height: 66rpx;line-height: 66rpx;text-align: center;font-size: 34rpx;color: #1e1e1e;padding: 0 10rpx;}
+.shopping_qty_red_bg{background: #dc3023;color: #fff;}
+.shopping_qty_name{width: 300rpx;height: 70rpx;line-height: 70rpx;font-size: 30rpx;}
 /** 弹窗界面 **/
-.actionSheetbox_top{width: 100%;height:280rpx;position: relative;background: #F0F0F0;overflow:visible;}
+.actionSheetbox_box{width: 100%;background: #e9e7ef;}
+.actionSheetbox_top{width: 100%;height:290rpx;position: relative;overflow:visible;}
 .actionSheetbox_top_imgbox{position: absolute;left: 30rpx;top:10rpx;width: 250rpx;height: 250rpx;background: #F0F0F0;border: 3px solid #F0F0F0;border-radius: 5%; }
 .actionSheetbox_top_img{display: block;width:250rpx;height: 250rpx;}
 .actionSheetbox_top_info{position: absolute;left: 330rpx;top:14rpx;width: 340rpx;height: 250rpx;}
 .actionSheetbox_top_cancel{position: absolute;right: 10rpx;top:14rpx;width: 50rpx;height: 50rpx;}
 .actionSheetbox_top_price{width: 100%;height:80rpx ;font-size: 44rpx;line-height:80rpx ;color: #CE2C2C}
 .actionSheetbox_top_title{margin-bottom: 10rpx;}
+.actionSheetbox_qty_box{width: 90%;height:80rpx;margin: 40rpx auto;}
+.actionSheetbox_sure{width: 100%;height:100rpx;margin: 20rpx auto 0;background: #dc3023;color: #fff;line-height: 100rpx;text-align: center}

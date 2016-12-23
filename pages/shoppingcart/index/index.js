@@ -198,11 +198,10 @@ var config={
   },
   change_qty_action:function(e)
   {
-    console.log(e)
     let status=e.target.dataset.key
     var listitems=this.data.listdata
     let qty=e.detail.value
-    listitems[status]['qty']=qty>=1?qty:1
+    listitems[status]['qty']=parseInt(qty)>=1?qty:1
     this.setData({
         listdata: listitems
     });
@@ -214,34 +213,51 @@ var config={
     var that = this
     let status=e.target.dataset.key
     var listitems=that.data.listdata
-
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{qty:listitems[status]['qty']},formdataid:e.target.dataset.id}
-    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_edit,post_data,function(resback){
-      if(resback.status==1)
+    let original_qty=listitems[status]['original_qty']
+    let qty=listitems[status]['qty']
+    if(original_qty!=qty)
+    {
+        var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{qty:qty},formdataid:e.target.dataset.id}
+      app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_edit,post_data,function(resback)
       {
-        var msgdata=new Object
-            msgdata.totype=1
-            msgdata.msg=resback.info
-            app.func.showToast_success(msgdata);
+        if(resback.status==1)
+        {
+          var msgdata=new Object
+              msgdata.totype=1
+              msgdata.msg=resback.info
+              app.func.showToast_success(msgdata);
 
-            listitems[status]['isedit']=false
-            listitems[status]['buttonplain']=true
-            listitems[status]['editname']="编辑"
+              listitems[status]['original_qty']=qty
+              listitems[status]['isedit']=false
+              listitems[status]['buttonplain']=true
+              listitems[status]['editname']="编辑"
 
-            that.setData({
-                listdata: listitems
-            });
+              that.setData({
+                  listdata: listitems
+              });
+        }
+        else
+        {
+          var msgdata=new Object
+              msgdata.totype=1
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata);
+
+              this.get_list()
+        }
+      })
+
       }
       else
       {
-        var msgdata=new Object
-            msgdata.totype=1
-            msgdata.msg=resback.info
-            app.func.showToast_default(msgdata);
+              listitems[status]['isedit']=false
+              listitems[status]['buttonplain']=true
+              listitems[status]['editname']="编辑"
 
-            this.get_list()
+              that.setData({
+                  listdata: listitems
+              });
       }
-    })
   },
   //删除请求
   del_action:function(action)

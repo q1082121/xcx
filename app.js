@@ -168,6 +168,22 @@ var config={
     })
     */
   },
+  //跳转到 tabBar 页面
+  bindSwitchTo:function(action)
+  {
+    
+    var linkurl
+    switch(action)
+    {
+      case 'shoppingcart':
+      linkurl=this.globalData.basePath+this.globalData.routePath.shopping_cart
+      break
+    }
+    wx.switchTab({
+      url: linkurl
+    })
+    
+  },
   //返回上一页
   bindGoBack:function(type)
   {

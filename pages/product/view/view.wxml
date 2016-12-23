@@ -44,19 +44,36 @@
   <template is="footer" />
   <template is="shoppingbar"/>
   <action-sheet hidden="{{shopping_actionSheetHidden}}" bindchange="shopping_actionSheetChange">
-  <view class="actionSheetbox_top">
-    <view class="actionSheetbox_top_imgbox">
-      <block wx:if="{{infodata.attachment}}">
-      <image class="actionSheetbox_top_img" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}"></image>
-      </block>
+  <view class="actionSheetbox_box">
+    <view class="actionSheetbox_top">
+      <view class="actionSheetbox_top_imgbox">
+        <block wx:if="{{infodata.attachment}}">
+        <image class="actionSheetbox_top_img" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}"></image>
+        </block>
+      </view>
+      <view class="actionSheetbox_top_info">
+          <view class="actionSheetbox_top_price">¥ {{infodata.price}}</view>
+          <view class="weui-media-box__title actionSheetbox_top_title">{{infodata.title}}</view>
+          <view class="weui-media-box__desc">{{infodata.introduction}}</view>
+      </view>
+      <image src="/public/icon/cancel.png" class="actionSheetbox_top_cancel" bindtap="shopping_actionSheetChange" ></image>
     </view>
-    <view class="actionSheetbox_top_info">
-        <view class="actionSheetbox_top_price">¥ {{infodata.price}}</view>
-        <view class="weui-media-box__title actionSheetbox_top_title">{{infodata.title}}</view>
-        <view class="weui-media-box__desc">{{infodata.introduction}}</view>
+    <view class="line-border"></view>
+    <view class="actionSheetbox_qty_box">
+        <view class="f_l shopping_qty_name">
+            购买数量
+        </view>
+        <view class="f_l shopping_qty_box">
+            <view class="shopping_qty_less shopping_qty_red_bg" bindtap="less_action" >-</view>
+            <view class="shopping_qty_input_box">
+                <input class="shopping_qty_input" type="number" value="{{qty}}" bindblur="change_qty_action"  />
+            </view>
+            <view class="shopping_qty_plus shopping_qty_red_bg" bindtap="plus_action" >+</view>
+        </view>
     </view>
-    <image src="/public/icon/cancel.png" class="actionSheetbox_top_cancel" bindtap="shopping_actionSheetChange" ></image>
+    <view class="actionSheetbox_sure" bindtap="shopping_cart_add">
+        确 定
+    </view>
   </view>
-  <view class="line-border"></view>
   </action-sheet>
 </view>

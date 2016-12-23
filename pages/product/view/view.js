@@ -17,6 +17,7 @@ var config={
     listbuttonishidden:"hidden",
     requestlock:true,
     dataid:"",
+    qty:1,
     infodata:{},
     domainName:app.globalData.domainName,
     imagePath:app.globalData.imagePath,
@@ -99,6 +100,11 @@ var config={
   {
     app.bindRedirectTo(action.target.dataset.action,action.target.dataset.params)
   },
+  //跳转到 tabBar 页面
+  bindSwitchTo: function(action) 
+  {
+    app.bindSwitchTo(action.target.dataset.action)
+  },
   //获取详情数据
   get_info: function(id,actionway="") 
   {
@@ -151,6 +157,69 @@ var config={
     this.setData({
       shopping_actionSheetHidden: !this.data.shopping_actionSheetHidden
     })
+  },
+  //减号动作
+  less_action:function(e)
+  {
+    var qty=this.data.qty
+    if(qty==1)
+    {
+      
+    }
+    else
+    {
+      qty=parseInt(qty)-1
+      this.setData({
+          qty: qty
+      });
+    }
+  },
+  //加号动作
+  plus_action:function(e)
+  {
+    var qty=this.data.qty
+    qty=parseInt(qty)+1
+    this.setData({
+        qty: qty
+    });
+  },
+  change_qty_action:function(e)
+  {
+    var qty=e.detail.value
+    qty=parseInt(qty)>=1?qty:1
+    this.setData({
+        qty: qty
+    });
+
+  },
+  //添加到购物车
+  shopping_cart_add:function(arr)
+  {
+    var that = this
+    let item_id=that.data.dataid
+    let qty=that.data.qty
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{item_id:item_id,qty:qty}}
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_add,post_data,function(resback){
+      if(resback.status==1)
+      {
+        var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_success(msgdata)
+
+      }
+      else
+      {
+        var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_default(msgdata)
+      }
+      that.setData({
+        shopping_actionSheetHidden: !that.data.shopping_actionSheetHidden
+      })
+    })
+
   }
 }
 

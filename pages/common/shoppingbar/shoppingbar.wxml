@@ -9,8 +9,8 @@
 <view class="shoppingbar_box">
     <view class="weui-flex">
         <view class="weui-flex__item shoppingbar_box_itemrpx">
-            <image src="/public/icon/shoppingcart.png" class="shoppingbar_box_icon"></image>
-            <text class="shoppingbar_box_icontext">购物车</text>
+            <image src="/public/icon/shoppingcart.png" class="shoppingbar_box_icon" bindtap="bindSwitchTo" data-action="shoppingcart"></image>
+            <text class="shoppingbar_box_icontext" bindtap="bindSwitchTo" data-action="shoppingcart" >购物车</text>
         </view>
         <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_add" bindtap="shopping_actionSheetTap" >
             加入购物车
