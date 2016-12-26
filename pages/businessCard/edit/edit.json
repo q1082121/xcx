@@ -3,5 +3,6 @@
   "navigationBarTextStyle": "#fff",
   "navigationBarTitleText": "编辑名片",
   "backgroundColor": "#000",
-  "backgroundTextStyle": "light"
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh":false
 }

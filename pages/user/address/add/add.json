@@ -3,5 +3,6 @@
   "navigationBarTextStyle": "#fff",
   "navigationBarTitleText": "新增地址",
   "backgroundColor": "#000",
-  "backgroundTextStyle": "light"
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh":false
 }

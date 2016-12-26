@@ -229,6 +229,7 @@ var config={
       api_userinfo                :"/api/xcx/userinfo",
       api_del                     :"/api/xcx/deleteapi",
       api_proxy                   :"/api/xcx/proxy",
+      api_district                :"/api/xcx/district",
       api_is_check_in             :"/api/xcx/is_check_in",
       api_check_in                :"/api/xcx/check_in",
       api_businesscard_add        :"/api/xcx/businesscard/add",

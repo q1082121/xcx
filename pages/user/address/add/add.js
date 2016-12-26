@@ -3,14 +3,14 @@
  * 作者:rubbish.boy@163.com
  *******************************
 */
-
+import { SA } from '../../../../lib/wxSelectarea/wxSelectarea';
 //获取应用实例
 var app = getApp()
 
 var config={
   //页面的初始数据
   data: {
-    title: '新增名片',
+    title: '新增收货地址',
     userInfo: {},
     session_id:''
   },
@@ -33,7 +33,7 @@ var config={
           })
       } 
     })
-
+    SA.load(that,app.globalData); // 初始化区域框
   },
   //生命周期函数--监听页面初次渲染完成
   onReady: function() {
@@ -44,10 +44,6 @@ var config={
   onShow: function() {
     // Do something when page show.
   },
-  //生命周期函数--监听页面隐藏
-  onHide: function() {
-    // Do something when page hide.
-  },
   //生命周期函数--监听页面卸载
   onUnload: function() {
     // Do something when page close.
@@ -55,9 +51,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    setTimeout(function(){
-    wx.stopPullDownRefresh()
-    },800)  
+
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -117,6 +111,27 @@ var config={
       })
     }
 
+  },
+  choosearea() { // 页面弹框触发事件
+      SA.choosearea(this); 
+  },
+  addDot() { // 字符串截取
+      SA.addDot(this);
+  },
+  tapProvince(e) { // 点击省份
+      SA.tapProvince(e, this,app.globalData);
+  },
+  tapCity(e) { // 点击城市
+      SA.tapCity(e, this,app.globalData);
+  },
+  tapDistrict(e) { // 点击区域
+      SA.tapDistrict(e, this,app.globalData);
+  },
+  cancel() { // 取消选择
+      SA.cancel(this);
+  },
+  confirm(e) { // 确认选择区域
+      SA.confirm(e, this);
   }
   
 }
