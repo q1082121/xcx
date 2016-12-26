@@ -41,7 +41,6 @@
                 
             </view>
             <view class="weui-cell weui-cell_access weui-cell_last_border" hover-class="weui-cell_active">
-                <textarea class="weui-textarea" placeholder="请输入详细地址" style="height: 80rpx;" />
                 <view class="txt">{{address||'您尚未选择送货地址哟'}}</view>
             </view>
         </view>

@@ -29,7 +29,8 @@
   opacity: 1;
 }
 .selector {
-  text-align: center
+  text-align: center;
+  height: 520rpx;
 }
 .picker {
   font-size: 32rpx;
