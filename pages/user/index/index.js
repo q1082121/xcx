@@ -14,7 +14,8 @@ var config={
     userInfo: {},
     session_id:'',
     requestlock:true,
-    checkin:0
+    checkin:0,
+    address_count:0
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -36,6 +37,14 @@ var config={
           that.is_check_in()
       } 
     })
+    wx.getStorage({
+      key: 'address_count',
+      success: function(res) {
+          that.setData({
+            address_count:res.data
+          })
+      } 
+    })
     
   },
   //生命周期函数--监听页面初次渲染完成
@@ -49,6 +58,15 @@ var config={
     if(this.data.requestlock==false)
     {
       this.is_check_in()
+      var that = this
+      wx.getStorage({
+        key: 'address_count',
+        success: function(res) {
+            that.setData({
+              address_count:res.data
+            })
+        } 
+      })
     }
     else
     {

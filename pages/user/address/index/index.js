@@ -107,6 +107,10 @@ var config={
           wx.stopPullDownRefresh()
           },800)                 
         }
+        wx.setStorage({
+          key:"address_count",
+          data:resback.resource.length
+        })
       }
       else
       {
@@ -144,7 +148,7 @@ var config={
             that.setData({
                 listdata:listitems
             })
-            
+
           }
           else
           {
@@ -179,7 +183,10 @@ var config={
                 that.setData({
                     listdata: listitems
                 })
-
+                wx.setStorage({
+                  key:"address_count",
+                  data:listitems.length
+                })
               }
               else
               {
