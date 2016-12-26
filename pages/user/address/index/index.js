@@ -14,6 +14,7 @@ var config={
     userInfo: {},
     session_id:'',
     requestlock:true,
+    listdata:{}
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -32,6 +33,7 @@ var config={
           that.setData({
             session_id:res.data
           })
+          that.get_list()
       } 
     })
     
@@ -46,7 +48,7 @@ var config={
     // Do something when page show.
     if(this.data.requestlock==false)
     {
-
+      this.get_list()
     }
     else
     {
@@ -66,7 +68,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-
+    this.get_list('onPullDownRefresh')
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -87,7 +89,118 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
+  get_list: function(actionway="") 
+  {
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
+    app.action_loading()
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_address,post_data,function(resback){
+      if(resback.status==1)
+      {
+        app.action_loading_hidden()
+        that.setData({
+            listdata:resback.resource
+        })
+        if(actionway=="onPullDownRefresh")
+        {
+          setTimeout(function(){
+          wx.stopPullDownRefresh()
+          },800)                 
+        }
+      }
+      else
+      {
+          app.action_loading_hidden()
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata)    
+        
+      }
+    })
+  },
+  //设置请求
+  set_action:function(action)
+  {
+    let status=action.target.dataset.key
+    var listitems=this.data.listdata
+    let count=listitems.length
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,actiondata:action.target.dataset}
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_address_set,post_data,function(resback){
+          if(resback.status==1)
+          {
+            var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_success(msgdata);
 
+            let isdefault=listitems[status]['isdefault']==0?1:0
+            for (var i = 0; i < count; ++i) 
+            {
+                listitems[i]['isdefault'] = 0;
+            } 
+            listitems[status]['isdefault']=isdefault
+            that.setData({
+                listdata:listitems
+            })
+            
+          }
+          else
+          {
+            var msgdata=new Object
+            msgdata.totype=1
+            msgdata.msg=resback.info
+            app.func.showToast_default(msgdata);
+            
+          }
+        })
+
+  },
+  //删除请求
+  del_action:function(action)
+  {
+    let status=action.target.dataset.key
+    var listitems=this.data.listdata
+    var that = this
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,actiondata:action.target.dataset}
+    app.func.showModal("确定要执行删除？",function(resback){
+      if(resback.confirm)
+      {     
+            app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_del,post_data,function(resback){
+              if(resback.status==1)
+              {
+                var msgdata=new Object
+                msgdata.totype=1
+                msgdata.msg=resback.info
+                app.func.showToast_success(msgdata);
+
+                listitems.splice(status,1)
+                that.setData({
+                    listdata: listitems
+                })
+
+              }
+              else
+              {
+                var msgdata=new Object
+                msgdata.totype=1
+                msgdata.msg=resback.info
+                app.func.showToast_default(msgdata);
+                
+              }
+            })
+      }
+      else
+      {
+            var msgdata=new Object
+            msgdata.url=""
+            msgdata.msg="取消"
+            app.func.showToast_default(msgdata);
+      }
+    })
+
+  },
   
 }
 

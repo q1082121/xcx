@@ -14,8 +14,6 @@ var config={
     userInfo: {},
     session_id:'',
     requestlock:true,
-    inputShowed: false,
-    inputVal: "",
     domainName:app.globalData.domainName,
     imagePath:app.globalData.imagePath,
     listdata:{},
@@ -127,30 +125,6 @@ var config={
         //console.log('获取用户登录态失败！' + resback.info);
       }
     })
-  },
-  //搜索条相关动作函数
-  showInput: function () {
-      this.setData({
-          inputShowed: true
-      });
-  },
-  hideInput: function () {
-      this.setData({
-          inputVal: "",
-          inputShowed: false
-      });
-      this.get_list();
-  },
-  clearInput: function () {
-      this.setData({
-          inputVal: ""
-      });
-      this.get_list();
-  },
-  inputTyping: function (e) {
-      this.setData({
-          inputVal: e.detail.value
-      });
   },
   //切换编辑状态
   editshow:function(e)

@@ -158,6 +158,9 @@ var config={
       case 'user_address_add':
       linkurl=this.globalData.basePath+this.globalData.routePath.user_address_add+params
       break
+      case 'user_address_edit':
+      linkurl=this.globalData.basePath+this.globalData.routePath.user_address_edit+params
+      break
     }
     console.log(linkurl)
     wx.navigateTo({
@@ -243,6 +246,8 @@ var config={
       api_shoppingcart            :"/api/xcx/shoppingcart",
       api_address_add             :"/api/xcx/address/add",
       api_address_edit            :"/api/xcx/address/edit",
+      api_address_info            :"/api/xcx/address/info",
+      api_address_set             :"/api/xcx/address/set",
       api_address                 :"/api/xcx/address",
     },
     routePath:{
@@ -254,6 +259,7 @@ var config={
       shopping_cart               :"/shoppingcart/index/index",
       user_address                :"/user/address/index/index",
       user_address_add            :"/user/address/add/add",
+      user_address_edit           :"/user/address/edit/edit",
     },
     imagePath:{
       path_product                :'/uploads/Product/',

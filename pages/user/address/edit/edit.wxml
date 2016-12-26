@@ -1,0 +1,16 @@
+<!--
+/******************************* 
+ * 名称:名片盒子-详情
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<import src="/pages/user/address/add/add.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo}}"/>
+  <template is="address_form" data="{{address:address,infodata:infodata}}" />
+  <include src="/lib/wxSelectarea/wxSelectarea.wxml"/>
+  <template is="footer" />
+</view>

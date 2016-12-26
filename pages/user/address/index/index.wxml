@@ -11,35 +11,36 @@
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
   <button class="weui-btn user_address_add_but" type="warn" data-action="user_address_add" data-params="" bindtap="bindNavigateTo" >+ 新增地址</button>
-  <view class="user_address_box">
-    <view class="weui-flex">
-        <view class="weui-flex__item user_address_contact">
-            <text class="user_address_but_text">李志</text>
+  <block wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" >
+    <view class="user_address_box">
+        <view class="weui-flex">
+            <view class="weui-flex__item user_address_contact">
+                <text class="user_address_but_text">{{itemval.name}}</text>
+            </view>
+            <view class="weui-flex__item user_address_contact">
+                <text class="user_address_but_text">{{itemval.mobile}}</text>
+            </view>
         </view>
-        <view class="weui-flex__item user_address_contact">
-            <text class="user_address_but_text">15067636212</text>
+        <view class="line-border-dashed"></view>
+        <view class="user_address_info">
+        {{itemval.area_pname}}-{{itemval.area_cname}}-{{itemval.area_xname}} {{itemval.address?itemval.address:''}}
+        </view>
+        <view class="weui-flex">
+            <view class="weui-flex__item user_address_but borderboxr borderboxt ">
+                <image bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}" wx:if="{{itemval.isdefault==0}}" src="/public/icon/set.png" class="user_address_but_icon"  ></image>
+                <image bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}" wx:else src="/public/selectedIcon/set.png" class="user_address_but_icon"  ></image>
+                <text bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}"   class="user_address_but_text">设为默认</text>
+            </view>
+            <view  class="weui-flex__item user_address_but borderboxr borderboxt">
+                <image bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  src="/public/icon/edit.png" class="user_address_but_icon"  ></image>
+                <text bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  class="user_address_but_text">编辑</text>
+            </view>
+            <view class="weui-flex__item user_address_but borderboxt">
+                <image bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" src="/public/icon/clear.png" class="user_address_but_icon" ></image>
+                <text bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" class="user_address_but_text">删除</text>
+            </view>
         </view>
     </view>
-    <view class="line-border-dashed"></view>
-    <view class="user_address_info">
-    浙江省温岭市城北街道麻车村51号
-    浙江省温岭市城北街道麻车村51号
-    浙江省温岭市城北街道麻车村51号
-    </view>
-    <view class="weui-flex">
-        <view class="weui-flex__item user_address_but borderboxr borderboxt ">
-            <image src="/public/icon/set.png" class="user_address_but_icon"  ></image>
-            <text class="user_address_but_text">设为默认</text>
-        </view>
-        <view class="weui-flex__item user_address_but borderboxr borderboxt">
-            <image src="/public/icon/edit.png" class="user_address_but_icon"  ></image>
-            <text class="user_address_but_text">编辑</text>
-        </view>
-        <view class="weui-flex__item user_address_but borderboxt">
-            <image src="/public/icon/clear.png" class="user_address_but_icon" ></image>
-            <text class="user_address_but_text">删除</text>
-        </view>
-    </view>
-  </view>
+  </block>
   <template is="footer" />
 </view>

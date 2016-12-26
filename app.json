@@ -11,7 +11,8 @@
     "pages/product/view/view",
     "pages/shoppingcart/index/index",
     "pages/user/address/index/index",
-    "pages/user/address/add/add"
+    "pages/user/address/add/add",
+    "pages/user/address/edit/edit"
   ],
   "name_window":"注释：设置默认页面的窗口表现",
   "window":{

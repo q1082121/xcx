@@ -5,3 +5,4 @@
 */
 @import '../index/index.wxss';
 @import "/lib/wxSelectarea/wxSelectarea.wxss";
+.weui-inputrpx_address{width: 680rpx;height: 40rpx;line-height: 46rpx;font-size: 28rpx;padding-left:3%;padding-right:3%;padding-top: 0;padding-bottom: 0;border: 1px solid #ddd;}

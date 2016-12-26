@@ -6,11 +6,9 @@
 */
 -->
 <import src="/pages/common/header/header.wxml" />
-<import src="/pages/common/searchbar/searchbar.wxml" />
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
-  <template is="searchbar" data="{{inputShowed: inputShowed,inputVal:inputVal}}"/>
   <checkbox-group >
   <block wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" >
     <view class="weui-panel weui-panel_access">
