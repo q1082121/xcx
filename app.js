@@ -245,6 +245,7 @@ var config={
       api_address_edit            :"/api/xcx/address/edit",
       api_address_info            :"/api/xcx/address/info",
       api_address_set             :"/api/xcx/address/set",
+      api_address_default         :"/api/xcx/address/default",
       api_address                 :"/api/xcx/address",
     },
     routePath:{

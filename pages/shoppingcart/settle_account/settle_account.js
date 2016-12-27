@@ -20,7 +20,8 @@ var config=
       total:0,
       checkitemsid:'',
       checkitems:0,
-      isaddress:false
+      isaddress:false,
+      addressarr:[]
     },
     onLoad:function(options)
     {
@@ -125,12 +126,13 @@ var config=
                 }
               }
           } 
-          
+          that.get_default_address();
           that.setData({
               listdata:listitems,
               total:sum,
               checkitems:arrcount
           })
+          console.log(that.data.addressarr)
           if(actionway=="onPullDownRefresh")
           {
             setTimeout(function(){
@@ -150,7 +152,37 @@ var config=
     },
     get_default_address:function()
     {
-      
+      var that = this
+      var isaddress
+      var post_data={token:app.globalData.token,session_id:that.data.session_id}
+      app.action_loading();
+      app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_address_default,post_data,function(resback){
+        if(resback.status==1)
+        {
+          app.action_loading_hidden();
+          if(resback.resource)
+          {
+            isaddress=true
+          }
+          else
+          {
+            isaddress=false
+          }
+          that.setData({
+              addressarr:resback.resource,
+              isaddress:isaddress
+          })
+        }
+        else
+        {
+            app.action_loading_hidden();
+            var msgdata=new Object
+                msgdata.totype=3
+                msgdata.msg=resback.info
+                app.func.showToast_default(msgdata);
+          
+        }
+      })
     }
 }
 Page(config)

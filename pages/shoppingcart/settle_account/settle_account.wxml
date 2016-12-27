@@ -2,6 +2,7 @@
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
+  <block wx:if="{{isaddress}}">
   <view class="settle_account_address_box">
         <view class="settle_account_address_left">
             <image src="/public/icon/area.png" class="settle_account_address_left_img"></image>
@@ -9,21 +10,35 @@
         <view class="settle_account_address_mid">
             <view class="weui-flex">
                 <view class="weui-flex__item settle_account_address_contact" style="text-align:left">
-                    <text class="user_address_but_text">收货人：李志</text>
+                    <text class="user_address_but_text">收货人：{{addressarr.name}}</text>
                 </view>
                 <view class="weui-flex__item settle_account_address_contact">
-                    <text class="user_address_but_text">15067636212</text>
+                    <text class="user_address_but_text">{{addressarr.mobile}}</text>
                 </view>
             </view>
             <view class="line-border-dashed"></view>
             <view class="settle_account_address_info">
-            收货地址：浙江-温岭-台州 城北街道麻车村51号
+            收货地址：{{addressarr.area_pname}}-{{addressarr.area_cname}}-{{addressarr.area_xname}} {{addressarr.address}}
             </view>
         </view>
         <view class="settle_account_address_right">
             <image bindtap="bindNavigateTo" data-action="user_address" src="/public/icon/jiantou.png" class="settle_account_address_right_img"></image>
         </view>
   </view>
+  </block>
+  <block wx:else>
+  <view class="settle_account_address_box">
+        <view class="settle_account_address_left">
+            <image src="/public/icon/area.png" class="settle_account_address_left_img"></image>
+        </view>
+        <view class="settle_account_address_mid">
+            <view class="settle_account_address_tip">添加默认收货地址</view>
+        </view>
+        <view class="settle_account_address_right">
+            <image bindtap="bindNavigateTo" data-action="user_address" src="/public/icon/jiantou.png" class="settle_account_address_right_img"></image>
+        </view>
+  </view>
+  </block>
   <block wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" >
     <block wx:if="{{itemval.ischoose==true}}">
     <view class="weui-panel weui-panel_access">
@@ -45,5 +60,42 @@
     </view>
     </block>
   </block>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell__bdrpx">配送方式</view>
+          <view class="weui-cell__ft ">快递 </view>
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell__bdrpx">配送费用</view>
+          <view class="weui-cell__ft ">包邮</view>
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell__bdrpx">售后服务</view>
+          <view class="weui-cell__ft ">联系商家</view>
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell__bdrpx">留言内容</view>
+          <view class="weui-cell__ft "><input class="weui-input weui-inputrpx" name="content" placeholder="填写留言给店家" /> </view>
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell__bdrpx">共{{checkitems}}件商品</view>  
+          <view class="weui-cell__ft "> 小计： <text class="price_color">￥{{total}}</text></view>
+      </view>
+  </view>
+  <view class="settle_account_barbox">
+        <view class="settle_account_barbox_left">
+            共{{checkitems}}件商品 合计: <text class="price_color">￥{{total}}</text>
+        </view>
+        <block wx:if="{{isaddress}}">
+        <view class="settle_account_barbox_rightcur">
+            提交订单 
+        </view>
+        </block>
+        <block wx:else>
+        <view class="settle_account_barbox_right">
+            提交订单
+        </view>
+        </block>
+  </view>
   <template is="footer" />
 </view>
