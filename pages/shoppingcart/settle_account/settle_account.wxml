@@ -1,0 +1,49 @@
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo}}"/>
+  <view class="settle_account_address_box">
+        <view class="settle_account_address_left">
+            <image src="/public/icon/area.png" class="settle_account_address_left_img"></image>
+        </view>
+        <view class="settle_account_address_mid">
+            <view class="weui-flex">
+                <view class="weui-flex__item settle_account_address_contact" style="text-align:left">
+                    <text class="user_address_but_text">收货人：李志</text>
+                </view>
+                <view class="weui-flex__item settle_account_address_contact">
+                    <text class="user_address_but_text">15067636212</text>
+                </view>
+            </view>
+            <view class="line-border-dashed"></view>
+            <view class="settle_account_address_info">
+            收货地址：浙江-温岭-台州 城北街道麻车村51号
+            </view>
+        </view>
+        <view class="settle_account_address_right">
+            <image bindtap="bindNavigateTo" data-action="user_address" src="/public/icon/jiantou.png" class="settle_account_address_right_img"></image>
+        </view>
+  </view>
+  <block wx:for="{{listdata}}" wx:for-index="key" wx:for-item="itemval" >
+    <block wx:if="{{itemval.ischoose==true}}">
+    <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_appmsg" >
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_product}}{{itemval.info.attachment}}" />
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">{{itemval.info.title}}</view>
+                    <view class="weui-media-box__desc">{{itemval.info.introduction}}</view>
+                </view>
+                <view class="shoppingcart_items">
+                    <view class="weui-media-box__title shoppingcart_items_price"><text class="shoppingcart_items_price_tip">¥</text>{{itemval.info.price}}</view>
+                    <view class="weui-media-box__desc  shoppingcart_items_qty"><text class="shoppingcart_items_qty_tip">X</text>{{itemval.qty}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    </block>
+  </block>
+  <template is="footer" />
+</view>

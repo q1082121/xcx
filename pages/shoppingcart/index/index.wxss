@@ -1,4 +1,4 @@
-/* pages/businessCard/index/index.wxss */
+/* pages/shoppingcart/index/index.wxss */
 .shoppingcart_clear_icon{float: right;width: 40rpx;height: 40rpx;}
 .weui-btn_clear{float: right;width: 124rpx;height: 46rpx;font-size: 26rpx;font-weight: 400;line-height: 46rpx;margin-top: 0rpx;margin-bottom: 5rpx;}
 .shoppingcart_items{width: 150rpx;padding-left: 5rpx;}

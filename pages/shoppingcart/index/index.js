@@ -19,7 +19,8 @@ var config={
     listdata:{},
     checkitems:0,
     total:0,
-    allcheckitem:false
+    allcheckitem:false,
+    checkitemsid:''
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -106,8 +107,13 @@ var config={
       {
         app.action_loading_hidden()
         that.setData({
-            listdata:resback.resource
+            listdata:resback.resource,
+            checkitems:0,
+            allcheckitem:false,
+            total:0,
+            checkitemsid:''
         })
+
         if(actionway=="onPullDownRefresh")
         {
           setTimeout(function(){
@@ -122,7 +128,6 @@ var config={
               msgdata.totype=3
               msgdata.msg=resback.info
               app.func.showToast_default(msgdata)    
-        //console.log('获取用户登录态失败！' + resback.info);
       }
     })
   },
@@ -290,6 +295,7 @@ var config={
     var checkitems=this.data.checkitems
     var allcheckitem=false
     var total=this.data.total
+    var checkitemsid="",checkcount=0
     let price=app.func.Operation_mul(listitems[status]['info']['price'],listitems[status]['qty'])
     if(listitems[status]['ischoose']==false)
     {
@@ -307,22 +313,30 @@ var config={
       checkitems=parseInt(checkitems)-1
       total=app.func.Operation_sub(total,price)
     }
+    for (var i = 0; i < count; ++i) 
+    {
+      if(listitems[i]['ischoose']==true)
+      {
+        checkitemsid+=(checkcount==0?"":",")+listitems[i]['id'].toString()
+        checkcount++
+      }
+    } 
     this.setData({
         listdata: listitems,
         checkitems:checkitems,
         allcheckitem:allcheckitem,
-        total:total
+        total:total,
+        checkitemsid:checkitemsid
     });
   },
   //全选
   allcheckbox_action:function()
   {
-    
     var listitems=this.data.listdata
     let count=listitems.length
     var allcheckitem=this.data.allcheckitem
     var checkitems=this.data.checkitems
-    var price,sum=0
+    var price,sum=0,checkitemsid=""
     if(count>0)
     { 
       if(allcheckitem==false)
@@ -340,12 +354,14 @@ var config={
           listitems[i]['ischoose'] = allcheckitem;
           price=app.func.Operation_mul(listitems[i]['info']['price'],listitems[i]['qty'])
           sum=app.func.Operation_add(sum,price)
+          checkitemsid+=(i==0?"":",")+listitems[i]['id'].toString()
       } 
       this.setData({
           listdata: listitems,
           allcheckitem:allcheckitem,
           checkitems:checkitems,
-          total:allcheckitem?sum:0
+          total:allcheckitem?sum:0,
+          checkitemsid:allcheckitem?checkitemsid:''
       });
     }
     

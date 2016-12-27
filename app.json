@@ -10,6 +10,7 @@
     "pages/user/index/index",
     "pages/product/view/view",
     "pages/shoppingcart/index/index",
+    "pages/shoppingcart/settle_account/settle_account",
     "pages/user/address/index/index",
     "pages/user/address/add/add",
     "pages/user/address/edit/edit"

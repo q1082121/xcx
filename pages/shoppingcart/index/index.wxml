@@ -78,7 +78,7 @@
             </view>
             </block>
             <block wx:if="{{checkitems>0}}">
-            <view class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_number_cur" >
+            <view bindtap="bindNavigateTo" data-action="shopping_cart_settle_account" data-params="?id={{checkitemsid}}" class="weui-flex__item shoppingbar_box_itemrpx shoppingbar_box_number_cur" >
                 结算({{checkitems}})
             </view>
             </block>

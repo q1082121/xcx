@@ -155,6 +155,10 @@ var config={
       case 'user_address_edit':
       linkurl=this.globalData.basePath+this.globalData.routePath.user_address_edit+params
       break
+      case 'shopping_cart_settle_account':
+      linkurl=this.globalData.basePath+this.globalData.routePath.shopping_cart_settle_account+params
+      break
+      
     }
     console.log(linkurl)
     wx.navigateTo({
@@ -250,6 +254,7 @@ var config={
       business_card               :"/businessCard/index/index",
       product_view                :"/product/view/view",
       shopping_cart               :"/shoppingcart/index/index",
+      shopping_cart_settle_account:"/shoppingcart/settle_account/settle_account",
       user_address                :"/user/address/index/index",
       user_address_add            :"/user/address/add/add",
       user_address_edit           :"/user/address/edit/edit",
