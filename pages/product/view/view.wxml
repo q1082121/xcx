@@ -69,7 +69,7 @@
     </view>
     <view class="line-border"></view>
 
-    <scroll-view scroll-y="true" style="height: 240rpx;" >
+    <scroll-view scroll-y="true" style="height: 280rpx;" >
         <block wx:for="{{infodata.sublist}}" wx:for-index="itemkey" wx:for-item="itemval" >
             <view bindtap="choose_items_action" data-id="{{itemval.id}}" data-price="{{itemval.price}}" data-totalamount="{{itemval.amount-itemval.selleds}}" data-attachment="{{itemval.attachment}}" wx:if="{{itemval.amount > itemval.selleds}}" class="choose_items_linebox {{curproductattribute_id==itemval.id?'curchoose_items_linebox':''}}">{{itemval.name}}</view>
             <view wx:else class="choose_items_linebox dis_choose_items">{{itemval.name}}</view>

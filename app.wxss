@@ -20,7 +20,7 @@
 .borderboxt{border-top: 1rpx solid #ddd;}
 .borderboxr{border-right: 1rpx solid #ddd;}
 .borderboxl{border-left: 1rpx solid #ddd;}
-.line-border{width: 90%;height: 2rpx;background:#c2ccd0;margin: 0 auto }
+.line-border{width: 90%;height: 2rpx;background:#c2ccd0;margin: 0 auto 10rpx; }
 .line-border-dashed{width: 90%;border-bottom: 2rpx dashed #c2ccd0;margin: 0 auto }
 .price_color{color: #CE2C2C}
 /** Weui 兼容 **/
