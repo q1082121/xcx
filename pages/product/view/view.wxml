@@ -15,7 +15,12 @@
    <swiper class="scroll-view-box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="3000" duration="1000">
         <block wx:if="{{infodata.attachment}}">
         <swiper-item >
-           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>     
+           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}" ></image>    
+        </swiper-item>
+        </block>
+        <block wx:for="{{infodata.sublist}}" wx:for-index="itemkey" wx:for-item="itemval" >
+        <swiper-item >
+           <image class="scroll-view-item" src="{{domainName}}{{imagePath.path_productattribute}}{{itemval.attachment}}" ></image>    
         </swiper-item>
         </block>
     </swiper>
@@ -27,13 +32,16 @@
   </view>
   <view class="product_info_price_box">
         <image class="product_info_price_icon" src="/public/icon/price.png" ></image>
-        <text class="product_info_price">{{infodata.price}}</text>
+        <text wx:if="{{infodata.maxprice}}" class="product_info_price">{{infodata.price}} - {{infodata.maxprice}}</text>
+        <text wx:else class="product_info_price">{{infodata.price}}</text>
+        <!--
         <button class="weui-btn weui-btn_new" type="warn" plain  >产品上新</button>
+        -->
   </view>
   <view class="weui-flex weui-flex_productinforpx">
-    <view class="weui-flex__item weui-flex__itemrpx" > 重量 </view>
+    <view class="weui-flex__item weui-flex__itemrpx" > 库存 {{infodata.total_amount}} </view>
     <view class="weui-flex__item weui-flex__itemrpx" > 包邮 </view>
-    <view class="weui-flex__item weui-flex__itemrpx" > 月销量 </view>
+    <view class="weui-flex__item weui-flex__itemrpx" > 销量 {{infodata.selleds}} </view>
   </view>
   <view class="product_info_nav">
     <view class="product_info_nav_item">【图文详情】</view>
@@ -48,17 +56,26 @@
     <view class="actionSheetbox_top">
       <view class="actionSheetbox_top_imgbox">
         <block wx:if="{{infodata.attachment}}">
-        <image class="actionSheetbox_top_img" src="{{domainName}}{{imagePath.path_product}}{{infodata.attachment}}"></image>
+        <image class="actionSheetbox_top_img" src="{{curimageurl}}"></image>
         </block>
       </view>
       <view class="actionSheetbox_top_info">
-          <view class="actionSheetbox_top_price">¥ {{infodata.price}}</view>
+          <view class="actionSheetbox_top_price">¥ {{curprice}}</view>
           <view class="weui-media-box__title actionSheetbox_top_title">{{infodata.title}}</view>
+          <view class="weui-media-box__title actionSheetbox_top_title">库存：{{curtotal_amount}}</view>
           <view class="weui-media-box__desc">{{infodata.introduction}}</view>
       </view>
       <image src="/public/icon/cancel.png" class="actionSheetbox_top_cancel" bindtap="shopping_actionSheetChange" ></image>
     </view>
     <view class="line-border"></view>
+
+    <scroll-view scroll-y="true" style="height: 240rpx;" >
+        <block wx:for="{{infodata.sublist}}" wx:for-index="itemkey" wx:for-item="itemval" >
+            <view bindtap="choose_items_action" data-id="{{itemval.id}}" data-price="{{itemval.price}}" data-totalamount="{{itemval.amount-itemval.selleds}}" data-attachment="{{itemval.attachment}}" wx:if="{{itemval.amount > itemval.selleds}}" class="choose_items_linebox {{curproductattribute_id==itemval.id?'curchoose_items_linebox':''}}">{{itemval.name}}</view>
+            <view wx:else class="choose_items_linebox dis_choose_items">{{itemval.name}}</view>
+        </block>
+    </scroll-view>
+
     <view class="actionSheetbox_qty_box">
         <view class="f_l shopping_qty_name">
             购买数量
@@ -71,7 +88,13 @@
             <view class="shopping_qty_plus shopping_qty_red_bg" bindtap="plus_action" >+</view>
         </view>
     </view>
-    <view class="actionSheetbox_sure" bindtap="shopping_cart_add">
+    <view wx:if="{{infodata.price=='暂无定价'}}" class="actionSheetbox_disable" >
+        不可下单
+    </view>
+    <view wx:elif="{{curproductattribute_id==0}}" class="actionSheetbox_disable" >
+        请 选 择
+    </view>
+    <view wx:else class="actionSheetbox_sure" bindtap="shopping_cart_add">
         确 定
     </view>
   </view>

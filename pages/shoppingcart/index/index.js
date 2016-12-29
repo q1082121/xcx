@@ -174,20 +174,34 @@ var config={
   {
     let status=e.target.dataset.key
     var listitems=this.data.listdata
-    listitems[status]['qty']=parseInt(listitems[status]['qty'])+1
-    this.setData({
-        listdata: listitems
-    });
+    var curtotal_amount=listitems[status]['info']['amount']-listitems[status]['info']['selleds']
+    if(listitems[status]['qty']<curtotal_amount)
+    {
+      listitems[status]['qty']=parseInt(listitems[status]['qty'])+1
+      this.setData({
+          listdata: listitems
+      });
+    }
+    
   },
   change_qty_action:function(e)
   {
     let status=e.target.dataset.key
     var listitems=this.data.listdata
     let qty=e.detail.value
-    listitems[status]['qty']=parseInt(qty)>=1?qty:1
+    var curtotal_amount=listitems[status]['info']['amount']-listitems[status]['info']['selleds']
+    if(qty<curtotal_amount)
+    {
+      listitems[status]['qty']=parseInt(qty)>=1?qty:1
+    }
+    else
+    {
+      listitems[status]['qty']=curtotal_amount
+    }
     this.setData({
-        listdata: listitems
+          listdata: listitems
     });
+    
 
   },
   //完成编辑动作

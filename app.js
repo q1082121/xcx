@@ -262,6 +262,7 @@ var config={
     },
     imagePath:{
       path_product                :'/uploads/Product/',
+      path_productattribute       :'/uploads/Productattribute/',
       path_article                :'/uploads/Article/',
     },
     basePath                      :"/pages",

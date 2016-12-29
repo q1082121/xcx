@@ -17,9 +17,7 @@
             <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_title">{{itemval.title}}</text>
             <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_introduction">{{itemval.introduction}}</text>
             <image class="product_item_icon" src="/public/icon/price.png" ></image>
-            <text class="product_item_price">{{itemval.price}}</text>
-            <button class="weui-btn weui-btn_buy" type="warn" plain  >购买</button>
-            <button class="weui-btn weui-btn_buy" type="warn" plain bindtap="shopping_cart_add"  data-item_id="{{itemval.id}}" data-qty="1"  >添加</button>
+            <text class="product_item_price">{{itemval.pricegroup}}</text>
         </view>
   </block>
   <view class="weui-flex">

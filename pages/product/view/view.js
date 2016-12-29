@@ -10,22 +10,26 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '详情介绍',
-    userInfo: {},
-    session_id:'',
-    requestlock:true,
-    dataid:"",
-    qty:1,
-    infodata:{},
-    domainName:app.globalData.domainName,
-    imagePath:app.globalData.imagePath,
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 3000,
-    duration: 1000,
+    title                : '详情介绍',
+    userInfo             : {},
+    session_id           : '',
+    requestlock          : true,
+    dataid               : "",
+    qty                  : 1,
+    infodata             : {},
+    domainName           : app.globalData.domainName,
+    imagePath            : app.globalData.imagePath,
+    indicatorDots        : true,
+    vertical             : false,
+    autoplay             : false,
+    interval             : 3000,
+    duration             : 1000,
     shopping_actionSheetHidden: true,
-    content:""
+    content              :"",
+    curprice             :"",
+    curimageurl          :"",
+    curproductattribute_id:0,
+    curtotal_amount      :0
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
@@ -113,9 +117,7 @@ var config={
       if(resback.status==1)
       {
         app.action_loading_hidden();
-        that.setData({
-            infodata:resback.resource
-        })
+        
         if(resback.resource.syseditor=="Ueditor")
         {
           app.func.WxParse.wxParse('content', 'html', resback.resource.content, that,5);
@@ -124,7 +126,12 @@ var config={
         {
           app.func.WxParse.wxParse('content', 'markdown', resback.resource.content, that,5);
         }
-
+        that.setData({
+            infodata:resback.resource,
+            curimageurl:that.data.domainName+that.data.imagePath.path_product+resback.resource.attachment,
+            curprice:resback.resource.pricegroup,
+            curtotal_amount:resback.resource.total_amount
+        })
         if(actionway=="onPullDownRefresh")
         {
           setTimeout(function(){
@@ -176,27 +183,41 @@ var config={
   plus_action:function(e)
   {
     var qty=this.data.qty
-    qty=parseInt(qty)+1
-    this.setData({
-        qty: qty
-    });
+    var curtotal_amount=this.data.curtotal_amount
+    if(qty<curtotal_amount)
+    {
+      qty=parseInt(qty)+1
+      this.setData({
+          qty: qty
+      });
+    }
+    
   },
   change_qty_action:function(e)
   {
     var qty=e.detail.value
-    qty=parseInt(qty)>=1?qty:1
-    this.setData({
-        qty: qty
-    });
-
+    var curtotal_amount=this.data.curtotal_amount
+    if(qty<curtotal_amount)
+    {
+      qty=parseInt(qty)>=1?qty:1
+      this.setData({
+          qty: qty
+      });
+    }
+    else
+    {
+      this.setData({
+          qty: curtotal_amount
+      });
+    }
   },
   //添加到购物车
   shopping_cart_add:function(arr)
   {
     var that = this
-    let item_id=that.data.dataid
+    let curproductattribute_id=that.data.curproductattribute_id
     let qty=that.data.qty
-    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{item_id:item_id,qty:qty}}
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,formdata:{item_id:curproductattribute_id,qty:qty}}
     app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart_add,post_data,function(resback){
       if(resback.status==1)
       {
@@ -218,6 +239,38 @@ var config={
       })
     })
 
+  },
+  //选择项目
+  choose_items_action:function(e)
+  {
+    var that = this
+    var curprice=that.data.curprice
+    var curimageurl=that.data.curimageurl
+    var curproductattribute_id=that.data.curproductattribute_id
+    var curtotal_amount=that.data.curtotal_amount
+
+    var arr=e.target.dataset
+    if(arr.id==curproductattribute_id)
+    {
+      that.setData({
+          curprice: that.data.infodata.pricegroup,
+          curimageurl: that.data.domainName+that.data.imagePath.path_product+that.data.infodata.attachment,
+          curproductattribute_id: 0,
+          curtotal_amount: that.data.infodata.total_amount,
+          qty:1
+      })
+    }
+    else
+    {
+      that.setData({
+          curprice: arr.price,
+          curimageurl: that.data.domainName+that.data.imagePath.path_productattribute+arr.attachment,
+          curproductattribute_id: arr.id,
+          curtotal_amount: arr.totalamount,
+          qty:1
+      })
+    }
+    
   }
 }
 

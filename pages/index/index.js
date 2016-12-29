@@ -26,7 +26,7 @@ var config={
     next_page            :1,//下一页
     last_page            :1,//尾页
     listdata             :{},//列表数据 
-    page                 :1,         
+    page                 :1 
   },
   //生命周期函数--监听页面加载
   onLoad: function () {

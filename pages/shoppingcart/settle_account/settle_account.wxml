@@ -45,11 +45,12 @@
         <view class="weui-panel__bd">
             <view class="weui-media-box weui-media-box_appmsg" >
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_product}}{{itemval.info.attachment}}" />
+                    <image wx:if="itemval.info.attachment" class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_productattribute}}{{itemval.info.attachment}}" />
+                    <image wx:else class="weui-media-box__thumb" src="{{domainName}}{{imagePath.path_product}}{{itemval.productinfo.attachment}}" />
                 </view>
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                    <view class="weui-media-box__title">{{itemval.info.title}}</view>
-                    <view class="weui-media-box__desc">{{itemval.info.introduction}}</view>
+                    <view class="weui-media-box__title">{{itemval.productinfo.title}}</view>
+                    <view class="weui-media-box__desc">{{itemval.productinfo.introduction}}</view>
                 </view>
                 <view class="shoppingcart_items">
                     <view class="weui-media-box__title shoppingcart_items_price"><text class="shoppingcart_items_price_tip">¥</text>{{itemval.info.price}}</view>

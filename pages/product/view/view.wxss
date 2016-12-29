@@ -7,7 +7,7 @@
 .product_info_introduction{float: left;width:700rpx;height: 80rpx;overflow: hidden;font-size: 24rpx;color: #888;padding: 10rpx 25rpx;background: #fff;}
 .product_info_price_box{float: left;width: 700rpx;height: 80rpx;padding: 10rpx 25rpx;color: #ff6666;background: #fff;}
 .product_info_price_icon{float: left;width: 80rpx;height: 80rpx;margin-right: 20rpx;}
-.product_info_price{float: left;width: 200rpx;height: 80rpx;font-size: 60rpx;line-height: 80rpx;color: #ff6666;}
+.product_info_price{float: left;width: 320rpx;height: 80rpx;font-size: 60rpx;line-height: 80rpx;color: #ff6666;}
 .weui-btn_new{width: 140rpx;font-size: 24rpx;margin-left: 5rpx;line-height: 46rpx;margin-top: 15rpx;padding-left: 5rpx;padding-right: 5rpx;}
 .weui-flex_productinforpx{width: 100%;background: #fff;font-size: 24rpx;color: #888;}
 .product_info_nav{width: 700rpx;min-height: 200rpx;background: #fff;margin: 10rpx auto;padding: 0 25rpx}

@@ -8,5 +8,5 @@
 .product_item_title{float:left;width: 400rpx;height: 50rpx;line-height: 50rpx;font-size: 30rpx;margin: 25rpx 0 0 20rpx;overflow: hidden;}
 .product_item_introduction{float:left;width: 400rpx;height: 100rpx;line-height: 35rpx;color: #ccc;font-size: 24rpx;margin: 5rpx 0 0 20rpx;overflow: hidden;}
 .product_item_icon{float: left;width: 50rpx;height: 50rpx;margin: 15rpx 0 0 10rpx;}
-.product_item_price{float:left;width: 120rpx;height: 50rpx;line-height: 50rpx;font-size: 34rpx;font-weight: 700;color: #FF6666;margin: 15rpx 0 0 5rpx;}
+.product_item_price{float:left;width: 340rpx;height: 50rpx;line-height: 50rpx;font-size: 34rpx;font-weight: 700;color: #FF6666;margin: 15rpx 0 0 5rpx;}
 .weui-btn_buy{float: left;width: 120rpx;font-size: 24rpx;margin-left: 5rpx;line-height: 46rpx;margin-top: 15rpx;}
