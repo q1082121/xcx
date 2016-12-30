@@ -50,7 +50,9 @@
                 </view>
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                     <view class="weui-media-box__title">{{itemval.productinfo.title}}</view>
-                    <view class="weui-media-box__desc">{{itemval.productinfo.introduction}}</view>
+                    <view class="weui-media-box__desc">{{itemval.info.name}}<block wx:for="{{itemval.subpavlist}}"  wx:for-index="subitemkey" wx:for-item="subitemval" ><block  wx:if="{{subitemval.keyname}}">,{{subitemval.keyname}}</block>
+                    </block>
+                    </view>
                 </view>
                 <view class="shoppingcart_items">
                     <view class="weui-media-box__title shoppingcart_items_price"><text class="shoppingcart_items_price_tip">¥</text>{{itemval.info.price}}</view>

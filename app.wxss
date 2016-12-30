@@ -86,7 +86,7 @@
 .actionSheetbox_qty_box{width: 90%;height:80rpx;margin: 40rpx auto;}
 .actionSheetbox_sure{width: 100%;height:100rpx;margin: 20rpx auto 0;background: #dc3023;color: #fff;line-height: 100rpx;text-align: center}
 .actionSheetbox_disable{width: 100%;height:100rpx;margin: 20rpx auto 0;background: #ccc;color: #fff;line-height: 100rpx;text-align: center}
-.choose_items_linebox{width: 600rpx;height: 60rpx;background: #ddd;color: #666;font-size: 24rpx;margin: 10rpx auto;border-radius: 10px;padding: 0 40rpx;line-height: 60rpx;}
+.choose_items_linebox{width: 600rpx;min-height: 40rpx;background: #ddd;color: #666;font-size: 24rpx;margin: 10rpx auto;border-radius: 10px;padding: 10rpx 40rpx;line-height:40rpx;}
 .dis_choose_items{background: #ccc; color: #F0F0F0;}
 .curchoose_items_linebox{background: #ff3b30; color: #fff;}
 /** 地区选择组件弹窗  start **/
