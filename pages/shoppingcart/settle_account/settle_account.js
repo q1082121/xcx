@@ -196,7 +196,7 @@ var config=
             expresspricetitle=resback.resource.price
             expressprice=0
           }
-
+          
           that.setData({
               addressarr:resback.resource,
               isaddress:isaddress,
