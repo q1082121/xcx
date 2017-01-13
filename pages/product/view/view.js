@@ -29,7 +29,8 @@ var config={
     curprice             :"",
     curimageurl          :"",
     curproductattribute_id:0,
-    curtotal_amount      :0
+    curtotal_amount      :0,
+    expressvalue         :"未设置",
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
@@ -138,6 +139,15 @@ var config={
           wx.stopPullDownRefresh()
           },800)                 
         }
+        //调用获取当前位置
+        app.get_Location(function(res){
+          if(res.resource.price!="未设置运费模板")
+          {
+            that.setData({
+                expressvalue:res.resource.price+"元",
+            })
+          }
+        },that.data.session_id)
       }
       else
       {

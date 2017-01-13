@@ -21,6 +21,11 @@ var config=
       checkitemsid:'',
       checkitems:0,
       isaddress:false,
+      issetexpress:false,
+      isexpress:false,
+      expressinfo:"未设置",
+      expresspricetitle:"未设置",
+      expressprice:0,
       addressarr:[]
     },
     onLoad:function(options)
@@ -100,6 +105,8 @@ var config=
     get_list: function(actionway="") 
     {
       var that = this
+      that.get_default_address();
+      
       var post_data={token:app.globalData.token,session_id:that.data.session_id,search_keyword:that.data.inputVal}
       app.action_loading()
       app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_shoppingcart,post_data,function(resback){
@@ -126,13 +133,12 @@ var config=
                 }
               }
           } 
-          that.get_default_address();
           that.setData({
               listdata:listitems,
-              total:sum,
+              total:app.func.Operation_add(sum,that.data.expressprice),
               checkitems:arrcount
           })
-          console.log(that.data.addressarr)
+          //console.log(that.data.addressarr)
           if(actionway=="onPullDownRefresh")
           {
             setTimeout(function(){
@@ -153,7 +159,7 @@ var config=
     get_default_address:function()
     {
       var that = this
-      var isaddress
+      var isaddress,issetexpress,isexpress,expressinfo,expressprice,expresspricetitle
       var post_data={token:app.globalData.token,session_id:that.data.session_id}
       app.action_loading();
       app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_address_default,post_data,function(resback){
@@ -168,9 +174,37 @@ var config=
           {
             isaddress=false
           }
+
+          if(resback.resource.wayname!="未设置货运方式")
+          {
+            issetexpress=true
+          }
+          else
+          {
+            issetexpress=false
+          }
+
+          if(resback.resource.price!="未设置运费模板")
+          {
+            isexpress=true
+            expresspricetitle=resback.resource.price+"元"
+            expressprice=resback.resource.price
+          }
+          else
+          {
+            isexpress=false
+            expresspricetitle=resback.resource.price
+            expressprice=0
+          }
+
           that.setData({
               addressarr:resback.resource,
-              isaddress:isaddress
+              isaddress:isaddress,
+              issetexpress:issetexpress,
+              isexpress:isexpress,
+              expresspricetitle:expresspricetitle,
+              expressprice:expressprice,
+              expressinfo:resback.resource.wayname,
           })
         }
         else

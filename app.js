@@ -219,6 +219,22 @@ var config={
   {
       wx.hideToast()
   },
+  //获取当前位置
+  get_Location:function(cb,session_id)
+  {
+      var that = this
+      wx.getLocation({
+      type: 'wgs84',
+      success: function(arr)
+      {
+        var post_data={token:that.globalData.token,session_id:session_id,formdata:arr}
+        that.func.http_request_action(that.globalData.domainName+that.globalData.api.api_get_location,post_data,function(resback)
+        {
+          typeof cb == "function" && cb(resback)
+        })
+      }
+    })
+  },
   //全局数据配置
   globalData:{
     userInfo:null,
@@ -229,6 +245,7 @@ var config={
       api_userinfo                :"/api/xcx/userinfo",
       api_del                     :"/api/xcx/deleteapi",
       api_proxy                   :"/api/xcx/proxy",
+      api_get_location            :"/api/xcx/getlocation",
       api_district                :"/api/xcx/district",
       api_is_check_in             :"/api/xcx/is_check_in",
       api_check_in                :"/api/xcx/check_in",

@@ -66,11 +66,11 @@
   <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd weui-cell__bdrpx">配送方式</view>
-          <view class="weui-cell__ft ">快递 </view>
+          <view class="weui-cell__ft ">{{expressinfo}} </view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd weui-cell__bdrpx">配送费用</view>
-          <view class="weui-cell__ft ">包邮</view>
+          <view class="weui-cell__ft ">{{expresspricetitle}}</view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__bd weui-cell__bdrpx">售后服务</view>
@@ -89,7 +89,7 @@
         <view class="settle_account_barbox_left">
             共{{checkitems}}件商品 合计: <text class="price_color">￥{{total}}</text>
         </view>
-        <block wx:if="{{isaddress}}">
+        <block wx:if="{{isaddress&&issetexpress&&isexpress}}">
         <view class="settle_account_barbox_rightcur">
             提交订单 
         </view>

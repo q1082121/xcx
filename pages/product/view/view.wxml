@@ -40,7 +40,7 @@
   </view>
   <view class="weui-flex weui-flex_productinforpx">
     <view class="weui-flex__item weui-flex__itemrpx" > 库存 {{infodata.total_amount}} </view>
-    <view class="weui-flex__item weui-flex__itemrpx" > 包邮 </view>
+    <view class="weui-flex__item weui-flex__itemrpx" > 运费 {{expressvalue}}</view>
     <view class="weui-flex__item weui-flex__itemrpx" > 销量 {{infodata.selleds}} </view>
   </view>
   <view class="product_info_nav">
