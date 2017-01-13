@@ -27,16 +27,15 @@
         </view>
         <view class="weui-flex">
             <view class="weui-flex__item user_address_but borderboxr borderboxt ">
-                <image bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}" wx:if="{{itemval.isdefault==0}}" src="/public/icon/set.png" class="user_address_but_icon"  ></image>
-                <image bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}" wx:else src="/public/selectedIcon/set.png" class="user_address_but_icon"  ></image>
+                <icon bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}" class="icon user_address_but_icon" type="{{itemval.isdefault == 0 ? 'circle' : 'success_circle'}}"/>
                 <text bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}"   class="user_address_but_text">设为默认</text>
             </view>
             <view  class="weui-flex__item user_address_but borderboxr borderboxt">
-                <image bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  src="/public/icon/edit.png" class="user_address_but_icon"  ></image>
+                <image bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  src="/public/icon/edit.png" class="user_address_but_img"  ></image>
                 <text bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  class="user_address_but_text">编辑</text>
             </view>
             <view class="weui-flex__item user_address_but borderboxt">
-                <image bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" src="/public/icon/clear.png" class="user_address_but_icon" ></image>
+                <image bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" src="/public/icon/clear.png" class="user_address_but_img" ></image>
                 <text bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" class="user_address_but_text">删除</text>
             </view>
         </view>

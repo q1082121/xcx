@@ -4,5 +4,6 @@
 .user_address_contact{text-align: center;height:60rpx;color: #fff;font-size: 32rpx; color: #888;line-height: 60rpx;margin-bottom: 40rpx;}
 .user_address_info{width: 660rpx;padding: 0 5%;font-size: 26rpx;margin-top: 40rpx; }
 .user_address_but{text-align: center;height:100rpx;color: #fff;font-size: 30rpx; color: #888;line-height: 100rpx;margin-top: 40rpx;}
-.user_address_but_icon{width: 40rpx;height: 40rpx;margin-right: 10rpx;vertical-align:middle}
+.user_address_but_img{width: 40rpx;height: 40rpx;margin-right: 10rpx;vertical-align:middle}
+.user_address_but_icon{width: 60rpx;height: 60rpx;}
 .user_address_but_text{vertical-align:middle}
