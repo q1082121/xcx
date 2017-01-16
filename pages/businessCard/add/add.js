@@ -10,9 +10,10 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '新增名片',
-    userInfo: {},
-    session_id:''
+    title                : '新增名片',
+    userInfo             : {},
+    session_id           :'',
+    domainName           : app.globalData.domainName,
   },
   //生命周期函数--监听页面加载
   onLoad: function () {

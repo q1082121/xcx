@@ -10,7 +10,7 @@
 <import src="/pages/user/address/add/add.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
-  <template is="address_form" data="{{address:address,infodata:infodata}}" />
+  <template is="address_form" data="{{address:address,infodata:infodata,domainName:domainName}}" />
   <include src="/lib/wxSelectarea/wxSelectarea.wxml"/>
   <template is="footer" />
 </view>

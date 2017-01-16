@@ -10,7 +10,7 @@
 <view class="container">
   <template name="businessCard_form">  
   <view class="businessCard_header position-r">
-        <image class="businessCard_userinfo_bg position-a" src="/public/image/topbg.jpg" ></image>
+        <image class="businessCard_userinfo_bg position-a" src="{{domainName}}/xcx/image/topbg.jpg" ></image>
         <image class="businessCard_userinfo-avatar position-a" src="{{userInfo.avatarUrl}}" ></image>
         <text class="businessCard_userinfo-nickname position-a">{{userInfo.nickName}}</text>
   </view>
@@ -20,7 +20,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/username.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/username.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -30,7 +30,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/mobile.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/mobile.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -40,7 +40,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/qq.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/qq.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -50,7 +50,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/email.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/email.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -60,7 +60,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/fax.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/fax.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -70,7 +70,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/company.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/company.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -80,7 +80,7 @@
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label weui-labelrpx">
-                    <image class="businessCard_item_icon" src="/public/icon/address.png"></image>
+                    <image class="businessCard_item_icon" src="{{domainName}}/xcx/icon/address.png"></image>
                 </view>
             </view>
             <view class="weui-cell__bd">
@@ -97,6 +97,6 @@
     </block>
   </form>
   </template>
-  <template is="businessCard_form" data="{{curname:'填写名片信息',userInfo:userInfo,infodata:null}}" />
+  <template is="businessCard_form" data="{{curname:'填写名片信息',userInfo:userInfo,infodata:null,domainName:domainName}}" />
   <template is="footer" />
 </view>

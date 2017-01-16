@@ -10,6 +10,6 @@
 <import src="/pages/businessCard/add/add.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
-  <template is="businessCard_form" data="{{curname:title,userInfo:userInfo,infodata:infodata}}" />
+  <template is="businessCard_form" data="{{curname:title,userInfo:userInfo,infodata:infodata,domainName:domainName}}" />
   <template is="footer" />
 </view>

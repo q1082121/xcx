@@ -10,7 +10,7 @@
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
   <view class="flex-item-section position-r">
-        <image src="/public/image/businesscard/1.jpg" id="business_card_img"></image>
+        <image src="{{domainName}}/xcx/image/businesscard/1.jpg" id="business_card_img"></image>
         <text class="business_card_name position-a">{{infodata.name}}</text>
         <text class="business_card_mobile position-a">{{infodata.mobile}} </text>
         <text class="business_card_company position-a">{{infodata.company?infodata.company:''}}</text>
@@ -20,16 +20,16 @@
   </view>
   <view class="weui-flex">
         <view class="weui-flex__item weui-flex__itemrpx">
-            <image src="/public/icon/dial.png" class="weui-flex_icon" bindtap="makePhoneCall" data-phoneNumber="{{infodata.mobile}}"></image>
+            <image src="{{domainName}}/xcx/icon/dial.png" class="weui-flex_icon" bindtap="makePhoneCall" data-phoneNumber="{{infodata.mobile}}"></image>
         </view>
         <view class="weui-flex__item weui-flex__itemrpx">
-            <image src="/public/icon/email.png" class="weui-flex_icon"></image>
+            <image src="{{domainName}}/xcx/icon/email.png" class="weui-flex_icon"></image>
         </view>
         <view class="weui-flex__item weui-flex__itemrpx">
-            <image src="/public/icon/fax.png" class="weui-flex_icon"></image>
+            <image src="{{domainName}}/xcx/icon/fax.png" class="weui-flex_icon"></image>
         </view>
         <view class="weui-flex__item weui-flex__itemrpx">
-            <image src="/public/icon/qq.png" class="weui-flex_icon"></image>
+            <image src="{{domainName}}/xcx/icon/qq.png" class="weui-flex_icon"></image>
         </view>
   </view>
   <button class="button_submit" type="primary" bindtap="bindNavigateTo" data-action="business_card_edit" data-params="?id={{infodata.id}}" >编辑名片</button>

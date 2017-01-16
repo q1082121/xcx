@@ -31,7 +31,7 @@
     <text class="product_info_introduction">{{infodata.introduction}}</text>
   </view>
   <view class="product_info_price_box">
-        <image class="product_info_price_icon" src="/public/icon/price.png" ></image>
+        <image class="product_info_price_icon" src="{{domainName}}/xcx/icon/price.png" ></image>
         <text wx:if="{{infodata.maxprice}}" class="product_info_price">{{infodata.price}} - {{infodata.maxprice}}</text>
         <text wx:else class="product_info_price">{{infodata.price}}</text>
         <!--
@@ -50,7 +50,7 @@
     </view>
   </view>
   <template is="footer" />
-  <template is="shoppingbar"/>
+  <template is="shoppingbar" data="{{domainName:domainName}}"/>
   <action-sheet hidden="{{shopping_actionSheetHidden}}" bindchange="shopping_actionSheetChange">
   <view class="actionSheetbox_box">
     <view class="actionSheetbox_top">
@@ -65,7 +65,7 @@
           <view class="weui-media-box__title actionSheetbox_top_title">库存：{{curtotal_amount}}</view>
           <view class="weui-media-box__desc">{{infodata.introduction}}</view>
       </view>
-      <image src="/public/icon/cancel.png" class="actionSheetbox_top_cancel" bindtap="shopping_actionSheetChange" ></image>
+      <icon bindtap="shopping_actionSheetChange" type="{{'cancel'}}" class="actionSheetbox_top_cancel" />
     </view>
     <view class="line-border"></view>
 

@@ -5,7 +5,7 @@
   <block wx:if="{{isaddress}}">
   <view class="settle_account_address_box">
         <view class="settle_account_address_left">
-            <image src="/public/icon/area.png" class="settle_account_address_left_img"></image>
+            <image src="{{domainName}}/xcx/icon/area.png" class="settle_account_address_left_img"></image>
         </view>
         <view class="settle_account_address_mid">
             <view class="weui-flex">
@@ -22,20 +22,20 @@
             </view>
         </view>
         <view class="settle_account_address_right">
-            <image bindtap="bindNavigateTo" data-action="user_address" src="/public/icon/jiantou.png" class="settle_account_address_right_img"></image>
+            <image bindtap="bindNavigateTo" data-action="user_address" src="{{domainName}}/xcx/icon/jiantou.png" class="settle_account_address_right_img"></image>
         </view>
   </view>
   </block>
   <block wx:else>
   <view class="settle_account_address_box">
         <view class="settle_account_address_left">
-            <image src="/public/icon/area.png" class="settle_account_address_left_img"></image>
+            <image src="{{domainName}}/xcx/icon/area.png" class="settle_account_address_left_img"></image>
         </view>
         <view class="settle_account_address_mid">
             <view class="settle_account_address_tip">添加默认收货地址</view>
         </view>
         <view class="settle_account_address_right">
-            <image bindtap="bindNavigateTo" data-action="user_address" src="/public/icon/jiantou.png" class="settle_account_address_right_img"></image>
+            <image bindtap="bindNavigateTo" data-action="user_address" src="{{domainName}}/xcx/icon/jiantou.png" class="settle_account_address_right_img"></image>
         </view>
   </view>
   </block>

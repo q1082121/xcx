@@ -10,12 +10,13 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '名片介绍',
-    userInfo: {},
-    session_id:'',
-    requestlock:true,
-    dataid:"",
-    infodata:{}
+    title                : '名片介绍',
+    userInfo             : {},
+    session_id           :'',
+    requestlock          :true,
+    domainName           : app.globalData.domainName,
+    dataid               :"",
+    infodata             :{}
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {

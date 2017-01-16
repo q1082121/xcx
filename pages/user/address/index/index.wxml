@@ -31,11 +31,11 @@
                 <text bindtap="set_action" data-key="{{key}}"  data-id="{{itemval.id}}"   class="user_address_but_text">设为默认</text>
             </view>
             <view  class="weui-flex__item user_address_but borderboxr borderboxt">
-                <image bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  src="/public/icon/edit.png" class="user_address_but_img"  ></image>
+                <icon bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}" color="{{'gray'}}" type="{{'info_circle'}}" class="user_address_but_icon"/>
                 <text bindtap="bindNavigateTo" data-action="user_address_edit" data-params="?id={{itemval.id}}"  class="user_address_but_text">编辑</text>
             </view>
             <view class="weui-flex__item user_address_but borderboxt">
-                <image bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" src="/public/icon/clear.png" class="user_address_but_img" ></image>
+                <icon bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}"  data-model="address" class="icon user_address_but_icon" type="{{'clear'}}"/>
                 <text bindtap="del_action" data-key="{{key}}"  data-id="{{itemval.id}}" data-model="address" class="user_address_but_text">删除</text>
             </view>
         </view>

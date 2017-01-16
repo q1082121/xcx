@@ -23,15 +23,15 @@
   </view>
   <view class="weui-flex weui-flex_stylerpx whitebg ">
     <view class="weui-flex__item weui-flex__itemstylerpx borderboxr">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/money.png"></image>
+    <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/money.png"></image>
     <text class="weui-flex__itemtextrpx">{{userInfo.money}}</text>
     </view>
     <view class="weui-flex__item weui-flex__itemstylerpx borderboxr">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/score.png"></image>
+    <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/score.png"></image>
     <text class="weui-flex__itemtextrpx">{{userInfo.score}}</text>
     </view>
     <view class="weui-flex__item weui-flex__itemstylerpx ">
-    <image class="weui-flex__itemiconrpx" src="/public/icon/message.png"></image>
+    <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/message.png"></image>
     <text class="weui-flex__itemtextrpx">0</text>
     </view>
   </view>
@@ -39,49 +39,49 @@
   <view class="weui-cells weui-cells_after-title weui-cellsrpx">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/shop.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/shop.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">积分商城</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/task.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/task.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">积分任务</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/activity.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/activity.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">活动广场</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/card.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/card.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">我的卡券</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/collection.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/collection.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">我的收藏</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/qrcode.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/qrcode.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">二维码名片</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/shippingaddress.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/shippingaddress.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx" bindtap="bindNavigateTo" data-action="user_address" >管理收货地址</view>
           <view class="weui-cell__ft weui-cell__ft_in-access">{{address_count}}</view>
@@ -91,28 +91,28 @@
   <view class="weui-cells weui-cells_after-title weui-cellsrpx">
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/fankui.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/fankui.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">意见反馈</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/banquan.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/banquan.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">版权说明</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/about.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/about.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">关于我们</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </view>
       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
           <view class="weui-cell__hd">
-              <image src="/public/icon/contact.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <image src="{{domainName}}/xcx/icon/contact.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
           </view>
           <view class="weui-cell__bd weui-cell__bdrpx">联系方式</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>

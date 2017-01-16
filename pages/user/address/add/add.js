@@ -10,9 +10,10 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '新增收货地址',
-    userInfo: {},
-    session_id:''
+    title                : '新增收货地址',
+    userInfo             : {},
+    domainName           : app.globalData.domainName,
+    session_id           :''
   },
   //生命周期函数--监听页面加载
   onLoad: function () {

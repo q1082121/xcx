@@ -10,11 +10,12 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title: '收货地址',
-    userInfo: {},
-    session_id:'',
-    requestlock:true,
-    listdata:{}
+    title                : '收货地址',
+    userInfo             : {},
+    session_id           :'',
+    requestlock          :true,
+    domainName           : app.globalData.domainName,
+    listdata             :{}
   },
   //生命周期函数--监听页面加载
   onLoad: function () {

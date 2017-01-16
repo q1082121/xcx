@@ -16,7 +16,7 @@
             <image bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}"  class="product_item_image" src="{{domainName}}{{imagePath.path_product}}{{itemval.attachment}}"></image>
             <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_title">{{itemval.title}}</text>
             <text bindtap="bindNavigateTo" data-action="product_view" data-params="?id={{itemval.id}}" class="product_item_introduction">{{itemval.introduction}}</text>
-            <image class="product_item_icon" src="/public/icon/price.png" ></image>
+            <image class="product_item_icon" src="{{domainName}}/xcx/icon/price.png" ></image>
             <text class="product_item_price">{{itemval.pricegroup}}</text>
         </view>
   </block>
