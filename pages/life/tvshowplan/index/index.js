@@ -15,6 +15,10 @@ var config={
     session_id           :'',
     requestlock          :true,
     domainName           : app.globalData.domainName,
+    tvCategory_name      :[],
+    tvCategory_id        :[],
+    tvChannel            :[],
+    tvProgram            :[],
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -33,6 +37,7 @@ var config={
           that.setData({
             session_id:res.data
           })
+          that.get_tvCategory();
       } 
     })
     
@@ -67,7 +72,9 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    
+    setTimeout(function(){
+    wx.stopPullDownRefresh()
+    },800) 
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -87,6 +94,37 @@ var config={
   bindSwitchTo: function(action) 
   {
     app.bindSwitchTo(action.target.dataset.action)
+  },
+  get_tvCategory:function()
+  {
+    var that = this 
+    var tvCategory_name=[],tvCategory_id=[];
+    var api_data_param="key="+app.globalData.key_juhe_tv
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,api_url:app.globalData.api.api_juhe_getCategory,api_data:api_data_param}
+    app.action_loading();
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_proxy,post_data,function(resback){
+      if(resback.error_code=="0")
+      {
+        app.action_loading_hidden();
+        resback.result.forEach(function(e){
+          tvCategory_name.push(e.name);
+          tvCategory_id.push(e.id);
+        })
+        that.setData({
+            tvCategory_name:tvCategory_name,
+            tvCategory_id:tvCategory_id,
+        })
+        console.log(that.data.tvCategory)
+      }
+      else
+      {
+        app.action_loading_hidden();
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.info
+              app.func.showToast_default(msgdata);
+      }
+    })
   },
   onShareAppMessage(){
     return {

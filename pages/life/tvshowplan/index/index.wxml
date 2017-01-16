@@ -10,6 +10,10 @@
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
-  
+  <picker bindchange="bindPickerChange" value="{{index}}"  range="{{tvCategory_name}}">
+    <view class="picker">
+      当前选择：{{tvCategory_name[index]}}
+    </view>
+  </picker>
   <template is="footer" />
 </view>

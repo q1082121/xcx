@@ -245,6 +245,7 @@ var config={
   globalData:{
     userInfo:null,
     token:"MbYwyExrMd5G42Da",
+    key_juhe_tv:"e4c801770385609b074eaefd9cd7a646",
     key_juhe_calendar:"f68ed7da2fcc6fd078f5c38c6dd1ca95",
     domainName:"https://api.tzsuteng.com",
     api:{
@@ -272,6 +273,9 @@ var config={
       api_address_default         :"/api/xcx/address/default",
       api_address                 :"/api/xcx/address",
       api_juhe_calendar           :"http://v.juhe.cn/calendar/day",
+      api_juhe_getCategory        :"http://japi.juhe.cn/tv/getCategory",
+      api_juhe_getChannel         :"http://japi.juhe.cn/tv/getChannel",
+      api_juhe_getProgram         :"http://japi.juhe.cn/tv/getProgram",
     },
     routePath:{
       business_card_add           :"/businessCard/add/add",
