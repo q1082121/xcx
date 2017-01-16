@@ -158,6 +158,12 @@ var config={
       case 'shopping_cart_settle_account':
       linkurl=this.globalData.basePath+this.globalData.routePath.shopping_cart_settle_account+params
       break
+      case 'life_calendar':
+      linkurl=this.globalData.basePath+this.globalData.routePath.life_calendar+params
+      break
+      case 'life_tvshowplan':
+      linkurl=this.globalData.basePath+this.globalData.routePath.life_tvshowplan+params
+      break
       
     }
     console.log(linkurl)
@@ -239,6 +245,7 @@ var config={
   globalData:{
     userInfo:null,
     token:"MbYwyExrMd5G42Da",
+    key_juhe_calendar:"f68ed7da2fcc6fd078f5c38c6dd1ca95",
     domainName:"https://api.tzsuteng.com",
     api:{
       api_login                   :"/api/xcx/login",
@@ -264,6 +271,7 @@ var config={
       api_address_set             :"/api/xcx/address/set",
       api_address_default         :"/api/xcx/address/default",
       api_address                 :"/api/xcx/address",
+      api_juhe_calendar           :"http://v.juhe.cn/calendar/day",
     },
     routePath:{
       business_card_add           :"/businessCard/add/add",
@@ -276,6 +284,8 @@ var config={
       user_address                :"/user/address/index/index",
       user_address_add            :"/user/address/add/add",
       user_address_edit           :"/user/address/edit/edit",
+      life_calendar               :"/life/calendar/index/index",
+      life_tvshowplan             :"/life/tvshowplan/index/index",
     },
     imagePath:{
       path_product                :'/uploads/Product/',

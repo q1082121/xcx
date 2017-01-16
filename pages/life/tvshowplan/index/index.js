@@ -10,14 +10,11 @@ var app = getApp()
 var config={
   //页面的初始数据
   data: {
-    title                : '生活服务',
+    title                : '电视节目时间表',
     userInfo             : {},
     session_id           :'',
     requestlock          :true,
-    inputShowed          : false,
-    inputVal             : "",
     domainName           : app.globalData.domainName,
-    listdata             :{}
   },
   //生命周期函数--监听页面加载
   onLoad: function () {
@@ -70,9 +67,7 @@ var config={
   //页面相关事件处理函数--监听用户下拉动作
   onPullDownRefresh: function() {
     // Do something when pull down.
-    setTimeout(function(){
-    wx.stopPullDownRefresh()
-    },800) 
+    
   },
   //页面上拉触底事件的处理函数
   onReachBottom: function() {
@@ -93,31 +88,13 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
-  //搜索条相关动作函数
-  showInput: function () {
-      this.setData({
-          inputShowed: true
-      });
-  },
-  hideInput: function () {
-      this.setData({
-          inputVal: "",
-          inputShowed: false
-      });
-      this.get_list();
-  },
-  clearInput: function () {
-      this.setData({
-          inputVal: ""
-      });
-      this.get_list();
-  },
-  inputTyping: function (e) {
-      this.setData({
-          inputVal: e.detail.value
-      });
+  onShareAppMessage(){
+    return {
+      title: this.data.title,
+      desc: '电视节目查询',
+      path: 'pages/life/tvshowplan/index/index'
+    }
   }
-
   
 }
 

@@ -1,0 +1,48 @@
+<!--
+/******************************* 
+ * 名称:生活服务
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/searchbar/searchbar.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo}}"/>
+  <scroll-view scroll-y="true" class="flex box box-tb box-pack-center box-align-center" style="height: {{scrollViewHeight}}rpx">
+    <view class="calendar pink-color box box-tb">
+          <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+              <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+                  <view class="prev-handle box box-lr box-align-center box-pack-center">《</view>
+              </view>
+              <view class="date-area box box-lr box-align-center box-pack-center">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+              <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
+                  <view class="next-handle box box-lr box-align-center box-pack-center">》</view>
+              </view>
+          </view>
+          <view class="weeks box box-lr box-pack-center box-align-center">
+              <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+          </view>
+          <view class="days box box-lr box-wrap">
+              <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+              </view>
+              <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" >
+                  <view data-dateitem="{{dateitem[index]}}" bindtap="get_calendar"  class="day {{dateitem[index]==cut_dates ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item}}</view>
+              </view>
+          </view>
+      </view>
+  </scroll-view>
+  <view class="weui-panel">
+      <view class="weui-panel__hd "><text class="calendar_date">{{cut_dates}}</text> <view class="calendar_week">{{calendarinfo.weekday}}</view> </view>
+      <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_text">
+              <view class="weui-media-box__title weui-media-box__title_in-text"><text class="calendar_lunar">{{calendarinfo.lunar}} {{calendarinfo.lunarYear}}</text></view>
+              <view class="weui-media-box__desc calendar_desc"><text class="calendar_lunar_name">生肖：</text>{{calendarinfo.animalsYear}}</view>
+              <view class="weui-media-box__desc calendar_desc"><text class="calendar_lunar_name">避免：</text>{{calendarinfo.avoid}}</view>
+              <view class="weui-media-box__desc calendar_desc"><text class="calendar_lunar_name">适宜：</text>{{calendarinfo.suit}}</view>
+          </view>
+      </view>
+  </view>
+  <template is="footer" />
+</view>

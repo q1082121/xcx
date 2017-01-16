@@ -11,17 +11,17 @@
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
   <view class="weui-flex whitebg ">
-    <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/tv.png"></image>
-    <text class="weui-flex__itemtextrpx">电视节目</text>
+    <view bindtap="bindNavigateTo" data-action="life_tvshowplan"class="weui-flex__item weui-flex__itemliferpx " >
+    <image bindtap="bindNavigateTo" data-action="life_tvshowplan"class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/tv.png"></image>
+    <text bindtap="bindNavigateTo" data-action="life_tvshowplan" class="weui-flex__itemtextrpx">电视节目</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
     <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/wechat.png"></image>
     <text class="weui-flex__itemtextrpx">微信精选</text>
     </view>
-    <view class="weui-flex__item weui-flex__itemliferpx ">
-    <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/calendar.png"></image>
-    <text class="weui-flex__itemtextrpx">万年历</text>
+    <view bindtap="bindNavigateTo" data-action="life_calendar" class="weui-flex__item weui-flex__itemliferpx"  >
+    <image bindtap="bindNavigateTo" data-action="life_calendar" class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/calendar.png" ></image>
+    <text bindtap="bindNavigateTo" data-action="life_calendar" class="weui-flex__itemtextrpx" >万年历</text>
     </view>
     <view class="weui-flex__item weui-flex__itemliferpx ">
     <image class="weui-flex__itemiconrpx" src="{{domainName}}/xcx/icon/movie.png"></image>
