@@ -164,7 +164,9 @@ var config={
       case 'life_tvshowplan':
       linkurl=this.globalData.basePath+this.globalData.routePath.life_tvshowplan+params
       break
-      
+      case 'life_wxnews':
+      linkurl=this.globalData.basePath+this.globalData.routePath.life_wxnews+params
+      break
     }
     console.log(linkurl)
     wx.navigateTo({
@@ -245,6 +247,7 @@ var config={
   globalData:{
     userInfo:null,
     token:"MbYwyExrMd5G42Da",
+    key_juhe_wxnews:"f80345671e5703c0e7ad025ed1489fd5",
     key_juhe_tv:"e4c801770385609b074eaefd9cd7a646",
     key_juhe_calendar:"f68ed7da2fcc6fd078f5c38c6dd1ca95",
     domainName:"https://api.tzsuteng.com",
@@ -276,6 +279,7 @@ var config={
       api_juhe_getCategory        :"http://japi.juhe.cn/tv/getCategory",
       api_juhe_getChannel         :"http://japi.juhe.cn/tv/getChannel",
       api_juhe_getProgram         :"http://japi.juhe.cn/tv/getProgram",
+      api_juhe_wxnews             :"http://v.juhe.cn/weixin/query",
     },
     routePath:{
       business_card_add           :"/businessCard/add/add",
@@ -290,6 +294,7 @@ var config={
       user_address_edit           :"/user/address/edit/edit",
       life_calendar               :"/life/calendar/index/index",
       life_tvshowplan             :"/life/tvshowplan/index/index",
+      life_wxnews                 :"/life/wxnews/index/index",
     },
     imagePath:{
       path_product                :'/uploads/Product/',

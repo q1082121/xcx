@@ -15,6 +15,7 @@
     "pages/user/address/add/add",
     "pages/user/address/edit/edit",
     "pages/life/calendar/index/index",
+    "pages/life/wxnews/index/index",
     "pages/life/tvshowplan/index/index"
   ],
   "name_window":"注释：设置默认页面的窗口表现",

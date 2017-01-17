@@ -1,17 +1,17 @@
 /* pages/life/calendar/index/index.wxss */
-.top-handle {height: 80rpx;background: #c3272b;color: #fff;}
+.top-handle {height: 80rpx;background: #1EB9CB;color: #fff;border-bottom: 1px solid #fff;}
 .prev {text-align: right;height: 80rpx;}
 .next {height: 80rpx;}
 .prev-handle {width: 80rpx;height: 100%;}
 .next-handle {width: 80rpx;height: 100%;}
 .date-area {width: 50%;height: 80rpx;text-align: center;}
-.weeks {height: 80rpx;line-height: 80rpx;font-size: 28rpx;background: #ff3300;color: #fff;font-weight: 700;}
+.weeks {height: 80rpx;line-height: 80rpx;font-size: 28rpx;background: #1EB9CB;color: #fff;font-weight: 700;}
 .week {text-align: center;}
 .days {height: 500rpx;background: #fff;}
 .grid {width: 107.1428571429rpx;}
 .day {width: 60rpx;height: 60rpx;color: #6b6882;font-size: 26rpx;font-weight: 200;}
 .border-radius {border-radius: 50%;position: relative;left: 0;top: 0;color: #fff;}
-.pink-bg {background-color: #ff629a;}
+.pink-bg {background-color: #1EB9CB;}
 .purple-bg {background-color: #b8b8f1;}
 .right-triangle::after {content: "";display: block;width: 0;height: 0;border: 15rpx solid transparent;border-left-color: #ff629a;position: absolute;right: -22rpx;top: 18rpx;}
 .left-triangle::before {content: "";display: block;width: 0;height: 0;border: 15rpx solid transparent;border-right-color: #ff629a;position: absolute;left: -22rpx;top: 18rpx;}

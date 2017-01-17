@@ -1,0 +1,36 @@
+<!--
+/******************************* 
+ * 名称:微信精选
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+-->
+<import src="/pages/common/header/header.wxml" />
+<import src="/pages/common/footer/footer.wxml" />
+<view class="container">
+  <template is="header" data="{{userInfo: userInfo}}"/>
+  <view class="wxnews_title">
+  <view class="wxnews_line_left"></view>
+  <image class="wxnews_line_ico" src="{{domainName}}/xcx/icon/wechat.png"></image>微信精选
+  </view>
+  <block wx:for="{{listdata}}" wx:for-index="itemkey" wx:for-item="itemval" >
+        <view class="wxnews_itemrpx" >
+            <image wx:if="{{itemval.firstImg}}" class="wxnews_item_image" src="{{itemval.firstImg}}"></image>
+            <image wx:else class="wxnews_item_image" src="{{domainName}}/xcx/icon/img.png"></image>
+            <text class="wxnews_item_title">{{itemval.source}}</text>
+            <text class="wxnews_item_introduction">{{itemval.title}}</text>
+        </view>
+  </block>
+  <view class="weui-flex">
+    <view class="weui-flex__item weui-flex__item_pagerpx">页码</view>
+    <view class="weui-flex__item weui-flex__item_pagerpx" bindtap="btnClick" data-page="{{first_page}}" >首页</view>
+    <view class="weui-flex__item weui-flex__item_pagerpx" bindtap="btnClick" data-page="{{prev_page}}" > ← </view>
+    <block wx:for="{{totals}}" wx:for-index="itemkey" wx:for-item="itemval" >
+        <view wx:if="{{current_page == itemkey+1}}" class="weui-flex__item weui-flex__item_pagerpx weui-flex__item_curpagerpx" bingtap="btnClick()" data-page="{{itemkey+1}}" >{{ itemkey+1 }} </view>
+        <view wx:else class="weui-flex__item weui-flex__item_pagerpx" bindtap="btnClick" data-page="{{itemkey+1}}" >{{ itemkey+1 }} </view>
+    </block>
+    <view class="weui-flex__item weui-flex__item_pagerpx" bindtap="btnClick" data-page="{{next_page}}" > → </view>
+    <view class="weui-flex__item weui-flex__item_pagerpx" bindtap="btnClick" data-page="{{last_page}}" >尾页</view>
+  </view>
+  <template is="footer" />
+</view>

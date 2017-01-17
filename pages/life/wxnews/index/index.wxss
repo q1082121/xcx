@@ -1,0 +1,12 @@
+/******************************* 
+ * 名称:微信精选
+ * 作者:rubbish.boy@163.com
+ *******************************
+*/
+.wxnews_title{width:100%;height: 100rpx;background: #fff;line-height:100rpx;color: #0DB81B;font-weight: 700;}
+.wxnews_line_left{float: left;width: 10rpx;height: 100rpx;background: #0DB81B;margin-right:20rpx; }
+.wxnews_line_ico{float: left;width: 60rpx;height: 60rpx;margin-top: 20rpx;margin-right: 20rpx;}
+.wxnews_itemrpx{width: 94%;height: 220rpx;margin: 20rpx auto;background: #fff;}
+.wxnews_item_image{float: left;width: 140rpx;height:140rpx;margin: 20rpx;padding: 10rpx;border: 1rpx solid #ddd;}
+.wxnews_item_title{float:left;width: 400rpx;height: 50rpx;line-height: 50rpx;font-size: 30rpx;margin: 25rpx 0 0 20rpx;overflow: hidden;}
+.wxnews_item_introduction{float:left;width: 400rpx;height: 100rpx;line-height: 35rpx;color: #ccc;font-size: 24rpx;margin: 5rpx 0 0 20rpx;overflow: hidden;}
