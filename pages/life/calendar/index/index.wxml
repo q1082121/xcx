@@ -28,13 +28,13 @@
               <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
               </view>
               <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" >
-                  <view data-dateitem="{{dateitem[index]}}" bindtap="get_calendar"  class="day {{dateitem[index]==cut_dates ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item}}</view>
+                  <view data-dateitem="{{dateitem[index]}}" bindtap="get_calendar"  class="day {{dateitem[index]==cur_dates ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center">{{item}}</view>
               </view>
           </view>
       </view>
   </scroll-view>
   <view class="weui-panel">
-      <view class="weui-panel__hd "><text class="calendar_date">{{cut_dates}}</text> <view class="calendar_week">{{calendarinfo.weekday}}</view> </view>
+      <view class="weui-panel__hd "><text class="calendar_date">{{cur_dates}}</text> <view class="calendar_week">{{calendarinfo.weekday}}</view> </view>
       <view class="weui-panel__bd">
           <view class="weui-media-box weui-media-box_text">
               <view class="weui-media-box__title weui-media-box__title_in-text"><text class="calendar_lunar">{{calendarinfo.lunar}} {{calendarinfo.lunarYear}}</text></view>

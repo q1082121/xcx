@@ -10,10 +10,34 @@
 <import src="/pages/common/footer/footer.wxml" />
 <view class="container">
   <template is="header" data="{{userInfo: userInfo}}"/>
-  <picker bindchange="bindPickerChange" value="{{index}}"  range="{{tvCategory_name}}">
+  <picker class="picker_choose_box" bindchange="bindPickerChange_tvCategory" value="{{tvCategory_index}}"  range="{{tvCategory_name}}">
     <view class="picker">
-      当前选择：{{tvCategory_name[index]}}
+      <button class="weui-btn button_choose" type="primary" size="mini" >电视台分类【{{tvCategory_name[tvCategory_index]}}】</button>
     </view>
   </picker>
+  <picker class="picker_choose_box" bindchange="bindPickerChange_tvChannel" value="{{tvChannel_index}}"  range="{{tvChannel_name}}">
+    <view class="picker">
+      <button class="weui-btn button_choose" type="primary" size="mini">电视频道【{{tvChannel_name[tvChannel_index]}}】</button>
+    </view>
+  </picker>
+  <picker mode="date" class="picker_choose_box" bindchange="bindPickerChange_dates" value="{{cur_dates}}" start="2000-01-01" end="2020-01-01" >
+    <view class="picker">
+      <button class="weui-btn button_choose" type="primary" size="mini">查询日期【{{cur_dates}}】</button>
+    </view>
+  </picker>
+  <!--
+  <scroll-view scroll-y="true" style="height: 800rpx;" >
+  </scroll-view>
+  -->
+  <view class="weui-panel" wx:if="{{tvProgram}}" wx:for="{{tvProgram}}" wx:for-index="key" wx:for-item="items"  >
+      <view class="weui-panel__hd">{{items.time}}</view>
+      <view class="weui-panel__bd" >
+          <view class="weui-media-box weui-media-box_text">
+              <view class="weui-media-box__title weui-media-box__title_in-text">{{items.cName}}</view>
+              <view class="weui-media-box__desc">{{items.pName}}</view>
+          </view>
+      </view>
+  </view>
+  
   <template is="footer" />
 </view>

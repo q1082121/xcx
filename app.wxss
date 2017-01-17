@@ -8,6 +8,7 @@
 .page-footer{margin: 50rpx auto 100rpx;min-height:100rpx;}
 #hidden{display: none;}
 .button_submit{width: 96%;margin: 20rpx auto;}
+.button_choose{width: 92%;margin: 0 auto;}
 .position-r{position: relative;}
 .position-a{position: absolute;}
 .position-f{position: fixed;}
@@ -22,6 +23,7 @@
 .borderboxl{border-left: 1rpx solid #ddd;}
 .line-border{width: 90%;height: 2rpx;background:#c2ccd0;margin: 0 auto 10rpx; }
 .line-border-dashed{width: 90%;border-bottom: 2rpx dashed #c2ccd0;margin: 0 auto }
+.picker_choose_box{margin: 20rpx auto;}
 .price_color{color: #CE2C2C}
 /** Weui 兼容 **/
 .weui-inputrpx{display: inline;height: 40rpx;min-height: 40rpx;line-height: 40rpx;font-size: 26rpx;}

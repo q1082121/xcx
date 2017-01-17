@@ -17,7 +17,12 @@ var config={
     domainName           : app.globalData.domainName,
     tvCategory_name      :[],
     tvCategory_id        :[],
-    tvChannel            :[],
+    tvCategory_index     :0,
+    tvCategory_value     :1,
+    tvChannel_name       :[],
+    tvChannel_id         :[],
+    tvChannel_index      :0,
+    tvChannel_value      :"cctv1",
     tvProgram            :[],
   },
   //生命周期函数--监听页面加载
@@ -38,6 +43,16 @@ var config={
             session_id:res.data
           })
           that.get_tvCategory();
+
+          //初始化数据
+          const date = new Date();
+          const cur_year = date.getFullYear();
+          const cur_month = date.getMonth() + 1;
+          const cur_date = date.getDate();
+          var cur_dates=cur_year.toString()+"-"+(cur_month<10?"0"+cur_month.toString():cur_month.toString())+"-"+(cur_date<10?"0"+cur_date.toString():cur_date.toString());
+          that.setData({
+            cur_dates:cur_dates,
+          })
       } 
     })
     
@@ -95,6 +110,7 @@ var config={
   {
     app.bindSwitchTo(action.target.dataset.action)
   },
+  //获取电视台分类
   get_tvCategory:function()
   {
     var that = this 
@@ -114,14 +130,98 @@ var config={
             tvCategory_name:tvCategory_name,
             tvCategory_id:tvCategory_id,
         })
-        console.log(that.data.tvCategory)
+        that.get_tvChannel();
       }
       else
       {
         app.action_loading_hidden();
           var msgdata=new Object
               msgdata.totype=3
-              msgdata.msg=resback.info
+              msgdata.msg=resback.reason
+              app.func.showToast_default(msgdata);
+      }
+    })
+  },
+  //更改电视台分类
+  bindPickerChange_tvCategory: function(e) {
+    var that = this 
+    that.setData({
+      tvCategory_index: e.detail.value,
+      tvCategory_value:that.data.tvCategory_id[e.detail.value]
+    })
+    that.get_tvChannel();
+  },
+  //获取电视频道
+  get_tvChannel:function()
+  {
+    var that = this 
+    var tvChannel_name=[],tvChannel_id=[];
+    var api_data_param="pId="+that.data.tvCategory_value+"&key="+app.globalData.key_juhe_tv
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,api_url:app.globalData.api.api_juhe_getChannel,api_data:api_data_param}
+    app.action_loading();
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_proxy,post_data,function(resback){
+      if(resback.error_code=="0")
+      {
+        app.action_loading_hidden();
+        resback.result.forEach(function(e){
+          tvChannel_name.push(e.channelName);
+          tvChannel_id.push(e.rel);
+        })
+        that.setData({
+            tvChannel_name:tvChannel_name,
+            tvChannel_id:tvChannel_id,
+            tvChannel_index: 0,
+            tvChannel_value:resback.result[0]['rel']
+        })
+        that.get_tvProgram()
+      }
+      else
+      {
+        app.action_loading_hidden();
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.reason
+              app.func.showToast_default(msgdata);
+      }
+    })
+  },
+  bindPickerChange_tvChannel: function(e) {
+    var that = this 
+    that.setData({
+      tvChannel_index: e.detail.value,
+      tvChannel_value:that.data.tvChannel_id[e.detail.value]
+    })
+    that.get_tvProgram()
+  },
+  bindPickerChange_dates:function(e)
+  {
+    var that = this
+    that.setData({
+      cur_dates: e.detail.value
+    })
+    that.get_tvProgram()
+  },
+  //获取电视节目表
+  get_tvProgram:function()
+  {
+    var that = this 
+    var api_data_param="code="+that.data.tvChannel_value+"&date="+that.data.cur_dates+"&key="+app.globalData.key_juhe_tv
+    var post_data={token:app.globalData.token,session_id:that.data.session_id,api_url:app.globalData.api.api_juhe_getProgram,api_data:api_data_param}
+    app.action_loading();
+    app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_proxy,post_data,function(resback){
+      if(resback.error_code=="0")
+      {
+        app.action_loading_hidden();
+        that.setData({
+            tvProgram:resback.result,
+        })
+      }
+      else
+      {
+        app.action_loading_hidden();
+          var msgdata=new Object
+              msgdata.totype=3
+              msgdata.msg=resback.reason
               app.func.showToast_default(msgdata);
       }
     })

@@ -47,15 +47,15 @@ var config={
           that.calculateEmptyGrids(cur_year, cur_month);
           that.calculateDays(cur_year, cur_month);
           that.getSystemInfo();
-          //var cut_dates=cur_year.toString()+"-"+(cur_month<10?"0"+cur_month.toString():cur_month.toString())+"-"+(cur_date<10?"0"+cur_date.toString():cur_date.toString());
-          var cut_dates=cur_year.toString()+"-"+(cur_month.toString())+"-"+(cur_date.toString());
+          //var cur_dates=cur_year.toString()+"-"+(cur_month<10?"0"+cur_month.toString():cur_month.toString())+"-"+(cur_date<10?"0"+cur_date.toString():cur_date.toString());
+          var cur_dates=cur_year.toString()+"-"+(cur_month.toString())+"-"+(cur_date.toString());
           that.setData({
             cur_year,
             cur_month,
             weeks_ch,
             cur_date:cur_date,
             cur_day:cur_day,
-            cut_dates
+            cur_dates
           })
           that.get_calendar();
       } 
@@ -121,10 +121,10 @@ var config={
     if(calendar)
     {
       that.setData({
-            cut_dates:calendar.target.dataset.dateitem
+            cur_dates:calendar.target.dataset.dateitem
       })
     } 
-    var api_data_param="date="+that.data.cut_dates.toString()+"&key="+app.globalData.key_juhe_calendar
+    var api_data_param="date="+that.data.cur_dates.toString()+"&key="+app.globalData.key_juhe_calendar
     var post_data={token:app.globalData.token,session_id:that.data.session_id,api_url:app.globalData.api.api_juhe_calendar,api_data:api_data_param}
     app.action_loading();
     app.func.http_request_action(app.globalData.domainName+app.globalData.api.api_proxy,post_data,function(resback){
